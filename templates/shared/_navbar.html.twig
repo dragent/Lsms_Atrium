@@ -1,0 +1,19 @@
+<nav class="navbar navbar-expand-lg bg-dark" data-bs-theme="dark">
+	<div class="container-fluid">
+		<a class="navbar-brand" href="{{path('app_index')}}">LSMS</a>
+		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarColor02">
+			<ul class="navbar-nav me-auto">
+				<li class="nav-item">
+					{% if not is_granted('IS_AUTHENTICATED_FULLY') %}
+						<a href="{{path('app_login')}}" class="nav-link">Connexion</a>
+					{% else %}
+						<a href="{{path('app_logout')}}">Déconnexion</a>
+					{% endif %}
+				</li>
+			</ul>
+		</div>
+	</div>
+</nav>
