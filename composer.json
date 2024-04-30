@@ -17,8 +17,11 @@
         "symfony/framework-bundle": "7.0.*",
         "symfony/runtime": "7.0.*",
         "symfony/security-bundle": "7.0.*",
+        "symfony/stimulus-bundle": "*",
         "symfony/twig-bundle": "7.0.*",
-        "symfony/webpack-encore-bundle": "^2.1",
+        "symfony/ux-turbo": "*",
+        "symfony/webpack-encore-bundle": "*",
+        "symfony/webpack-encore-pack": "*",
         "symfony/yaml": "7.0.*",
         "twig/extra-bundle": "^2.12|^3.0",
         "twig/twig": "^2.12|^3.0"

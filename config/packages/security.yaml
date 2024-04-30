@@ -12,6 +12,9 @@ security:
         main:
             lazy: true
             provider: users_in_memory
+    access_control:
+        # - { path: ^/admin, roles: ROLE_ADMIN }
+         - { path: ^/, roles: PUBLIC_ACCESS, requires_channel: https }
 
             # activate different ways to authenticate
             # https://symfony.com/doc/current/security.html#the-firewall
@@ -19,11 +22,16 @@ security:
             # https://symfony.com/doc/current/security/impersonating_user.html
             # switch_user: true
 
-    # Easy way to control access for large sections of your site
-    # Note: Only the *first* access control that matches will be used
-    access_control:
-        # - { path: ^/admin, roles: ROLE_ADMIN }
-        # - { path: ^/profile, roles: ROLE_USER }
+    role_hierarchy:
+        ROLE_CIVIL: ROLE_USER
+        ROLE_STAFF: ROLE_USER
+        ROLE_FONDA: ROLE_STAFF
+        ROLE_STAGIAIRE: ROLE_USER
+        ROLE_AMBULANCIER: ROLE_STAGIAIRE
+        ROLE_MEDECIN_NOVICE: ROLE_AMBULANCIER
+        ROLE_MEDECIN_FORMATEUR: ROLE_MEDECIN_NOVICE
+        ROLE_MEDECIN_CHEF: ROLE_MEDECIN_FORMATEUR
+        ROLE_CHEF_SERVICE: ROLE_MEDECIN_CHEF
 
 when@test:
     security:
