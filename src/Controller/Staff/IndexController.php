@@ -17,7 +17,7 @@ class IndexController extends AbstractController
         /** @var Session */
         $session = $request->getSession();
         $checkRole =  $connectService->checkAdmin($this->getUser(), $session);
-        if( $checkRole!=true ) 
+        if( $checkRole!==true ) 
             return $this->redirectToRoute($checkRole);
         return $this->render('staff/index/index.html.twig', [
         ]);

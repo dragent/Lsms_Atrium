@@ -19,7 +19,7 @@ class IndexController extends AbstractController
         $session = $request->getSession();
         /** @var string | bool */
         $checkRole =  $connectService->checkAdmin($this->getUser(), $session);
-        if( $checkRole != true ) 
+        if( $checkRole !== true ) 
             return $this->redirectToRoute($checkRole);
         $objects = $objectRepository->findBy([],["name"=>"ASC"]);
 
