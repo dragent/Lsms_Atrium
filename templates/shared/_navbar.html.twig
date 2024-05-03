@@ -6,11 +6,16 @@
 		</button>
 		<div class="collapse navbar-collapse" id="navbarColor02">
 			<ul class="navbar-nav me-auto">
+				{% if  is_granted('ROLE_STAFF') %}
+					<li class="nav-item">
+						<a href="{{path('app_staff')}}" class="nav-link">Admin</a>
+					</li>
+				{% endif %}
 				<li class="nav-item">
 					{% if not is_granted('IS_AUTHENTICATED_FULLY') %}
 						<a href="{{path('app_login')}}" class="nav-link">Connexion</a>
 					{% else %}
-						<a href="{{path('app_logout')}}">Déconnexion</a>
+						<a href="{{path('app_logout')}}" class="nav-link">Déconnexion</a>
 					{% endif %}
 				</li>
 			</ul>

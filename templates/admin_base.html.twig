@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>
+			{% block title %}{% endblock %}
+		</title>
+		<link rel="stylesheet" href="https://bootswatch.com/5/zephyr/bootstrap.min.css">
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"> {% block stylesheets %}{% endblock %}
+
+		{{ encore_entry_link_tags('app') }}
+	</head>
+	<body>
+
+		<header class="sticky-top my-2 ">
+			<h1 class="text-center text-primary">
+				<b>LSMS Service - Administration</b>
+				<button class="btn float-end" data-bs-toggle="offcanvas" data-bs-target="#offcanvas" role="button">
+					<i class="bi bi-layout-text-sidebar fs-3 text-primary" data-bs-toggle="offcanvas" data-bs-target="#offcanvas"></i>
+				</button>
+			</h1>
+			{% include "shared/_admin_navbar.html.twig" %}
+		</header>
+		{% for rubrique, messages in app.flashes %}
+			<div class="alert alert-{{rubrique}} alert-dismissible w-75 mx-auto mt-2">
+				<button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+				{% for message in messages %}
+					<p class="text-center">{{message}}</p>
+				{% endfor %}
+			</div>
+		{% endfor %}
+
+
+		{% block body %}{% endblock %}
+
+		{% block javascripts %}{% endblock %}
+		{{ encore_entry_script_tags('app') }}
+	</body>
+</html>

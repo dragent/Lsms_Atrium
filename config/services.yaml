@@ -20,5 +20,13 @@ services:
             - '../src/Entity/'
             - '../src/Kernel.php'
 
+    App\Service\DiscordService:
+        arguments:
+            $clientId: "%env(CLIENT_ID)%"
+            $clientSecret: "%env(CLIENT_SECRET)%"
+            $redirectUri: "%env(REDIRECT_URI)%"
+            $botToken: "%env(BOT_TOKEN)%"
+
+
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
