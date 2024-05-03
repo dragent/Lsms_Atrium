@@ -9,8 +9,31 @@ Le code se basera sur une connexion via discord et aura pas mal d'évolution pou
 # Codage en cours
 Gestion de l'interface Admin
 - [ ] Navbar
-- [ ] Inventaire
+- [ ] Personnel en service ( Mise à jour à toute les secondes )
 - [ ] Personnel
+    - [ ] Listing
+    - [ ] Ajout
+    - [ ] Modification
+    - [ ] Suppresion
+- [ ] Catégorie Soins
+    - [ ] Listing
+    - [ ] Ajout
+    - [ ] Modification
+    - [ ] Suppresion
+- [ ] Soins
+    - [ ] Listing
+    - [ ] Ajout
+    - [ ] Modification
+    - [ ] Suppresion
+- [ ] Fiche de Soin
+- [ ] Service des docteurs
+- [ ] Commande
+- [ ] Comptabilité
+- [ ] Inventaire
+    - [ ] Listing
+    - [ ] Ajout
+    - [ ] Modification
+    - [ ] Suppresion
  
 ## Partie terminée
 Connexion via discord
