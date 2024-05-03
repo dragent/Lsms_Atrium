@@ -8,7 +8,7 @@ Le code se basera sur une connexion via discord et aura pas mal d'évolution pou
 
 # Codage en cours
 - [ ] Gestion de l'interface Admin
-    - [ ] Navbar
+    - [ ] Navbar ( en cours )
     - [ ] Personnel en service ( Mise à jour à toute les secondes )
     - [ ] Personnel
         - [ ] Listing
@@ -29,7 +29,7 @@ Le code se basera sur une connexion via discord et aura pas mal d'évolution pou
     - [ ] Service des docteurs
     - [ ] Commande
     - [ ] Comptabilité
-    - [ ] Inventaire
+    - [ ] Inventaire ( en cours )
         - [ ] Listing
         - [ ] Ajout
         - [ ] Modification
