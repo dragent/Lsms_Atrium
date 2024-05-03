@@ -8,9 +8,9 @@ Le code se basera sur une connexion via discord et aura pas mal d'évolution pou
 
 # Codage en cours
 Gestion de l'interface Admin
-    - Navbar
-    - Page d'Accueil
-    - Inventaire
-
+- [ ] Navbar
+- [ ] Inventaire
+- [ ] Personnel
+ 
 ## Partie terminée
 Connexion via discord
