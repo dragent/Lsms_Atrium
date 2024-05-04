@@ -11,31 +11,33 @@
 	</h2>
 
 	<div class="table-responsive w-75 mx-auto mt-5">
-		<table class="table table-striped table-hover table-borderless">
+		<table class="table table-striped table-hover table-borderless text-center">
 			<thead class="table-dark">
 				<td>Nom du produit</td>
 				<td>Quantité Actuelle</td>
 				<td>Seuil Limite</td>
 				<td>Prix d'achat</td>
-				<td>Prix de vente</td>
 				<td>Voir</td>
 				<td>Supprimer</td>
 			</thead>
+			<tbody>
+				{% for item in inventory %}
+					<tr>
+						<td>{{item.name}}</td>
+						<td>{{item.quantity}}</td>
+						<td>{{item.quantityTrigger}}</td>
+						<td>{{item.buyPrice}}</td>
+						<td>
+							<i class=" bi bi-pencil-square"></i>
+						</td>
+						<td>
+							<!--<a href="{{path('app_staff_object_modify',{ 'slug':item.slug})}}">-->
+							<i class="fs-5 bi-trash3-fill"></i>
+							<!--</a>-->
+						</td>
+					</tr>
+				{% endfor %}
+			</tbody>
 		</table>
-		{% for item in inventory %}
-			<tr>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td>
-					<a href="{{path('#')}}" class="nav-link text-truncate">
-						<i class="fs-5 bi-trash3-fill"></i>
-					</a>
-				</td>
-			</tr>
-		{% endfor %}
 	</div>
 {% endblock %}

@@ -1,34 +1,24 @@
 {% extends 'admin_base.html.twig' %}
 
-{% block title %}Hello addPhpController!
+{% block title %}Ajout de produit
 {% endblock %}
 
 {% block body %}
-	<style>
-		.example-wrapper {
-			margin: 1em auto;
-			max-width: 800px;
-			width: 95%;
-			font: 18px / 1.5 sans-serif;
-		}
-		.example-wrapper code {
-			background: #F5F5F5;
-			padding: 2px 6px;
-		}
-	</style>
+	<h2 class="text-center text-dark">
+		<b>Ajout de produit</b>
+	</h2>
 
-	<div class="example-wrapper">
-		<h1>Hello
-			{{ controller_name }}! ✅</h1>
-
-		This friendly message is coming from:
-		<ul>
-			<li>Your controller at
-				<code>D:/Documents/Projet/atrium/lsms/code/src/Controller/Staff/Object/addPhpController.php</code>
-			</li>
-			<li>Your template at
-				<code>D:/Documents/Projet/atrium/lsms/code/templates/staff/object/add_php/index.html.twig</code>
-			</li>
-		</ul>
-	</div>
+	<div class="w-50 mx-auto">
+		{{ form_start(form) }}
+		{{form_row(form.name)}}
+		{{form_row(form.buyPrice)}}
+		<div class="d-flex row">
+			{{form_row(form.quantity)}}
+			{{form_row(form.quantityTrigger)}}
+		</div>
+		<div class="d-flex row">
+			<button type="submit" class="btn btn-dark mr-3 col-3 offset-2" name="action" value="save">Enregistrer</button>
+			<button type="submit" class="btn btn-dark mr-3 col-3 offset-2" name="action" value="continue">Enregistrer et continuer</button>
+		</div>
+		{{ form_end(form)}}</div>
 {% endblock %}

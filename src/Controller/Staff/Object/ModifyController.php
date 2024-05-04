@@ -8,7 +8,7 @@ use Symfony\Component\Routing\Attribute\Route;
 
 class ModifyController extends AbstractController
 {
-    #[Route('/staff/object/modify/php', name: 'app_staff_object_modify_php')]
+    #[Route('/staff/object/{slug}', name: 'app_staff_object_modify')]
     public function index(): Response
     {
         return $this->render('staff/object/modify_php/index.html.twig', [

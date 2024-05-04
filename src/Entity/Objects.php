@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\ObjectsRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: ObjectsRepository::class)]
 class Objects
@@ -14,19 +15,34 @@ class Objects
     private ?int $id = null;
 
     #[ORM\Column(length: 100)]
+    #[Assert\Length(
+        min: 4,
+        minMessage: "Vous devez mettre un nom de produit de 4 lettre"
+    )]
     private ?string $name = null;
 
     #[ORM\Column]
+    #[Assert\NotBlank]   
+    #[Assert\PositiveOrZero(
+        message: "La quantité ne peut pas être négative"
+    )]
     private ?int $quantity = null;
 
     #[ORM\Column]
+    #[Assert\NotBlank]   
+    #[Assert\Positive(
+        message: "Le seuil d'avertissement doit être supérieur à un"
+    )]
     private ?int $quantityTrigger = null;
 
-    #[ORM\Column(nullable: true)]
+    #[ORM\Column(type: 'integer', nullable: true)]
+    #[Assert\PositiveOrZero(
+        message: "Le prix ne peut pas être négatif"
+    )]
     private ?int $buyPrice = null;
 
-    #[ORM\Column(nullable: true)]
-    private ?int $sellPrice = null;
+    #[ORM\Column(length: 100,nullable: true)]
+    private ?string $slug = null;
 
     public function getId(): ?int
     {
@@ -81,14 +97,14 @@ class Objects
         return $this;
     }
 
-    public function getSellPrice(): ?int
+    public function getSlug(): ?string
     {
-        return $this->sellPrice;
+        return $this->slug;
     }
 
-    public function setSellPrice(?int $sellPrice): static
+    public function setSlug(string $slug): static
     {
-        $this->sellPrice = $sellPrice;
+        $this->slug = $slug;
 
         return $this;
     }

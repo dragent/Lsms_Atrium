@@ -1,9 +1,9 @@
 <div class="offcanvas offcanvas-start w-25" tabindex="-1" id="offcanvas" data-bs-keyboard="false" data-bs-backdrop="false">
 	<div class="offcanvas-header">
 		<h2 class="offcanvas-title d-none d-sm-block" id="offcanvas">Administration</h2>
-		<button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+		<button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"></button>
 	</div>
-	<div class="offcanvas-body px-0">
+	<div class="offcanvas-body px-0" aria-modal="true">
 		<ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-start" id="menu">
 			<li class="nav-item">
 				<a href="{{path('app_index')}}" class="nav-link text-truncate">
@@ -23,11 +23,19 @@
 					<span class="ms-1 d-none d-sm-inline">Dashboard</span>
 				</a>
 			</li>
-			<li>
-				<a href="#" class="nav-link text-truncate">
+			<li class="dropdown">
+				<a href="#" class="nav-link dropdown-toggle  text-truncate" id="dropdown" data-bs-toggle="dropdown" aria-expanded="false">
 					<i class="fs-5 bi-table"></i>
-					<span class="ms-1 d-none d-sm-inline">Commandes</span>
+					<span class="ms-1 d-none d-sm-inline">Logs</span>
 				</a>
+				<ul class="dropdown-menu text-small shadow" aria-labelledby="dropdown">
+					<li>
+						<a class="dropdown-item" href="">Voir</a>
+					</li>
+					<li>
+						<a class="dropdown-item" href="">Ajouter</a>
+					</li>
+				</ul>
 			</li>
 			<li class="dropdown">
 				<a href="#" class="nav-link dropdown-toggle  text-truncate" id="dropdown" data-bs-toggle="dropdown" aria-expanded="false">
@@ -42,18 +50,6 @@
 						<a class="dropdown-item" href="{{path('app_staff_object_add')}}">Ajouter</a>
 					</li>
 				</ul>
-			</li>
-			<li>
-				<a href="#" class="nav-link text-truncate">
-					<i class="fs-5 bi-grid"></i>
-					<span class="ms-1 d-none d-sm-inline">Products</span>
-				</a>
-			</li>
-			<li>
-				<a href="#" class="nav-link text-truncate">
-					<i class="fs-5 bi-people"></i>
-					<span class="ms-1 d-none d-sm-inline">Customers</span>
-				</a>
 			</li>
 			<li>
 				<hr class="dropdown-divider">
