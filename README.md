@@ -30,8 +30,8 @@ Le code se basera sur une connexion via discord et aura pas mal d'évolution pou
     - [ ] Commande
     - [ ] Comptabilité
     - [ ] Inventaire ( en cours )
-        - [ ] Listing
-        - [ ] Ajout
+        - [x] Listing
+        - [x] Ajout
         - [ ] Modification
         - [ ] Suppresion
  
