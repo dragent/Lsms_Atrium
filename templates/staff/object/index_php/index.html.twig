@@ -28,12 +28,14 @@
 						<td>{{item.quantityTrigger}}</td>
 						<td>{{item.buyPrice}}</td>
 						<td>
-							<i class=" bi bi-pencil-square"></i>
+							<a href="{{path('app_staff_object_modify',{ 'slug':item.slug})}}">
+								<i class=" bi bi-pencil-square"></i>
+							</a>
 						</td>
 						<td>
-							<!--<a href="{{path('app_staff_object_modify',{ 'slug':item.slug})}}">-->
-							<i class="fs-5 bi-trash3-fill"></i>
-							<!--</a>-->
+							<a href="{{path('app_staff_object_delete',{ 'slug':item.slug})}}">
+								<i class="fs-5 bi-trash3-fill"></i>
+							</a>
 						</td>
 					</tr>
 				{% endfor %}

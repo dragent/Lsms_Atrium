@@ -43,7 +43,7 @@ class AddController extends AbstractController
             }
             else
             {
-                $session->getFlashBag()->set('error', "Le produit ".$name." existe déjà");
+                $session->getFlashBag()->set('danger', "Le produit ".$name." existe déjà");
             }
            
             if($request->get("action")=="save")
