@@ -32,7 +32,7 @@ Le code se basera sur une connexion via discord et aura pas mal d'évolution pou
     - [ ] Inventaire ( en cours )
         - [x] Listing
         - [x] Ajout
-        - [ ] Modification
+        - [x] Modification
         - [x] Suppresion
  
 ## Partie terminée
