@@ -2,22 +2,39 @@
 
 namespace App\Controller\Staff\Object;
 
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use App\Form\ModifyObjectType;
+use App\Repository\ObjectsRepository;
+use App\Service\ConnectService;
+use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Component\HttpFoundation\Session\Session;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class ModifyController extends AbstractController
 {
-    #[Route('/staff/object/{slug}', name: 'app_staff_object_modify')]
-    public function index(): Response
+    #[Route('/admin/inventaire/{slug}', name: 'app_staff_object_modify')]
+    public function index(Request $request, ConnectService $connectService, ObjectsRepository $objectsRepository, EntityManagerInterface $em, string $slug): Response
     {    /** @var Session */
         $session = $request->getSession();
         /** @var string | bool */
         $checkRole =  $connectService->checkAdmin($this->getUser(), $session);
         if( $checkRole !== true ) 
             return $this->redirectToRoute($checkRole);
-        return $this->render('staff/object/modify_php/index.html.twig', [
-            'controller_name' => 'modifyPhpController',
+
+        $object=$objectsRepository->findOneBy(["slug"=>$slug]);
+        $form = $this->createForm(ModifyObjectType::class, $object);
+        $form->handleRequest($request);
+        if($form->isSubmitted() && $form->isValid())
+        {
+            $em->persist($object);
+            $em->flush();
+            return $this->redirectToRoute('app_staff_object');
+        }
+        return $this->render('staff/object/modify/index.html.twig', [
+            'object' => $object,
+            'form'=>$form
         ]);
     }
 }

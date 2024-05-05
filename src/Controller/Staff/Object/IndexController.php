@@ -23,7 +23,7 @@ class IndexController extends AbstractController
             return $this->redirectToRoute($checkRole);
         $objects = $objectRepository->findBy([],["name"=>"ASC"]);
 
-        return $this->render('staff/object/index_php/index.html.twig', [
+        return $this->render('staff/object/index/index.html.twig', [
             'inventory'=>$objects
         ]);
     }

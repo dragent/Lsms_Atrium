@@ -51,7 +51,7 @@ class AddController extends AbstractController
                 return $this->redirectToRoute("app_staff_object");
             }
         }
-        return $this->render('staff/object/add_php/index.html.twig', [
+        return $this->render('staff/object/add/index.html.twig', [
             'form'=>$form
         ]);
     }

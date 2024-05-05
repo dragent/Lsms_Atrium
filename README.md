@@ -36,9 +36,13 @@ Le code se basera sur une connexion via discord et aura pas mal d'évolution pou
         - [x] Suppresion
  
 ## Partie terminée
- - [x] Connexion via discord
-    - [x] Ajout au discord
-        - [x] Don du grade Civil
-        - [x] Changement de surnom pour donner celui d'Atrium
-    - [x] Connexion
-        - [x] Récupération des roles
+- [x] Non connecté
+    - [x] Connexion via discord
+        - [x] Ajout au discord
+            - [x] Don du grade Civil
+            - [x] Changement de surnom pour donner celui d'Atrium
+        - [x] Connexion
+            - [x] Récupération des roles
+- [ ] Civils
+- [ ] Lsms
+- [ ] Staff

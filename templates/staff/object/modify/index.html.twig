@@ -1,0 +1,22 @@
+{% extends 'admin_base.html.twig' %}
+
+{% block title %}
+	{{object.name}}
+{% endblock %}
+
+{% block body %}
+	<h1 class="text-center text-dark">
+		<b>{{object.name|capitalize}}</b>
+	</h1>
+
+	<div class="w-50 mx-auto">
+		{{form_start(form)}}
+		{{form_row(form.buyPrice)}}
+		{{form_row(form.quantity)}}
+		{{form_row(form.quantityTrigger)}}
+		<div class="w-25 text-center mx-auto">
+			<button type="submit" class="btn btn-primary w-50">Modifier</button>
+		</div>
+		{{form_end(form)}}
+	</div>
+{% endblock %}
