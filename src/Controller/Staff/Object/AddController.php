@@ -23,7 +23,7 @@ class AddController extends AbstractController
         /** @var string | bool */
         $checkRole =  $connectService->checkAdmin($this->getUser(), $session);
         if( $checkRole !== true ) 
-            return $this->redirectToRoute($checkRole);
+            return $this->redirectToRoute($checkRole,[],302);
 
         $object = new Objects();
         $form = $this->createForm(AddObjectType::class, $object);

@@ -20,7 +20,7 @@ class IndexController extends AbstractController
         /** @var string | bool */
         $checkRole =  $connectService->checkAdmin($this->getUser(), $session);
         if( $checkRole !== true ) 
-            return $this->redirectToRoute($checkRole);
+            return $this->redirectToRoute($checkRole,[],302);
         $objects = $objectRepository->findBy([],["name"=>"ASC"]);
 
         return $this->render('staff/object/index/index.html.twig', [

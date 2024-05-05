@@ -14,11 +14,12 @@ class IndexController extends AbstractController
     #[Route('/admin', name: 'app_staff')]
     public function index(Request $request, ConnectService $connectService): Response
     {   
+        
         /** @var Session */
         $session = $request->getSession();
         $checkRole =  $connectService->checkAdmin($this->getUser(), $session);
         if( $checkRole!==true ) 
-            return $this->redirectToRoute($checkRole);
+            return $this->redirectToRoute($checkRole,[],302);
         return $this->render('staff/index/index.html.twig', [
         ]);
     }
