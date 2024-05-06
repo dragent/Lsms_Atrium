@@ -52,4 +52,17 @@ class UserRepository extends ServiceEntityRepository
             ->getQuery()
             ->getResult();
     }
+    
+    public function findLSMSConnected(string $role,array $order): array
+    {
+        $role = mb_strtoupper($role);
+        
+        return $this->createQueryBuilder('u')
+            ->where("u.in_service = true")
+            ->andWhere('JSON_CONTAINS(u.roles, :role) = 1')
+            ->OrderBy("u.".$order["column"],$order["order"])
+            ->setParameter('role', '"'.$role.'"')
+            ->getQuery()
+            ->getResult();
+    }
 }

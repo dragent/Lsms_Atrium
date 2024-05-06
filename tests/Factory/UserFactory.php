@@ -46,13 +46,15 @@ final class UserFactory extends ModelFactory
      */
     protected function getDefaults(): array
     {
+        $name = self::faker()->name();
         return [
-            'Username' => self::faker()->name(),
+            'Username' => $name,
             'accessToken' => "vaGjg2ib2lI7enaGuRZBqD3drnc5j7",
             'discordId' => 822535046048645201,
             'email' => self::faker()->email(),
             'inService' => self::faker()->boolean(),
             'roles' => [],
+            'slug'=>strtolower(str_replace(" ","-",$name)),
         ];
     }
 

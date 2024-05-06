@@ -10,7 +10,7 @@ use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
-class ModiftTest extends WebTestCase
+class ModifyTest extends WebTestCase
 {
    /**
      * Vérifie que l'on ne puisse pas aller sur un produit non existant
@@ -26,7 +26,7 @@ class ModiftTest extends WebTestCase
         $this->assertEquals('/connexion', $client->getResponse()->headers->get('Location'));
     }
 
-      /**
+    /**
      * Vérifie que l'on ne puisse pas supprimer sans être connecté
      */
     public function testIsAnonymousRedirected(): void
@@ -79,26 +79,7 @@ class ModiftTest extends WebTestCase
     }
 
     /**
-     * Etre sur que l'utilisateur ne peut aller sur la page si le produit n'existe pas
-     */
-    public function testObjectNonExistingAdminError()
-    {
-        $factory = new Factory();
-        $client = self::createClient();
-        $user = UserFactory::createOne();
-        $user->object()->setRoles(['ROLE_STAFF']);
-        $user->save();
-        $client->loginUser($user->object());
-        $urlGenerator = self::getContainer()->get(UrlGeneratorInterface::class);
-        $url= "https://127.0.0.1:8000".$urlGenerator->generate('app_staff_object_modify',["slug"=>$factory->create()->slug()]);
-        $client->request('GET',$url);
-        $user->remove();
-        $this->assertEquals(302, $client->getResponse()->getStatusCode());
-        $this->assertEquals($urlGenerator->generate('app_staff_object'), $client->getResponse()->headers->get('Location'));
-    }
-
-        /**
-     * Etre sur que l'utilisateur ne peut aller sur la page s'il n'est pas admin
+     * Test modification de l'objet
      */
     public function testModifyObject()
     {

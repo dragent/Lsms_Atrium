@@ -32,13 +32,17 @@ Le code se basera sur une connexion via discord et aura pas mal d'évolution pou
         - [ ] Maj toutes les secondes
     - [ ] Personnel
         - [x] Listing
-        - [ ] Modification
     - [ ] Catégorie Soins
         - [ ] Listing
         - [ ] Ajout
         - [ ] Modification
         - [ ] Suppresion
     - [ ] Soins
+        - [ ] Listing
+        - [ ] Ajout
+        - [ ] Modification
+        - [ ] Suppresion
+    - [ ] Chambre
         - [ ] Listing
         - [ ] Ajout
         - [ ] Modification
