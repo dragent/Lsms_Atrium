@@ -22,7 +22,7 @@ class DeleteController extends AbstractController
         $checkRole =  $connectService->checkAdmin($this->getUser(), $session);
         if( $checkRole !== true ) 
             return $this->redirectToRoute($checkRole);
-        $object = $objectsRepository->findOneBy([],["name"=>"ASC"]);
+        $object = $objectsRepository->findOneBy(["slug"=>$slug]);
         $name = ucfirst(str_replace("-"," ",$slug));
         if($object===null)
             $session->getFlashBag()->set('danger', "Le produit ".$name." n'existe pas");
@@ -30,6 +30,7 @@ class DeleteController extends AbstractController
             $em->remove($object);
             $em->flush();
             $session->getFlashBag()->set('success', "Le produit ".$name." a été supprimé");
+            
         }
         return $this->redirectToRoute('app_staff_object',[],302);
     }

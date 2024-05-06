@@ -80,9 +80,9 @@ class AddTest extends WebTestCase
         $form->setValues(["add_object[quantity]" => $objectArray['quantity']]);
         $form->setValues(["add_object[quantityTrigger]" => $objectArray['quantityTrigger']]);
         $this->getClient()->submit($form);
+        $user->remove();
         $this->assertEquals(200, $client->getResponse()->getStatusCode());
         $object= $objectsRepository->findOneBy(["slug"=>$objectArray["slug"]]);
-        $user->remove();
         $this->assertNotNull($object);
         $em->remove($object);
         $em->flush();
