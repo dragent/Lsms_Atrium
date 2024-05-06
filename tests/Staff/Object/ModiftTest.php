@@ -6,13 +6,13 @@ use Faker\Factory;
 use App\Tests\Factory\UserFactory;
 use App\Repository\ObjectsRepository;
 use App\Tests\Factory\ObjectsFactory;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
-class DeleteTest extends WebTestCase
+class ModiftTest extends WebTestCase
 {
-
-    /**
+   /**
      * Vérifie que l'on ne puisse pas aller sur un produit non existant
      */
     public function testCantAccessObjextNonExisting(): void
@@ -20,13 +20,13 @@ class DeleteTest extends WebTestCase
         $factory = new Factory();
         $client = self::createClient();        
         $urlGenerator = self::getContainer()->get(UrlGeneratorInterface::class);
-        $url= "https://127.0.0.1:8000".$urlGenerator->generate('app_staff_object_delete',["slug"=> $factory->create()->slug()]);
+        $url= "https://127.0.0.1:8000".$urlGenerator->generate('app_staff_object_modify',["slug"=> $factory->create()->slug()]);
         $client->request('GET',$url);
         $this->assertEquals(302, $client->getResponse()->getStatusCode());
         $this->assertEquals('/connexion', $client->getResponse()->headers->get('Location'));
     }
 
-    /**
+      /**
      * Vérifie que l'on ne puisse pas supprimer sans être connecté
      */
     public function testIsAnonymousRedirected(): void
@@ -34,7 +34,7 @@ class DeleteTest extends WebTestCase
         $object = ObjectsFactory::createOne();
         $client = self::createClient();        
         $urlGenerator = self::getContainer()->get(UrlGeneratorInterface::class);
-        $url= "https://127.0.0.1:8000".$urlGenerator->generate('app_staff_object_delete',["slug"=>$object->object()->getSlug()]);
+        $url= "https://127.0.0.1:8000".$urlGenerator->generate('app_staff_object_modify',["slug"=>$object->object()->getSlug()]);
         $client->request('GET',$url);
         $object->remove();
         $this->assertEquals(302, $client->getResponse()->getStatusCode());
@@ -51,13 +51,14 @@ class DeleteTest extends WebTestCase
         $user = UserFactory::createOne();
         $client->loginUser($user->object());
         $urlGenerator = self::getContainer()->get(UrlGeneratorInterface::class);
-        $url= "https://127.0.0.1:8000".$urlGenerator->generate('app_staff_object_delete',["slug"=>$object->object()->getSlug()]);
+        $url= "https://127.0.0.1:8000".$urlGenerator->generate('app_staff_object_modify',["slug"=>$object->object()->getSlug()]);
         $client->request('GET',$url);
         $user->remove();
         $object->remove();
         $this->assertEquals(302, $client->getResponse()->getStatusCode());
         $this->assertEquals('/', $client->getResponse()->headers->get('Location'));
     }
+
     /**
      * Etre sur que l'utilisateur ne peut aller sur la page s'il n'est pas admin
      */
@@ -70,11 +71,11 @@ class DeleteTest extends WebTestCase
         $user->save();
         $client->loginUser($user->object());        
         $urlGenerator = self::getContainer()->get(UrlGeneratorInterface::class);
-        $url= "https://127.0.0.1:8000".$urlGenerator->generate('app_staff_object_delete',["slug"=>$object->object()->getSlug()]);
+        $url= "https://127.0.0.1:8000".$urlGenerator->generate('app_staff_object_modify',["slug"=>$object->object()->getSlug()]);
         $client->request('GET',$url);
         $user->remove();
         $object->remove();
-        $this->assertEquals(302, $client->getResponse()->getStatusCode());
+        $this->assertEquals(200, $client->getResponse()->getStatusCode());
     }
 
     /**
@@ -89,31 +90,40 @@ class DeleteTest extends WebTestCase
         $user->save();
         $client->loginUser($user->object());
         $urlGenerator = self::getContainer()->get(UrlGeneratorInterface::class);
-        $url= "https://127.0.0.1:8000".$urlGenerator->generate('app_staff_object_delete',["slug"=> $factory->create()->slug()]);
+        $url= "https://127.0.0.1:8000".$urlGenerator->generate('app_staff_object_modify',["slug"=>$factory->create()->slug()]);
         $client->request('GET',$url);
         $user->remove();
         $this->assertEquals(302, $client->getResponse()->getStatusCode());
-        $this->assertEquals('/admin/inventaire', $client->getResponse()->headers->get('Location'));
+        $this->assertEquals($urlGenerator->generate('app_staff_object'), $client->getResponse()->headers->get('Location'));
     }
 
-    /**
-     * Etre sur que l'utilisateur ne peut aller sur la page si le produit n'existe pas
+        /**
+     * Etre sur que l'utilisateur ne peut aller sur la page s'il n'est pas admin
      */
-    public function testObjectDeleted()
+    public function testModifyObject()
     {
-        
         $client = self::createClient();
-        $urlGenerator = self::getContainer()->get(UrlGeneratorInterface::class);
-        $objectsRepository = self::getContainer()->get(ObjectsRepository::class);
         $object = ObjectsFactory::createOne();
+        $urlGenerator = self::getContainer()->get(UrlGeneratorInterface::class);
         $user = UserFactory::createOne();
-        $client->loginUser($user->object());
-        $url= "https://127.0.0.1:8000".$urlGenerator->generate('app_staff_object_delete',["slug"=> $object->object()->getSlug()]);
-        $client->request('GET',$url);
+        $user->object()->setRoles(['ROLE_STAFF']);
+        $user->save();
+        $client->loginUser($user->object());        
+        $url= "https://127.0.0.1:8000".$urlGenerator->generate('app_staff_object_modify',["slug"=>$object->object()->getSlug()]);
+        $crawler = $client->request('POST',$url);
+        $form = $crawler->filter('form')->form();
+        $quantity = $object->object()->getQuantity();
+        $quantityTrigger = $object->object()->getQuantityTrigger();
+        $form->setValues(["modify_object[quantity]" => $object->object()->getQuantity()+1]);
+        $form->setValues(["modify_object[quantityTrigger]" => $object->object()->getQuantityTrigger()-1]);
+        $this->getClient()->submit($form);
+        $object->refresh();
+        $this->assertNotEquals($quantity,$object->object()->getQuantity());
+        $this->assertNotEquals($quantityTrigger,$object->object()->getQuantityTrigger());
         $user->remove();
         $object->remove();
         $this->assertEquals(302, $client->getResponse()->getStatusCode());
-        $this->assertNull($objectsRepository->find($object->object()->getSlug()));
     }
+  
 
 }

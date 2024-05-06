@@ -24,6 +24,12 @@ class ModifyController extends AbstractController
             return $this->redirectToRoute($checkRole);
 
         $object=$objectsRepository->findOneBy(["slug"=>$slug]);
+        if($object===null)
+        {
+            $name = ucfirst(str_replace("-"," ",$slug));
+            $session->getFlashBag()->set('danger', "Le produit ".$name." n'existe pas");
+            return $this->redirectToRoute('app_staff_object',[],302);
+        }
         $form = $this->createForm(ModifyObjectType::class, $object);
         $form->handleRequest($request);
         if($form->isSubmitted() && $form->isValid())
