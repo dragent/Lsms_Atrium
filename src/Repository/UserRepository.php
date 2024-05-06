@@ -40,4 +40,16 @@ class UserRepository extends ServiceEntityRepository
     //            ->getOneOrNullResult()
     //        ;
     //    }
+
+    public function findByRole(string $role,array $order): array
+    {
+        $role = mb_strtoupper($role);
+        
+        return $this->createQueryBuilder('u')
+            ->andWhere('JSON_CONTAINS(u.roles, :role) = 1')
+            ->OrderBy("u.".$order["column"],$order["order"])
+            ->setParameter('role', '"'.$role.'"')
+            ->getQuery()
+            ->getResult();
+    }
 }

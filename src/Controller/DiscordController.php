@@ -110,7 +110,7 @@ class DiscordController extends AbstractController
         $discordUser->setRoles($discordInfo["roles"]);
         $discordUser->setUsername($discordInfo["nick"]);
         /** @var User */
-        $user = $userRepo->findOneBy(['discordId'=>$discordUser->getId()]);
+        $user = $userRepo->findOneBy(['discordId'=>$discordUser->getId()]); 
         if($user === null)
         {
            $user = new User();
@@ -119,9 +119,14 @@ class DiscordController extends AbstractController
            $user->setDiscordId($discordUser->getId());
            $user->setEmail($discordUser->getEmail());
            $user->setUsername($discordUser->getUsername());
+           $user->setSlug(strtolower(str_replace(" ","-",$discordUser->getUsername())));
         } 
         else
         {
+
+            $slug = (strtolower(str_replace(" ","-",$discordUser->getUsername())));
+            if($user->getSlug()!=$slug)
+                $user->setSlug(strtolower(str_replace(" ","-",$slug)));
             if($user->getEmail()!=$discordUser->getEmail())
                 $user->setEmail($discordUser->getEmail());
             if($user->getUsername()!=$discordUser->getUsername())
