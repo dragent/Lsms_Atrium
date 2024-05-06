@@ -7,7 +7,25 @@ Ce code a été pour le serveur gta AtriumRp. Il permettra de facilité la tâch
 Le code se basera sur une connexion via discord et aura pas mal d'évolution pour s'adapter aux besoins évolutif des docteurs
 
 # Codage en cours
-- [ ] Gestion de l'interface Admin
+- [ ] Civils
+    - [ ] Demande de Rendez vous
+    - [ ] Planning des rendez vous
+- [ ] Lsms
+    - [ ] Accueil
+    - [ ] Fiche de soin 
+    - [ ] Commande
+        - [ ] Listing
+        - [ ] Ajout
+        - [ ] Validation
+    - [ ] Inventaire
+    - [ ] Comptabilité
+    - [ ] Agenda 
+        - [ ] Format Trello
+        - [ ] Ajout Rdv
+        - [ ] Ajout Event
+        - [ ] Modification
+        - [ ] Suppression
+- [ ] Admin
     - [ ] Navbar ( en cours )
     - [ ] Personnel en service ( Mise à jour à toute les secondes )
     - [ ] Personnel
@@ -29,7 +47,7 @@ Le code se basera sur une connexion via discord et aura pas mal d'évolution pou
     - [ ] Service des docteurs
     - [ ] Commande
     - [ ] Comptabilité
-    - [ ] Inventaire ( en cours )
+    - [X] Inventaire
         - [x] Listing
         - [x] Ajout
         - [x] Modification
@@ -45,4 +63,9 @@ Le code se basera sur une connexion via discord et aura pas mal d'évolution pou
             - [x] Récupération des roles
 - [ ] Civils
 - [ ] Lsms
-- [ ] Staff
+- [ ] Admin
+    - [X] Inventaire
+        - [x] Listing
+        - [x] Ajout
+        - [x] Modification
+        - [x] Suppresion
