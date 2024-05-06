@@ -51,6 +51,7 @@ final class UserFactory extends ModelFactory
             'accessToken' => "vaGjg2ib2lI7enaGuRZBqD3drnc5j7",
             'discordId' => 822535046048645201,
             'email' => self::faker()->email(),
+            'inService' => self::faker()->boolean(),
             'roles' => [],
         ];
     }

@@ -33,6 +33,12 @@ class User implements UserInterface
     #[ORM\Column]
     private ?string $discordId = null;
 
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $slug = null;
+
+    #[ORM\Column]
+    private ?bool $inService = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -125,6 +131,29 @@ class User implements UserInterface
     public function setDiscordId(int $DiscordId): static
     {
         $this->discordId = $DiscordId;
+
+        return $this;
+    }
+
+    public function getSlug(): ?string
+    {
+        return $this->slug;
+    }
+
+    public function setSlug(?string $slug): static
+    {
+        $this->slug = $slug;
+
+        return $this;
+    }
+    public function getInService(): ?bool
+    {
+        return $this->inService;
+    }
+
+    public function setInService(?bool $inService): static
+    {
+        $this->inService = $inService;
 
         return $this;
     }

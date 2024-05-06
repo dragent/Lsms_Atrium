@@ -11,7 +11,7 @@ use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
 class AddTest extends WebTestCase
 {
- /**
+    /**
      * Etre sur que l'utilisateur ne peut aller sur la page sans se connecter
      */
     public function testIsAnonymousRedirected(): void

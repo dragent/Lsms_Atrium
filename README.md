@@ -27,7 +27,9 @@ Le code se basera sur une connexion via discord et aura pas mal d'évolution pou
         - [ ] Suppression
 - [ ] Admin
     - [ ] Navbar ( en cours )
-    - [ ] Personnel en service ( Mise à jour à toute les secondes )
+    - [ ] Accueil
+        - [ ] Listing du personnel en service
+        - [ ] Maj toutes les secondes
     - [ ] Personnel
         - [ ] Listing
         - [ ] Ajout
@@ -47,11 +49,6 @@ Le code se basera sur une connexion via discord et aura pas mal d'évolution pou
     - [ ] Service des docteurs
     - [ ] Commande
     - [ ] Comptabilité
-    - [X] Inventaire
-        - [x] Listing
-        - [x] Ajout
-        - [x] Modification
-        - [x] Suppresion
  
 ## Partie terminée
 - [x] Non connecté
