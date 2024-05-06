@@ -30,8 +30,6 @@ Le code se basera sur une connexion via discord et aura pas mal d'évolution pou
     - [ ] Accueil
         - [ ] Listing du personnel en service
         - [ ] Maj toutes les secondes
-    - [ ] Personnel
-        - [x] Listing
     - [ ] Catégorie Soins
         - [ ] Listing
         - [ ] Ajout
@@ -63,6 +61,8 @@ Le code se basera sur une connexion via discord et aura pas mal d'évolution pou
 - [ ] Civils
 - [ ] Lsms
 - [ ] Admin
+    - [x] Personnel
+        - [x] Listing
     - [X] Inventaire
         - [x] Listing
         - [x] Ajout
