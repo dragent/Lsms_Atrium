@@ -31,7 +31,7 @@ Le code se basera sur une connexion via discord et aura pas mal d'évolution pou
         - [ ] Listing du personnel en service
         - [ ] Maj toutes les secondes
     - [ ] Personnel
-        - [ ] Listing
+        - [x] Listing
         - [ ] Ajout
         - [ ] Modification
         - [ ] Suppresion
