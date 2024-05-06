@@ -32,9 +32,7 @@ Le code se basera sur une connexion via discord et aura pas mal d'évolution pou
         - [ ] Maj toutes les secondes
     - [ ] Personnel
         - [x] Listing
-        - [ ] Ajout
         - [ ] Modification
-        - [ ] Suppresion
     - [ ] Catégorie Soins
         - [ ] Listing
         - [ ] Ajout
