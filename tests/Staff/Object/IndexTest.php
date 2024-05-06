@@ -48,7 +48,7 @@ class IndexTest extends WebTestCase
         $user = UserFactory::createOne();
         $user->object()->setRoles(['ROLE_STAFF']);
         $user->save();
-        $client->loginUser($user->object());        
+        $client->loginUser($user->object());
         $urlGenerator = self::getContainer()->get(UrlGeneratorInterface::class);
         $url= "https://127.0.0.1:8000".$urlGenerator->generate('app_staff_object');
         $client->request('GET',$url);
