@@ -77,12 +77,10 @@ class AddChamberTest extends WebTestCase
         $form->setValues(["add_chamber[name]" => $objectArray['name']]);
         $form->setValues(["add_chamber[type]" => $objectArray['type']]);
         $form->setValues(["add_chamber[price]" => $objectArray['price']]);
-        dump($objectArray);
         $this->getClient()->submit($form);
         $user->remove();
         $this->assertEquals(200, $client->getResponse()->getStatusCode());
         $object= $objectsRepository->findOneBy(["slug"=>$objectArray["slug"]]);
-        dump($object);
         $this->assertNotNull($object);
         $em->remove($object);
         $em->flush();
