@@ -44,7 +44,7 @@ Le code se basera sur une connexion via discord et aura pas mal d'évolution pou
         - [x] Listing
         - [x] Ajout
         - [ ] Modification
-        - [ ] Suppresion
+        - [x] Suppresion
     - [ ] Fiche de Soin
     - [ ] Service des docteurs
     - [ ] Commande
