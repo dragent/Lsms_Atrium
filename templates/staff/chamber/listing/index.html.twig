@@ -5,7 +5,7 @@
 {% block body %}
 	<h2 class="text-center text-dark mt-2">
 		<b>Liste des Chambres</b>
-		<a class="btn btn-dark float-end " href="{{path('app_staff_object_add')}}">
+		<a class="btn btn-dark float-end " href="{{path('app_staff_chamber_add')}}">
 			Ajouter une chambre
 		</a>
 	</h2>
@@ -26,12 +26,12 @@
 						<td>{{chamber.type}}</td>
 						<td>{{chamber.price}}</td>
 						<td>
-							<a href="{{path('app_staff_object_modify',{ 'slug':item.slug})}}">
+							<a href="{{path('app_staff_object_modify',{ 'slug':chamber.slug})}}">
 								<i class=" bi bi-pencil-square"></i>
 							</a>
 						</td>
 						<td>
-							<a href="{{path('app_staff_object_delete',{ 'slug':item.slug})}}">
+							<a href="{{path('app_staff_object_delete',{ 'slug':chamber.slug})}}">
 								<i class="fs-5 bi-trash3-fill"></i>
 							</a>
 						</td>

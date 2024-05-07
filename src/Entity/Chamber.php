@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\ChamberRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: ChamberRepository::class)]
 class Chamber
@@ -14,13 +15,25 @@ class Chamber
     private ?int $id = null;
 
     #[ORM\Column]
-    private ?int $name = null;
-
-    #[ORM\Column(length: 30)]
-    private ?string $type = null;
+    #[Assert\NotBlank]   
+    #[Assert\Length(
+        exactMessage:"Le numéro de la chambre doit être composé de seulement trois chiffre",
+        min: 3,
+        max: 3, 
+    )]
+    private ?string $name = null;
 
     #[ORM\Column]
+    private ?int $type = null;
+
+    #[ORM\Column]
+    #[Assert\PositiveOrZero(
+        message: "La quantité ne peut pas être négative"
+    )]
     private ?int $price = null;
+
+    #[ORM\Column(length: 3)]
+    private ?string $slug = null;
 
     public function getId(): ?int
     {
@@ -39,12 +52,12 @@ class Chamber
         return $this;
     }
 
-    public function getType(): ?string
+    public function getType(): ?int
     {
         return $this->type;
     }
 
-    public function setType(string $type): static
+    public function setType(int $type): static
     {
         $this->type = $type;
 
@@ -59,6 +72,18 @@ class Chamber
     public function setPrice(int $price): static
     {
         $this->price = $price;
+
+        return $this;
+    }
+
+    public function getSlug(): ?string
+    {
+        return $this->slug;
+    }
+
+    public function setSlug(string $slug): static
+    {
+        $this->slug = $slug;
 
         return $this;
     }

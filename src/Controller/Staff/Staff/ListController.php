@@ -18,7 +18,7 @@ class ListController extends AbstractController
         /** @var Session */
         $session = $request->getSession();
         /** @var string | bool */
-        $checkRole =  $connectService->checkAdmin($this->getUser(), $session);
+        $checkRole =  $connectService->checkAdmin($this->getUser(),$session,$this->isGranted('ROLE_STAFF'));
         if( $checkRole !== true ) 
             return $this->redirectToRoute($checkRole,[],302);
         $users = $userRepository->findByRole("ROLE_LSMS",["column"=>"Username","order"=>"ASC"]);

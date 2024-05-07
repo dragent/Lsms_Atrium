@@ -23,23 +23,17 @@
 					<span class="ms-1 d-none d-sm-inline">Personnel</span>
 				</a>
 			</li>
-			<li class="nav-item">
-				<a href="{{path('app_staff_chamber')}}" class="nav-link text-truncate">
-					<i class="fs-5 bi-house-heart-fill"></i>
-					<span class="ms-1 d-none d-sm-inline">Chambres</span>
-				</a>
-			</li>
 			<li class="dropdown">
 				<a href="#" class="nav-link dropdown-toggle  text-truncate" id="dropdown" data-bs-toggle="dropdown" aria-expanded="false">
-					<i class="fs-5 bi-table"></i>
-					<span class="ms-1 d-none d-sm-inline">Logs</span>
+					<i class="fs-5 bi-house-heart-fill"></i>
+					<span class="ms-1 d-none d-sm-inline">Chambre</span>
 				</a>
 				<ul class="dropdown-menu text-small shadow" aria-labelledby="dropdown">
 					<li>
-						<a class="dropdown-item" href="">Voir</a>
+						<a class="dropdown-item" href="{{path('app_staff_chamber')}}">Voir</a>
 					</li>
 					<li>
-						<a class="dropdown-item" href="">Ajouter</a>
+						<a class="dropdown-item" href="{{path('app_staff_chamber_add')}}">Ajouter</a>
 					</li>
 				</ul>
 			</li>
@@ -54,6 +48,54 @@
 					</li>
 					<li>
 						<a class="dropdown-item" href="{{path('app_staff_object_add')}}">Ajouter</a>
+					</li>
+				</ul>
+			</li>
+			<li class="dropdown">
+				<a href="#" class="nav-link dropdown-toggle  text-truncate" id="dropdown" data-bs-toggle="dropdown" aria-expanded="false">
+					<i class="bi bi-folder-fill"></i>
+					<span class="ms-1 d-none d-sm-inline">Categorie de soin</span>
+				</a>
+				<ul class="dropdown-menu text-small shadow" aria-labelledby="dropdown">
+					<li>
+						<a class="dropdown-item" href="">Voir</a>
+					</li>
+					<li>
+						<a class="dropdown-item" href="">Ajouter</a>
+					</li>
+				</ul>
+			</li>
+			<li class="dropdown">
+				<a href="#" class="nav-link dropdown-toggle  text-truncate" id="dropdown" data-bs-toggle="dropdown" aria-expanded="false">
+					<i class="bi bi-heart-pulse-fill"></i>
+					<span class="ms-1 d-none d-sm-inline">Soins</span>
+				</a>
+				<ul class="dropdown-menu text-small shadow" aria-labelledby="dropdown">
+					<li>
+						<a class="dropdown-item" href="">Voir</a>
+					</li>
+					<li>
+						<a class="dropdown-item" href="">Ajouter</a>
+					</li>
+				</ul>
+			</li>
+			<li class="dropdown">
+				<a href="#" class="nav-link dropdown-toggle  text-truncate" id="dropdown" data-bs-toggle="dropdown" aria-expanded="false">
+					<i class="bi bi-journal-medical"></i>
+					<span class="ms-1 d-none d-sm-inline">Logs</span>
+				</a>
+				<ul class="dropdown-menu text-small shadow" aria-labelledby="dropdown">
+					<li>
+						<a class="dropdown-item" href="">Service des docteurs</a>
+					</li>
+					<li>
+						<a class="dropdown-item" href="">Fiche de soins</a>
+					</li>
+					<li>
+						<a class="dropdown-item" href="">Commande</a>
+					</li>
+					<li>
+						<a class="dropdown-item" href="">Comptabilité</a>
 					</li>
 				</ul>
 			</li>

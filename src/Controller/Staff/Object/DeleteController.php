@@ -19,7 +19,7 @@ class DeleteController extends AbstractController
         /** @var Session */
         $session = $request->getSession();
         /** @var string | bool */
-        $checkRole =  $connectService->checkAdmin($this->getUser(), $session);
+        $checkRole =  $connectService->checkAdmin($this->getUser(),$session,$this->isGranted('ROLE_STAFF'));
         if( $checkRole !== true ) 
             return $this->redirectToRoute($checkRole);
         $object = $objectsRepository->findOneBy(["slug"=>$slug]);

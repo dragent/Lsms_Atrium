@@ -1,0 +1,22 @@
+{% extends 'admin_base.html.twig' %}
+
+{% block title %}Ajout de chambre
+{% endblock %}
+
+{% block body %}
+	<h2 class="text-center text-dark">
+		<b>Ajout de chambre</b>
+	</h2>
+
+	<div class="w-50 mx-auto">
+		{{ form_start(form) }}
+		{{form_row(form.name)}}
+		{{form_row(form.type)}}
+		{{form_row(form.price)}}
+		<div class="d-flex row">
+			<button type="submit" class="btn btn-dark mr-3 col-3 offset-2" name="action" value="save">Enregistrer</button>
+			<button type="submit" class="btn btn-dark mr-3 col-3 offset-2" name="action" value="continue">Enregistrer et continuer</button>
+		</div>
+		{{ form_end(form)}}
+	</div>
+{% endblock %}

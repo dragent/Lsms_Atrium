@@ -15,7 +15,7 @@ class ListTest extends WebTestCase
     {
         $client = self::createClient();        
         $urlGenerator = self::getContainer()->get(UrlGeneratorInterface::class);
-        $url= "https://127.0.0.1:8000".$urlGenerator->generate('app_staff_staff_list');
+        $url= "https://127.0.0.1:8000".$urlGenerator->generate('app_staff_staff');
         $client->request('GET',$url);
         $this->assertEquals(302, $client->getResponse()->getStatusCode());
         $this->assertEquals('/connexion', $client->getResponse()->headers->get('Location'));
@@ -30,7 +30,7 @@ class ListTest extends WebTestCase
         $user = UserFactory::createOne();
         $client->loginUser($user->object());
         $urlGenerator = self::getContainer()->get(UrlGeneratorInterface::class);
-        $url= "https://127.0.0.1:8000".$urlGenerator->generate('app_staff_object_add');
+        $url= "https://127.0.0.1:8000".$urlGenerator->generate('app_staff_staff');
         $client->request('GET',$url);
         $user->remove();
         $this->assertEquals(302, $client->getResponse()->getStatusCode());
@@ -49,7 +49,7 @@ class ListTest extends WebTestCase
         $user->save();
         $client->loginUser($user->object());
         $urlGenerator = self::getContainer()->get(UrlGeneratorInterface::class);
-        $url= "https://127.0.0.1:8000".$urlGenerator->generate('app_staff_object');
+        $url= "https://127.0.0.1:8000".$urlGenerator->generate('app_staff_staff');
         $client->request('GET',$url);
         $user->remove();
         $this->assertEquals(200, $client->getResponse()->getStatusCode());
