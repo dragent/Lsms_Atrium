@@ -42,7 +42,7 @@ Le code se basera sur une connexion via discord et aura pas mal d'évolution pou
         - [ ] Suppresion
     - [ ] Chambre ( En cours )
         - [x] Listing
-        - [ ] Ajout
+        - [x] Ajout
         - [ ] Modification
         - [ ] Suppresion
     - [ ] Fiche de Soin
