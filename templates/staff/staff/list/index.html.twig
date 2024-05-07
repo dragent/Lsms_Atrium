@@ -11,24 +11,20 @@
 		<table class="table table-striped table-hover table-borderless text-center">
 			<thead class="table-dark">
 				<td>Nom</td>
+				<td>Grade</td>
 				<td>En service</td>
-				<td>Voir</td>
 			</thead>
 			<tbody>
 				{% for user in users %}
 					<tr>
 						<td>{{user.Username}}</td>
+						<td></td>
 						<td>
 							{% if not user.inService %}
 								<i class="bi bi-toggle-off"></i>
 							{% else %}
 								<i class="bi bi-toggle-on text-primary"></i>
 							{% endif %}
-						</td>
-						<td>
-							<a href="{{path('app_staff_staff_modify',{ 'slug':user.slug})}}">
-								<i class=" bi bi-pencil-square"></i>
-							</a>
 						</td>
 					</tr>
 				{% endfor %}

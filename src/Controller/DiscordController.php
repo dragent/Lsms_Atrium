@@ -136,6 +136,8 @@ class DiscordController extends AbstractController
                 $user->setRoles($discordUser->getRoles());
             }
         }
+        if($user->getInService()===null)
+            $user->setInService(false);
         $em->persist($user);
         $em->flush();
         return $this->redirectToRoute('app_discord_auth',[

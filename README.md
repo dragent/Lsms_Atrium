@@ -40,8 +40,8 @@ Le code se basera sur une connexion via discord et aura pas mal d'évolution pou
         - [ ] Ajout
         - [ ] Modification
         - [ ] Suppresion
-    - [ ] Chambre
-        - [ ] Listing
+    - [ ] Chambre ( En cours )
+        - [x] Listing
         - [ ] Ajout
         - [ ] Modification
         - [ ] Suppresion
