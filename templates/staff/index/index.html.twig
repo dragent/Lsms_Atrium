@@ -2,7 +2,26 @@
 
 {% block titleBis %}
 	<h2 class="text-center text-dark mt-2">
-		<b>Administration</b>
+		<b>Personnels en service</b>
 	</h2>
 {% endblock %}
-{% block body %}{% endblock %}
+{% block body %}
+	<div class="table-responsive w-75 mx-auto mt-5">
+		<table class="table table-striped table-hover table-borderless text-center">
+			<thead class="table-dark">
+				<td>Nom</td>
+				<td>Grade</td>
+			</thead>
+			<tbody>
+				{% for user in users %}
+					<tr>
+						<td>{{user.Username}}</td>
+						<td>
+							{{ grade( user.roles )}}
+						</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	</div>
+{% endblock %}

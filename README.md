@@ -13,11 +13,11 @@ Le code se basera sur une connexion via discord et aura pas mal d'évolution pou
 - [ ] Lsms
     - [ ] Accueil
     - [ ] Fiche de soin 
+    - [ ] Inventaire
     - [ ] Commande
         - [ ] Listing
         - [ ] Ajout
         - [ ] Validation
-    - [ ] Inventaire
     - [ ] Comptabilité
     - [ ] Agenda 
         - [ ] Format Trello
@@ -26,9 +26,7 @@ Le code se basera sur une connexion via discord et aura pas mal d'évolution pou
         - [ ] Modification
         - [ ] Suppression
 - [ ] Admin
-    - [ ] Navbar ( en cours )
     - [ ] Accueil
-        - [ ] Listing du personnel en service
         - [ ] Maj toutes les secondes
     - [ ] Catégorie Soins
         - [ ] Listing
@@ -40,11 +38,6 @@ Le code se basera sur une connexion via discord et aura pas mal d'évolution pou
         - [ ] Ajout
         - [ ] Modification
         - [ ] Suppresion
-    - [ ] Chambre ( En cours )
-        - [x] Listing
-        - [x] Ajout
-        - [ ] Modification
-        - [x] Suppresion
     - Logs
         - [ ] Fiche de Soin
         - [ ] Service des docteurs
@@ -62,8 +55,15 @@ Le code se basera sur une connexion via discord et aura pas mal d'évolution pou
 - [ ] Civils
 - [ ] Lsms
 - [ ] Admin
+    - [x] Navbar 
+    - [x] Accueil
     - [x] Personnel
         - [x] Listing
+    - [x] Chambre
+        - [x] Listing
+        - [x] Ajout
+        - [x] Modification
+        - [x] Suppresion
     - [X] Inventaire
         - [x] Listing
         - [x] Ajout

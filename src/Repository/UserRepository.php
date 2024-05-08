@@ -53,12 +53,12 @@ class UserRepository extends ServiceEntityRepository
             ->getResult();
     }
     
-    public function findLSMSConnected(string $role,array $order): array
+    public function findLSMSConnected(array $order): array
     {
-        $role = mb_strtoupper($role);
+        $role = mb_strtoupper("ROLE_LSMS");
         
         return $this->createQueryBuilder('u')
-            ->where("u.in_service = true")
+            ->where("u.inService = true")
             ->andWhere('JSON_CONTAINS(u.roles, :role) = 1')
             ->OrderBy("u.".$order["column"],$order["order"])
             ->setParameter('role', '"'.$role.'"')
