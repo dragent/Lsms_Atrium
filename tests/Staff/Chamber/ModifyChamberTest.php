@@ -2,16 +2,15 @@
 
 namespace App\Tests\Staff\Chamber;
 
-use App\Repository\ChamberRepository;
 use Faker\Factory;
 use App\Tests\Factory\UserFactory;
-use App\Tests\Factory\ObjectsFactory;
+use App\Tests\Factory\ChamberFactory;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
-class DeleteChamberTest extends WebTestCase
+class ModifyChamberTest extends WebTestCase
 {
-    /**
+   /**
      * Vérifie que l'on ne puisse pas aller sur un produit non existant
      */
     public function testCantAccessObjextNonExisting(): void
@@ -19,20 +18,21 @@ class DeleteChamberTest extends WebTestCase
         $factory = new Factory();
         $client = self::createClient();        
         $urlGenerator = self::getContainer()->get(UrlGeneratorInterface::class);
-        $url= "https://127.0.0.1:8000".$urlGenerator->generate('app_staff_chamber_delete',["slug"=> $factory->create()->slug()]);
+        $url= "https://127.0.0.1:8000".$urlGenerator->generate('app_staff_chamber_modify',["slug"=> $factory->create()->slug()]);
         $client->request('GET',$url);
         $this->assertEquals(302, $client->getResponse()->getStatusCode());
         $this->assertEquals('/connexion', $client->getResponse()->headers->get('Location'));
     }
+
     /**
      * Vérifie que l'on ne puisse pas supprimer sans être connecté
      */
     public function testIsAnonymousRedirected(): void
     {
-        $object = ObjectsFactory::createOne();
+        $object = ChamberFactory::createOne();
         $client = self::createClient();        
         $urlGenerator = self::getContainer()->get(UrlGeneratorInterface::class);
-        $url= "https://127.0.0.1:8000".$urlGenerator->generate('app_staff_chamber_delete',["slug"=>$object->object()->getSlug()]);
+        $url= "https://127.0.0.1:8000".$urlGenerator->generate('app_staff_chamber_modify',["slug"=>$object->object()->getSlug()]);
         $client->request('GET',$url);
         $object->remove();
         $this->assertEquals(302, $client->getResponse()->getStatusCode());
@@ -44,72 +44,61 @@ class DeleteChamberTest extends WebTestCase
      */
     public function testIsNotAdminRedirected()
     {
-        $object = ObjectsFactory::createOne();
+        $object = ChamberFactory::createOne();
         $client = self::createClient();
         $user = UserFactory::createOne();
         $client->loginUser($user->object());
         $urlGenerator = self::getContainer()->get(UrlGeneratorInterface::class);
-        $url= "https://127.0.0.1:8000".$urlGenerator->generate('app_staff_chamber_delete',["slug"=>$object->object()->getSlug()]);
+        $url= "https://127.0.0.1:8000".$urlGenerator->generate('app_staff_chamber_modify',["slug"=>$object->object()->getSlug()]);
         $client->request('GET',$url);
         $user->remove();
         $object->remove();
         $this->assertEquals(302, $client->getResponse()->getStatusCode());
         $this->assertEquals('/', $client->getResponse()->headers->get('Location'));
     }
-    
+
     /**
      * Etre sur que l'utilisateur ne peut aller sur la page s'il n'est pas admin
      */
     public function testIsAdminConnected()
     {
-        $object = ObjectsFactory::createOne();
+        $chamber = ChamberFactory::createOne();
         $client = self::createClient();
         $user = UserFactory::createOne();
         $user->object()->setRoles(['ROLE_STAFF']);
         $user->save();
         $client->loginUser($user->object());        
         $urlGenerator = self::getContainer()->get(UrlGeneratorInterface::class);
-        $url= "https://127.0.0.1:8000".$urlGenerator->generate('app_staff_chamber_delete',["slug"=>$object->object()->getSlug()]);
-        $client->request('GET',$url);
-        $user->remove();
-        $object->remove();
-        $this->assertEquals(302, $client->getResponse()->getStatusCode());
-    }
-  /**
-     * Etre sur que l'utilisateur ne peut aller sur la page si la chambre n'existe pas
-     */
-    public function testObjectNonExistingAdminError()
-    {
-        $factory = new Factory();
-        $client = self::createClient();
-        $user = UserFactory::createOne();
-        $user->object()->setRoles(['ROLE_STAFF']);
-        $user->save();
-        $client->loginUser($user->object());
-        $urlGenerator = self::getContainer()->get(UrlGeneratorInterface::class);
-        $url= "https://127.0.0.1:8000".$urlGenerator->generate('app_staff_chamber_delete',["slug"=> $factory->create()->slug()]);
-        $client->request('GET',$url);
-        $user->remove();
-        $this->assertEquals(302, $client->getResponse()->getStatusCode());
-        $this->assertEquals('/admin/chambre', $client->getResponse()->headers->get('Location'));
-    }
-
-    /**
-     * Etre sur que l'utilisateur ne peut aller sur la page si la chambre n'existe pas
-     */
-    public function testObjectDeleted()
-    {
-        $client = self::createClient();
-        $urlGenerator = self::getContainer()->get(UrlGeneratorInterface::class);
-        $chamberRepository = self::getContainer()->get(ChamberRepository::class);
-        $chamber = ObjectsFactory::createOne();
-        $user = UserFactory::createOne();
-        $client->loginUser($user->object());
-        $url= "https://127.0.0.1:8000".$urlGenerator->generate('app_staff_chamber_delete',["slug"=> $chamber->object()->getSlug()]);
+        $url= "https://127.0.0.1:8000".$urlGenerator->generate('app_staff_chamber_modify',["slug"=>$chamber->object()->getSlug()]);
         $client->request('GET',$url);
         $user->remove();
         $chamber->remove();
+        $this->assertEquals(200, $client->getResponse()->getStatusCode());
+    }
+
+        /**
+     * Test modification de l'objet
+     */
+    public function testModifyObject()
+    {
+        $client = self::createClient();
+        $chamber = ChamberFactory::createOne();
+        $urlGenerator = self::getContainer()->get(UrlGeneratorInterface::class);
+        $user = UserFactory::createOne();
+        $user->object()->setRoles(['ROLE_STAFF']);
+        $user->save();
+        $client->loginUser($user->object());        
+        $url= "https://127.0.0.1:8000".$urlGenerator->generate('app_staff_chamber_modify',["slug"=>$chamber->object()->getSlug()]);
+        $crawler = $client->request('POST',$url);
+        $form = $crawler->filter('form')->form();
+        $price = $chamber->object()->getPrice();
+        $form->setValues(["modify_chamber[price]" => $chamber->object()->getPrice()-1]);
+        $this->getClient()->submit($form);
+        $chamber->refresh();
+        $user->remove();
+        $this->assertNotEquals($price,$chamber->object()->getPrice());
+        $chamber->remove();
         $this->assertEquals(302, $client->getResponse()->getStatusCode());
-        $this->assertNull($chamberRepository->find($chamber->object()->getSlug()));
+        $this->assertEquals('/admin/chambre', $client->getResponse()->headers->get('Location'));
     }
 }

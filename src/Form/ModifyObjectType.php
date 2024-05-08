@@ -6,6 +6,7 @@ use App\Entity\Objects;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\MoneyType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 
 class ModifyObjectType extends AbstractType
@@ -19,7 +20,8 @@ class ModifyObjectType extends AbstractType
             ->add('quantityTrigger',IntegerType::class,[
                 'label'=>'Seuil limite',
             ])
-            ->add('buyPrice',IntegerType::class,[
+            ->add('buyPrice',MoneyType::class,[
+                'currency'=>'USD',
                 'label'=>'Prix d\'achat',
                 'required'=>false,
             ])

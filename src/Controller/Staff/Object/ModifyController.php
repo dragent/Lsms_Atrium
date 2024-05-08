@@ -16,7 +16,8 @@ class ModifyController extends AbstractController
 {
     #[Route('/admin/inventaire/{slug}', name: 'app_staff_object_modify')]
     public function index(Request $request, ConnectService $connectService, ObjectsRepository $objectsRepository, EntityManagerInterface $em, string $slug): Response
-    {    /** @var Session */
+    {   
+        /** @var Session */
         $session = $request->getSession();
         /** @var string | bool */
         $checkRole =  $connectService->checkAdmin($this->getUser(),$session,$this->isGranted('ROLE_STAFF'));
@@ -27,8 +28,8 @@ class ModifyController extends AbstractController
         if($object===null)
         {
             $name = ucfirst(str_replace("-"," ",$slug));
-            $session->getFlashBag()->set('danger', "Le produit ".$name." n'existe pas");
-            return $this->redirectToRoute('app_staff_object',[],302);
+            $session->getFlashBag()->set('danger', "L'objet ".$name." n'est pas recensée");
+            return $this->redirectToRoute('app_staff_chamber',[],302);
         }
         $form = $this->createForm(ModifyObjectType::class, $object);
         $form->handleRequest($request);
@@ -36,11 +37,11 @@ class ModifyController extends AbstractController
         {
             $em->persist($object);
             $em->flush();
-            return $this->redirectToRoute('app_staff_object');
+            return $this->redirectToRoute('app_staff_chamber');
         }
         return $this->render('staff/object/modify/index.html.twig', [
             'object' => $object,
-            'form'=>$form
+            'form'=>$form,
         ]);
     }
 }

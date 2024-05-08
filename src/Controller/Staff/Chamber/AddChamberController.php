@@ -50,7 +50,7 @@ class AddChamberController extends AbstractController
             }
         }
         return $this->render('staff/chamber/add_chamber/index.html.twig', [
-            'form'=>$form
+            'form'=>$form,
         ]);
     }
 

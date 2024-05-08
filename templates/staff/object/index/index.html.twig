@@ -2,14 +2,15 @@
 
 {% block title %}Objets
 {% endblock %}
-{% block body %}
+{% block titleBis %}
 	<h2 class="text-center text-dark mt-2">
 		<b>Inventaire</b>
 		<a class="btn btn-dark float-end " href="{{path('app_staff_object_add')}}">
 			Ajouter un objet
 		</a>
 	</h2>
-
+{% endblock %}
+{% block body %}
 	<div class="table-responsive w-75 mx-auto mt-5">
 		<table class="table table-striped table-hover table-borderless text-center">
 			<thead class="table-dark">

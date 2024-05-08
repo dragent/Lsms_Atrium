@@ -24,7 +24,7 @@ class IndexController extends AbstractController
         $objects = $objectRepository->findBy([],["name"=>"ASC"]);
 
         return $this->render('staff/object/index/index.html.twig', [
-            'inventory'=>$objects
+            'inventory'=>$objects,
         ]);
     }
 }

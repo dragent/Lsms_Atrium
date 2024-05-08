@@ -52,7 +52,7 @@ class AddController extends AbstractController
             }
         }
         return $this->render('staff/object/add/index.html.twig', [
-            'form'=>$form
+            'form'=>$form,
         ]);
     }
 }

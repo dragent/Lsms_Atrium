@@ -45,10 +45,11 @@ Le code se basera sur une connexion via discord et aura pas mal d'évolution pou
         - [x] Ajout
         - [ ] Modification
         - [x] Suppresion
-    - [ ] Fiche de Soin
-    - [ ] Service des docteurs
-    - [ ] Commande
-    - [ ] Comptabilité
+    - Logs
+        - [ ] Fiche de Soin
+        - [ ] Service des docteurs
+        - [ ] Commande
+        - [ ] Comptabilité
  
 ## Partie terminée
 - [x] Non connecté

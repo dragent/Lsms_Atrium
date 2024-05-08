@@ -2,12 +2,12 @@
 
 {% block title %}Ajout de produit
 {% endblock %}
-
-{% block body %}
+{% block titleBis %}
 	<h2 class="text-center text-dark">
 		<b>Ajout de produit</b>
 	</h2>
-
+{% endblock %}
+{% block body %}
 	<div class="w-50 mx-auto">
 		{{ form_start(form) }}
 		{{form_row(form.name)}}

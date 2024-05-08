@@ -24,6 +24,7 @@ class ListingController extends AbstractController
         $chambers = $chamberRepository->findBy([],["name"=>"ASC"]);
         return $this->render('staff/chamber/listing/index.html.twig', [
             'chambers'=>$chambers,
+            'titleBis'=>'Recensement des chambres'
         ]);
     }
 }
