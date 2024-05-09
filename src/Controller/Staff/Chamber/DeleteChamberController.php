@@ -29,7 +29,7 @@ class DeleteChamberController extends AbstractController
         else{
             $em->remove($chamber);
             $em->flush();
-            $session->getFlashBag()->set('success', "La chambre ".$name." a bien été recensée"); 
+            $session->getFlashBag()->set('success', "La chambre ".$name." a bien été fermée"); 
         }
         return $this->redirectToRoute('app_staff_chamber',[],302);
 

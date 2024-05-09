@@ -20,9 +20,9 @@
 			<tbody>
 				{% for category in categories %}
 					<tr>
-						<td>{{chamber.name}}</td>
+						<td>{{category.name}}</td>
 						<td>
-							<a href="{{path('app_staff_chamber_modify',{ 'slug':chamber.slug})}}">
+							<a href="{{path('app_staff_category_health_delete',{ 'slug':category.slug})}}">
 								<i class="fs-5 bi-trash3-fill"></i>
 							</a>
 						</td>

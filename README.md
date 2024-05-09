@@ -29,8 +29,8 @@ Le code se basera sur une connexion via discord et aura pas mal d'évolution pou
     - [ ] Accueil
         - [ ] Maj toutes les secondes
     - [ ] Catégorie Soins
-        - [ ] Listing
-        - [ ] Ajout
+        - [x] Listing
+        - [x] Ajout
         - [ ] Modification
         - [ ] Suppresion
     - [ ] Soins

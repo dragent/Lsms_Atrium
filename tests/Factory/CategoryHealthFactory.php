@@ -46,10 +46,11 @@ final class CategoryHealthFactory extends ModelFactory
      */
     protected function getDefaults(): array
     {
+        $name = self::faker()->name();
         return [
             'name' => self::faker()->text(100),
             'position' => self::faker()->randomNumber(),
-            'slug' => self::faker()->text(100),
+            'slug'=> strtolower(str_replace(" ","-",$name)),
         ];
     }
 
@@ -70,7 +71,7 @@ final class CategoryHealthFactory extends ModelFactory
 
     public static function createArray(): array
     {
-        $name = 654;
+        $name = self::faker()->name();
         return [
             'name' => $name,
             'position' => self::faker()->numberBetween(0,10),

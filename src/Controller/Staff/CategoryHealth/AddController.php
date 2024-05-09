@@ -3,15 +3,15 @@
 namespace App\Controller\Staff\CategoryHealth;
 
 use App\Entity\CategoryHealth;
-use App\Form\Staff\AddCategoryHealth\AddType;
-use App\Repository\CategoryHealthRepository;
 use App\Service\ConnectService;
 use Doctrine\ORM\EntityManagerInterface;
+use App\Repository\CategoryHealthRepository;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\HttpFoundation\Session\Session;
+use App\Form\Staff\CategoryHealth\AddCategoryHealthType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\Request;
 
 class AddController extends AbstractController
 {
@@ -25,7 +25,7 @@ class AddController extends AbstractController
         if( $checkRole !== true ) 
             return $this->redirectToRoute($checkRole,[],302);
         $healthCategory = new CategoryHealth();
-        $form = $this->createForm(AddType::class, $healthCategory);
+        $form = $this->createForm(AddCategoryHealthType::class, $healthCategory);
         $form->handleRequest($request);
         if($form->isSubmitted() && $form->isValid())
         {
@@ -38,24 +38,24 @@ class AddController extends AbstractController
                    $healthCategory->setPosition(0);
                 else
                     $healthCategory->setPosition($healthCategoryRepository->getLastPosition()+1);
-                $healthCategory->setSlug($name);
+                $healthCategory->setSlug(strtolower(str_replace(" ","-",$name)));
                 $em->persist($healthCategory);
                 $em->flush();
-                $session->getFlashBag()->set('success', "La chambre ".$name." a bien été ajoutée");
+                $session->getFlashBag()->set('success', "La catégorie de soin ".$name." a bien été ajoutée");
             }
             else
             {
-                $session->getFlashBag()->set('danger', "La chambre ".$name." existe déjà");
+                $session->getFlashBag()->set('danger', "La catégorie de soin    ".$name." existe déjà");
             }
             
             if($request->get("action")=="save")
             {
-                return $this->redirectToRoute("app_staff_chamber");
+                return $this->redirectToRoute("app_staff_category_healh");
             }
         }
         return $this->render('staff/category_health/add/index.html.twig', [
             'form'=>$form,
-            'titleBis'=>'Ajout de nouvelle chambre'
+            'titleBis'=>'Ajout d\'une nouvelle catégorie'
         ]);
     }
 }

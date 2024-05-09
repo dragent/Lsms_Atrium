@@ -60,10 +60,10 @@ class AddCategoryHealthTest extends WebTestCase
       /**
      * Etre sur que l'utilisateur peut créer une categorie
      */
-    public function testCreateChamber()
+    public function testCreateCategory()
     {
         $client = self::createClient();
-        $objectsRepository = $this->getContainer()->get(CategoryHealthRepository::class);
+        $categoryRepository = $this->getContainer()->get(CategoryHealthRepository::class);
         $urlGenerator = self::getContainer()->get(UrlGeneratorInterface::class);
         $em = self::getContainer()->get(EntityManagerInterface::class);
         $objectArray=  CategoryHealthFactory::createArray();
@@ -74,13 +74,13 @@ class AddCategoryHealthTest extends WebTestCase
         $url= "https://127.0.0.1:8000".$urlGenerator->generate('app_staff_category_health_add');
         $crawler = $client->request('POST',$url,[""]);
         $form = $crawler->filter('form')->form();
-        $form->setValues(["add[name]" => $objectArray['name']]);
+        $form->setValues(["add_category_health[name]" => $objectArray['name']]);
         $this->getClient()->submit($form);
         $user->remove();
         $this->assertEquals(200, $client->getResponse()->getStatusCode());
-        $object= $objectsRepository->findOneBy(["slug"=>$objectArray["slug"]]);
-        $this->assertNotNull($object);
-        $em->remove($object);
+        $category= $categoryRepository->findOneBy(["slug"=>$objectArray["slug"]]);
+        $this->assertNotNull($category);
+        $em->remove($category);
         $em->flush();
     }
 }

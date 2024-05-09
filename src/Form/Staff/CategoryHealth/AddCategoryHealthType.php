@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Form\Staff\AddCategoryHealth;
+namespace App\Form\Staff\CategoryHealth;
 
 use App\Entity\CategoryHealth;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class AddType extends AbstractType
+class AddCategoryHealthType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {

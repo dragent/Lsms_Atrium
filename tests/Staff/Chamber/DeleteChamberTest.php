@@ -108,8 +108,8 @@ class DeleteChamberTest extends WebTestCase
         $url= "https://127.0.0.1:8000".$urlGenerator->generate('app_staff_chamber_delete',["slug"=> $chamber->object()->getSlug()]);
         $client->request('GET',$url);
         $user->remove();
-        $chamber->remove();
         $this->assertEquals(302, $client->getResponse()->getStatusCode());
         $this->assertNull($chamberRepository->find($chamber->object()->getSlug()));
+        $chamber->remove();
     }
 }

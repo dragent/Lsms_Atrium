@@ -30,7 +30,7 @@ class DeleteController extends AbstractController
         else{
             $em->remove($object);
             $em->flush();
-            $session->getFlashBag()->set('success', "L'objet ".$name." a bien été recensée"); 
+            $session->getFlashBag()->set('success', "L'objet ".$name." a bien été déstocké"); 
         }
         return $this->redirectToRoute('app_staff_object',[],302);
     }
