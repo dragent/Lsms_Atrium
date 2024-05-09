@@ -1,22 +1,22 @@
 <?php
 
-namespace App\Controller\Staff\Chamber;
+namespace App\Controller\Staff\CategoryHealth;
 
-use App\Entity\Chamber;
-use App\Form\AddChamberType;
-use App\Repository\ChamberRepository;
+use App\Entity\CategoryHealth;
+use App\Form\Staff\AddCategoryHealth\AddType;
+use App\Repository\CategoryHealthRepository;
 use App\Service\ConnectService;
 use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 
-class AddChamberController extends AbstractController
+class AddController extends AbstractController
 {
-    #[Route('/admin/chambre/ajout', name: 'app_staff_chamber_add')]
-    public function index(Request $request, ConnectService $connectService, EntityManagerInterface $em, ChamberRepository $chamberRepository): Response
+    #[Route('/admin/categorie-soins/ajout', name: 'app_staff_category_health_add')]
+    public function index(Request $request, ConnectService $connectService, CategoryHealthRepository $healthCategoryRepository, EntityManagerInterface $em): Response
     {
         /** @var Session */
         $session = $request->getSession();
@@ -24,18 +24,22 @@ class AddChamberController extends AbstractController
         $checkRole =  $connectService->checkAdmin($this->getUser(),$session,$this->isGranted('ROLE_STAFF'));
         if( $checkRole !== true ) 
             return $this->redirectToRoute($checkRole,[],302);
-        $chamber = new Chamber();
-        $form = $this->createForm(AddChamberType::class, $chamber);
+        $healthCategory = new CategoryHealth();
+        $form = $this->createForm(AddType::class, $healthCategory);
         $form->handleRequest($request);
         if($form->isSubmitted() && $form->isValid())
         {
-            $name = $chamber->getName();
+            $name = $healthCategory->getName();
             /** @var Session */
             $session=$request->getSession();
-            if($chamberRepository->findOneBy(["slug"=>$name]) === null)
+            if($healthCategoryRepository->findOneBy(["slug"=>$name]) === null)
             {
-                $chamber->setSlug($name);
-                $em->persist($chamber);
+                if($healthCategoryRepository->getLastPosition()==null)
+                   $healthCategory->setPosition(0);
+                else
+                    $healthCategory->setPosition($healthCategoryRepository->getLastPosition()+1);
+                $healthCategory->setSlug($name);
+                $em->persist($healthCategory);
                 $em->flush();
                 $session->getFlashBag()->set('success', "La chambre ".$name." a bien été ajoutée");
             }
@@ -43,17 +47,15 @@ class AddChamberController extends AbstractController
             {
                 $session->getFlashBag()->set('danger', "La chambre ".$name." existe déjà");
             }
-           
+            
             if($request->get("action")=="save")
             {
                 return $this->redirectToRoute("app_staff_chamber");
             }
         }
-        return $this->render('staff/chamber/add_chamber/index.html.twig', [
+        return $this->render('staff/category_health/add/index.html.twig', [
             'form'=>$form,
             'titleBis'=>'Ajout de nouvelle chambre'
         ]);
     }
-
-    
 }
