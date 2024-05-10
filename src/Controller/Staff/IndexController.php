@@ -25,6 +25,7 @@ class IndexController extends AbstractController
         if($request->get("action")=="fetch_data")
             return $this->json($userRepository->findLSMSConnected(["column"=>"Username","order"=>"ASC"]));
         return $this->render('staff/index/index.html.twig', [
+            "users"=>$userRepository->findLSMSConnected(["column"=>"Username","order"=>"ASC"]),
         ]);
     }
 }

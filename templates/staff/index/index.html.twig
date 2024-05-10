@@ -15,7 +15,16 @@
 				<td>Nom</td>
 				<td>Grade</td>
 			</thead>
-			<tbody></tbody>
+			<tbody>
+				{% for user in users %}
+					<tr>
+						<td>{{user.Username}}</td>
+						<td>
+							{{ grade( user.roles )}}
+						</td>
+					</tr>
+				{% endfor %}
+			</tbody>
 		</table>
 	</div>
 {% endblock %}

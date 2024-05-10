@@ -18,7 +18,18 @@
 				<td>Nom de la catégorie</td>
 				<td>Supprimer</td>
 			</thead>
-			<tbody style="cursor: all-scroll;"></tbody>
+			<tbody>
+				{% for category in categories %}
+					<tr id="{{ category.id }}">
+						<td>{{category.name}}</td>
+						<td>
+							<a href="{{path('app_staff_category_health_delete',{ 'slug':category.slug})}}">
+								<i class="fs-5 bi-trash3-fill"></i>
+							</a>
+						</td>
+					</tr>
+				{% endfor %}
+			</tbody>
 		</table>
 	</div>
 {% endblock %}

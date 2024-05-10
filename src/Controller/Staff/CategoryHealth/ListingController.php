@@ -23,6 +23,7 @@ class ListingController extends AbstractController
             return $this->redirectToRoute($checkRole,[],302);
         return $this->render('staff/category_health/listing/index.html.twig', [
             'titleBis'=>'Recensement des catégories de soin',
+            'categories'=>$categoryHealthRepository->findBy([],["position"=>"ASC"]),
         ]);
     }
 }

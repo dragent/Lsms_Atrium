@@ -45,7 +45,8 @@ class CareRepository extends ServiceEntityRepository
     {
         return $this->createQueryBuilder("c")
             ->leftJoin("c.category","cg")
-            ->orderBy("cg.position")
+            ->orderBy("cg.position","ASC")
+            ->orderBy("c.slug","ASC")
             ->getQuery()
             ->getResult();
 

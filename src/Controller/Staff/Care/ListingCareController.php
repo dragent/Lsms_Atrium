@@ -24,6 +24,7 @@ class ListingCareController extends AbstractController
         $cares=$careRepository->findAll();
         return $this->render('staff/care/listing_care/index.html.twig', [
             'titleBis'=>'Recensement des soins possibles',
+            'cares'=>$cares
         ]);
     }
 }

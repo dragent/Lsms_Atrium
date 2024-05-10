@@ -24,6 +24,9 @@ class Care
     #[ORM\JoinColumn(nullable: false)]
     private ?CategoryHealth $category = null;
 
+    #[ORM\Column(length: 100)]
+    private ?string $slug = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -61,6 +64,18 @@ class Care
     public function setCategory(?CategoryHealth $category): static
     {
         $this->category = $category;
+
+        return $this;
+    }
+
+    public function getSlug(): ?string
+    {
+        return $this->slug;
+    }
+
+    public function setSlug(string $slug): static
+    {
+        $this->slug = $slug;
 
         return $this;
     }
