@@ -28,11 +28,6 @@ Le code se basera sur une connexion via discord et aura pas mal d'évolution pou
 - [ ] Admin
     - [ ] Accueil
         - [ ] Maj toutes les secondes
-    - [ ] Catégorie Soins
-        - [x] Listing
-        - [x] Ajout
-        - [ ] Modification
-        - [ ] Suppresion
     - [ ] Soins
         - [ ] Listing
         - [ ] Ajout
@@ -65,6 +60,11 @@ Le code se basera sur une connexion via discord et aura pas mal d'évolution pou
         - [x] Modification
         - [x] Suppresion
     - [X] Inventaire
+        - [x] Listing
+        - [x] Ajout
+        - [x] Modification
+        - [x] Suppresion
+    - [x] Catégorie Soins
         - [x] Listing
         - [x] Ajout
         - [x] Modification
