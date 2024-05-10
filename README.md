@@ -26,9 +26,7 @@ Le code se basera sur une connexion via discord et aura pas mal d'évolution pou
         - [ ] Modification
         - [ ] Suppression
 - [ ] Admin
-    - [ ] Accueil
-        - [ ] Maj toutes les secondes
-    - [ ] Soins
+    - [ ] Soins ( en cours )
         - [ ] Listing
         - [ ] Ajout
         - [ ] Modification
@@ -52,6 +50,7 @@ Le code se basera sur une connexion via discord et aura pas mal d'évolution pou
 - [ ] Admin
     - [x] Navbar 
     - [x] Accueil
+        - [x] Maj toutes les secondes
     - [x] Personnel
         - [x] Listing
     - [x] Chambre
