@@ -2,6 +2,7 @@
 
 {% block title %}Admin - Catégorie de soin
 {% endblock %}
+
 {% block titleBis %}
 	<h2 class="text-center text-dark mt-2">
 		<b>Liste des catégories de soin</b>
@@ -12,23 +13,16 @@
 {% endblock %}
 {% block body %}
 	<div class="table-responsive w-75 mx-auto mt-5">
-		<table class="table table-striped table-hover table-borderless text-center">
+		<table class="table table-striped table-hover table-borderless text-center sortable">
 			<thead class="table-dark">
 				<td>Nom de la catégorie</td>
 				<td>Supprimer</td>
 			</thead>
-			<tbody>
-				{% for category in categories %}
-					<tr>
-						<td>{{category.name}}</td>
-						<td>
-							<a href="{{path('app_staff_category_health_delete',{ 'slug':category.slug})}}">
-								<i class="fs-5 bi-trash3-fill"></i>
-							</a>
-						</td>
-					</tr>
-				{% endfor %}
-			</tbody>
+			<tbody style="cursor: all-scroll;"></tbody>
 		</table>
 	</div>
+{% endblock %}
+
+{% block javascripts %}
+	{{ encore_entry_script_tags('sortableHealthCategory') }}
 {% endblock %}

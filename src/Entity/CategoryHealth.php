@@ -2,8 +2,9 @@
 
 namespace App\Entity;
 
-use App\Repository\CategoryHealthRepository;
+use Gedmo\Mapping\Annotation as Gedmo;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\CategoryHealthRepository;
 
 #[ORM\Entity(repositoryClass: CategoryHealthRepository::class)]
 class CategoryHealth

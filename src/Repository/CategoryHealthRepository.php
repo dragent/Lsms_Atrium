@@ -46,6 +46,5 @@ class CategoryHealthRepository extends ServiceEntityRepository
         return $this->createQueryBuilder('c.position')
         ->getQuery()
         ->getMaxResults();
-        
     }
 }

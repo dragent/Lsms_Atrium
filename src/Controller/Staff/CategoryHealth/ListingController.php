@@ -21,10 +21,8 @@ class ListingController extends AbstractController
         $checkRole =  $connectService->checkAdmin($this->getUser(),$session,$this->isGranted('ROLE_STAFF'));
         if( $checkRole !== true ) 
             return $this->redirectToRoute($checkRole,[],302);
-        $categories = $categoryHealthRepository->findBy([],["position"=>"ASC"]);
         return $this->render('staff/category_health/listing/index.html.twig', [
             'titleBis'=>'Recensement des catégories de soin',
-            'categories'=>$categories
         ]);
     }
 }
