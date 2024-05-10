@@ -15,16 +15,10 @@
 				<td>Nom</td>
 				<td>Grade</td>
 			</thead>
-			<tbody>
-				{% for user in users %}
-					<tr>
-						<td>{{user.Username}}</td>
-						<td>
-							{{ grade( user.roles )}}
-						</td>
-					</tr>
-				{% endfor %}
-			</tbody>
+			<tbody></tbody>
 		</table>
 	</div>
+{% endblock %}
+{% block javascripts %}
+	{{ encore_entry_script_tags('ListingServiceDoc') }}
 {% endblock %}

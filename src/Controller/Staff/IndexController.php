@@ -21,9 +21,10 @@ class IndexController extends AbstractController
         $checkRole =  $connectService->checkAdmin($this->getUser(),$session,$this->isGranted('ROLE_STAFF'));
         if( $checkRole!==true ) 
             return $this->redirectToRoute($checkRole,[],302);
-        $users = $userRepository->findLSMSConnected(["column"=>"Username","order"=>"ASC"]);
+        
+        if($request->get("action")=="fetch_data")
+            return $this->json($userRepository->findLSMSConnected(["column"=>"Username","order"=>"ASC"]));
         return $this->render('staff/index/index.html.twig', [
-            'users'=>$users,
         ]);
     }
 }
