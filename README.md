@@ -33,7 +33,7 @@ Le code se basera sur une connexion via discord et aura pas mal d'évolution pou
         - [ ] Ajout
         - [ ] Modification
         - [ ] Suppresion
-    - Logs
+    - [ ] Logs
         - [ ] Fiche de Soin
         - [ ] Service des docteurs
         - [ ] Commande
