@@ -27,7 +27,7 @@ Le code se basera sur une connexion via discord et aura pas mal d'évolution pou
         - [ ] Suppression
 - [ ] Admin
     - [ ] Soins ( en cours )
-        - [ ] Listing
+        - [x] Listing
         - [ ] Ajout
         - [ ] Modification
         - [ ] Suppresion
