@@ -2,8 +2,9 @@
 
 namespace App\Entity;
 
-use App\Repository\CareRepository;
+use App\Entity\CategoryHealth;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\CareRepository;
 
 #[ORM\Entity(repositoryClass: CareRepository::class)]
 class Care
@@ -21,7 +22,7 @@ class Care
 
     #[ORM\ManyToOne]
     #[ORM\JoinColumn(nullable: false)]
-    private ?categoryhealth $category = null;
+    private ?CategoryHealth $category = null;
 
     public function getId(): ?int
     {
@@ -52,12 +53,12 @@ class Care
         return $this;
     }
 
-    public function getCategory(): ?categoryhealth
+    public function getCategory(): ?CategoryHealth
     {
         return $this->category;
     }
 
-    public function setCategory(?categoryhealth $category): static
+    public function setCategory(?CategoryHealth $category): static
     {
         $this->category = $category;
 

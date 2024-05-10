@@ -40,4 +40,14 @@ class CareRepository extends ServiceEntityRepository
     //            ->getOneOrNullResult()
     //        ;
     //    }
+
+    public function findAll():array
+    {
+        return $this->createQueryBuilder("c")
+            ->leftJoin("c.category","cg")
+            ->orderBy("cg.position")
+            ->getQuery()
+            ->getResult();
+
+    }
 }
