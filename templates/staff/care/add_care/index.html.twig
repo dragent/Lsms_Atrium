@@ -1,20 +1,24 @@
-{% extends 'base.html.twig' %}
+{% extends 'admin_base.html.twig' %}
 
-{% block title %}Hello AddCareController!{% endblock %}
+{% block title %}Ajout de nouveau soin
+{% endblock %}
+
+{% block titleBis %}
+	<h2 class="text-center text-dark">
+		<b>Ajout de Soins</b>
+	</h2>
+{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
-
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code>D:/Documents/Projet/atrium/lsms/code/src/Controller/Staff/Care/AddCareController.php</code></li>
-        <li>Your template at <code>D:/Documents/Projet/atrium/lsms/code/templates/staff/care/add_care/index.html.twig</code></li>
-    </ul>
-</div>
+	<div class="w-50 mx-auto">
+		{{ form_start(form) }}
+		{{form_row(form.category)}}
+		{{form_row(form.name)}}
+		{{form_row(form.price)}}
+		<div class="d-flex row">
+			<button type="submit" class="btn btn-dark mr-3 col-3 offset-2" name="action" value="save">Enregistrer</button>
+			<button type="submit" class="btn btn-dark mr-3 col-3 offset-2" name="action" value="continue">Enregistrer et continuer</button>
+		</div>
+		{{ form_end(form)}}
+	</div>
 {% endblock %}

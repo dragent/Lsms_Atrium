@@ -5,7 +5,7 @@
 {% block titleBis %}
 	<h2 class="text-center text-dark mt-2">
 		<b>Liste des Soins</b>
-		<a class="btn btn-dark float-end " href="{{path('app_staff_chamber_add')}}">
+		<a class="btn btn-dark float-end " href="{{path('app_staff_care_add')}}">
 			Ajouter un soin
 		</a>
 	</h2>
@@ -25,16 +25,16 @@
 					<tr>
 						<td>{{care.name}}</td>
 						<td>
-							{{care.categoryhealth.name}}
+							{{care.category.name}}
 						</td>
 						<td>{{care.price}}</td>
 						<td>
-							<a href="{{path('app_staff_chamber_modify',{ 'slug':chamber.slug})}}">
+							<a href="{{path('app_staff_chamber_modify',{ 'slug':care.slug})}}">
 								<i class=" bi bi-pencil-square"></i>
 							</a>
 						</td>
 						<td>
-							<a href="{{path('app_staff_chamber_modify',{ 'slug':chamber.slug})}}">
+							<a href="{{path('app_staff_chamber_modify',{ 'slug':care.slug})}}">
 								<i class="fs-5 bi-trash3-fill"></i>
 							</a>
 						</td>
