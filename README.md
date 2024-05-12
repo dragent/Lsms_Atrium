@@ -26,11 +26,6 @@ Le code se basera sur une connexion via discord et aura pas mal d'évolution pou
         - [ ] Modification
         - [ ] Suppression
 - [ ] Admin
-    - [ ] Soins ( en cours )
-        - [x] Listing
-        - [x] Ajout
-        - [x] Modification
-        - [ ] Suppresion
     - [ ] Logs
         - [ ] Fiche de Soin
         - [ ] Service des docteurs
@@ -64,6 +59,11 @@ Le code se basera sur une connexion via discord et aura pas mal d'évolution pou
         - [x] Modification
         - [x] Suppresion
     - [x] Catégorie Soins
+        - [x] Listing
+        - [x] Ajout
+        - [x] Modification
+        - [x] Suppresion
+    - [x] Soins
         - [x] Listing
         - [x] Ajout
         - [x] Modification
