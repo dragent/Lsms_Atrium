@@ -36,6 +36,7 @@ class ModifyChamberController extends AbstractController
         {
             $em->persist($chamber);
             $em->flush();
+            $session->getFlashBag()->set('success', "Le chambre n°".$chamber->getName()." a bien été modifiée");
             return $this->redirectToRoute('app_staff_chamber');
         }
         return $this->render('staff/chamber/modify_chamber/index.html.twig', [

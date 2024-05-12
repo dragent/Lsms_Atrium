@@ -37,6 +37,7 @@ class ModifyController extends AbstractController
         {
             $em->persist($object);
             $em->flush();
+            $session->getFlashBag()->set('success', $object->getName()." a bien été modifié");
             return $this->redirectToRoute('app_staff_chamber');
         }
         return $this->render('staff/object/modify/index.html.twig', [

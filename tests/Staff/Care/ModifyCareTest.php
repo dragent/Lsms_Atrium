@@ -1,15 +1,17 @@
 <?php
 
-namespace App\Tests\Staff\Chamber;
+namespace App\Tests\Staff\Care;
 
 use Faker\Factory;
+use App\Tests\Factory\CareFactory;
 use App\Tests\Factory\UserFactory;
-use App\Tests\Factory\ChamberFactory;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
+use Doctrine\ORM\EntityManagerInterface;
 
-class ModifyChamberTest extends WebTestCase
+class ModifyCareTest extends WebTestCase
 {
+
    /**
      * Vérifie que l'on ne puisse pas aller sur un produit non existant
      */
@@ -18,7 +20,7 @@ class ModifyChamberTest extends WebTestCase
         $factory = new Factory();
         $client = self::createClient();        
         $urlGenerator = self::getContainer()->get(UrlGeneratorInterface::class);
-        $url= "https://127.0.0.1:8000".$urlGenerator->generate('app_staff_chamber_modify',["slug"=> $factory->create()->slug()]);
+        $url= "https://127.0.0.1:8000".$urlGenerator->generate('app_staff_care',["slug"=> $factory->create()->slug()]);
         $client->request('GET',$url);
         $this->assertEquals(302, $client->getResponse()->getStatusCode());
         $this->assertEquals('/connexion', $client->getResponse()->headers->get('Location'));
@@ -29,12 +31,12 @@ class ModifyChamberTest extends WebTestCase
      */
     public function testIsAnonymousRedirected(): void
     {
-        $object = ChamberFactory::createOne();
+        $care = CareFactory::createOne();
         $client = self::createClient();        
         $urlGenerator = self::getContainer()->get(UrlGeneratorInterface::class);
-        $url= "https://127.0.0.1:8000".$urlGenerator->generate('app_staff_chamber_modify',["slug"=>$object->object()->getSlug()]);
+        $url= "https://127.0.0.1:8000".$urlGenerator->generate('app_staff_care',["slug"=>$care->object()->getSlug()]);
         $client->request('GET',$url);
-        $object->remove();
+        $care->remove();
         $this->assertEquals(302, $client->getResponse()->getStatusCode());
         $this->assertEquals('/connexion', $client->getResponse()->headers->get('Location'));
     }
@@ -44,15 +46,15 @@ class ModifyChamberTest extends WebTestCase
      */
     public function testIsNotAdminRedirected()
     {
-        $object = ChamberFactory::createOne();
+        $care = CareFactory::createOne();
         $client = self::createClient();
         $user = UserFactory::createOne();
         $client->loginUser($user->object());
         $urlGenerator = self::getContainer()->get(UrlGeneratorInterface::class);
-        $url= "https://127.0.0.1:8000".$urlGenerator->generate('app_staff_chamber_modify',["slug"=>$object->object()->getSlug()]);
+        $url= "https://127.0.0.1:8000".$urlGenerator->generate('app_staff_care',["slug"=>$care->object()->getSlug()]);
         $client->request('GET',$url);
         $user->remove();
-        $object->remove();
+        $care->remove();
         $this->assertEquals(302, $client->getResponse()->getStatusCode());
         $this->assertEquals('/', $client->getResponse()->headers->get('Location'));
     }
@@ -62,43 +64,42 @@ class ModifyChamberTest extends WebTestCase
      */
     public function testIsAdminConnected()
     {
-        $chamber = ChamberFactory::createOne();
+        $care = CareFactory::createOne();
         $client = self::createClient();
         $user = UserFactory::createOne();
         $user->object()->setRoles(['ROLE_STAFF']);
         $user->save();
         $client->loginUser($user->object());        
         $urlGenerator = self::getContainer()->get(UrlGeneratorInterface::class);
-        $url= "https://127.0.0.1:8000".$urlGenerator->generate('app_staff_chamber_modify',["slug"=>$chamber->object()->getSlug()]);
+        $url= "https://127.0.0.1:8000".$urlGenerator->generate('app_staff_care',["slug"=>$care->object()->getSlug()]);
         $client->request('GET',$url);
         $user->remove();
-        $chamber->remove();
+        $care->remove();
         $this->assertEquals(200, $client->getResponse()->getStatusCode());
     }
-
         /**
-     * Test modification de la chambre
+     * Test modification des soins
      */
     public function testModifyObject()
     {
         $client = self::createClient();
-        $chamber = ChamberFactory::createOne();
+        $care = CareFactory::createOne();
         $urlGenerator = self::getContainer()->get(UrlGeneratorInterface::class);
         $user = UserFactory::createOne();
         $user->object()->setRoles(['ROLE_STAFF']);
         $user->save();
         $client->loginUser($user->object());        
-        $url= "https://127.0.0.1:8000".$urlGenerator->generate('app_staff_chamber_modify',["slug"=>$chamber->object()->getSlug()]);
+        $url= "https://127.0.0.1:8000".$urlGenerator->generate('app_staff_care_modify',["slug"=>$care->object()->getSlug()]);
         $crawler = $client->request('POST',$url);
         $form = $crawler->filter('form')->form();
-        $price = $chamber->object()->getPrice();
-        $form->setValues(["modify_chamber[price]" => $chamber->object()->getPrice()-1]);
+        $price = $care->object()->getPrice();
+        $form->setValues(["modify_care[price]" => $care->object()->getPrice()-1]);
         $this->getClient()->submit($form);
-        $chamber->refresh();
+        $care->refresh();
         $user->remove();
-        $this->assertNotEquals($price,$chamber->object()->getPrice());
-        $chamber->remove();
+        $this->assertNotEquals($price,$care->object()->getPrice());
+        $care->remove();
         $this->assertEquals(302, $client->getResponse()->getStatusCode());
-        $this->assertEquals('/admin/chambre', $client->getResponse()->headers->get('Location'));
+        $this->assertEquals('/admin/soin', $client->getResponse()->headers->get('Location'));
     }
 }
