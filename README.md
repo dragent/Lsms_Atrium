@@ -28,8 +28,8 @@ Le code se basera sur une connexion via discord et aura pas mal d'évolution pou
 - [ ] Admin
     - [ ] Soins ( en cours )
         - [x] Listing
-        - [ ] Ajout
-        - [ ] Modification
+        - [x] Ajout
+        - [x] Modification
         - [ ] Suppresion
     - [ ] Logs
         - [ ] Fiche de Soin
@@ -68,3 +68,11 @@ Le code se basera sur une connexion via discord et aura pas mal d'évolution pou
         - [x] Ajout
         - [x] Modification
         - [x] Suppresion
+
+
+## Prévision pour la v2
+- Licensiement 
+- Promotion
+- Recrutement
+- Visites médicales
+- Permis de port d'Armes

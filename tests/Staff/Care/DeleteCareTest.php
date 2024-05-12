@@ -1,19 +1,18 @@
 <?php
 
-namespace App\Tests\Staff\Chamber;
+namespace App\Tests\Staff\Care;
 
-use App\Repository\ChamberRepository;
-use App\Tests\Factory\ChamberFactory;
+use App\Repository\CareRepository;
+use App\Tests\Factory\CareFactory;
 use Faker\Factory;
 use App\Tests\Factory\UserFactory;
-use App\Tests\Factory\ObjectsFactory;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
-class DeleteChamberTest extends WebTestCase
+class DeleteCareTest extends WebTestCase
 {
-    /**
-     * Vérifie que l'on ne puisse pas aller sur un produit non existant
+  /**
+     * Vérifie que l'on ne puisse pas aller sur un soin non existant
      */
     public function testCantAccessObjextNonExisting(): void
     {
@@ -30,7 +29,7 @@ class DeleteChamberTest extends WebTestCase
      */
     public function testIsAnonymousRedirected(): void
     {
-        $object = ObjectsFactory::createOne();
+        $object = CareFactory::createOne();
         $client = self::createClient();        
         $urlGenerator = self::getContainer()->get(UrlGeneratorInterface::class);
         $url= "https://127.0.0.1:8000".$urlGenerator->generate('app_staff_chamber_delete',["slug"=>$object->object()->getSlug()]);
@@ -45,7 +44,7 @@ class DeleteChamberTest extends WebTestCase
      */
     public function testIsNotAdminRedirected()
     {
-        $object = ObjectsFactory::createOne();
+        $object = CareFactory::createOne();
         $client = self::createClient();
         $user = UserFactory::createOne();
         $client->loginUser($user->object());
@@ -63,7 +62,7 @@ class DeleteChamberTest extends WebTestCase
      */
     public function testIsAdminConnected()
     {
-        $object = ObjectsFactory::createOne();
+        $object = CareFactory::createOne();
         $client = self::createClient();
         $user = UserFactory::createOne();
         $user->object()->setRoles(['ROLE_STAFF']);
@@ -77,7 +76,7 @@ class DeleteChamberTest extends WebTestCase
         $this->assertEquals(302, $client->getResponse()->getStatusCode());
     }
   /**
-     * Etre sur que l'utilisateur ne peut aller sur la page si la chambre n'existe pas
+     * Etre sur que l'utilisateur ne peut aller sur la page si le soin n'existe pas
      */
     public function testObjectNonExistingAdminError()
     {
@@ -96,14 +95,14 @@ class DeleteChamberTest extends WebTestCase
     }
 
     /**
-     * Etre sur que l'utilisateur ne peut aller sur la page si la chambre n'existe pas
+     * Etre sur que l'utilisateur ne peut aller sur la page si le soin n'existe pas
      */
     public function testObjectDeleted()
     {
         $client = self::createClient();
         $urlGenerator = self::getContainer()->get(UrlGeneratorInterface::class);
-        $chamberRepository = self::getContainer()->get(ChamberRepository::class);
-        $chamber = ChamberFactory::createOne();
+        $chamberRepository = self::getContainer()->get(CareRepository::class);
+        $chamber = CareFactory::createOne();
         $user = UserFactory::createOne();
         $client->loginUser($user->object());
         $url= "https://127.0.0.1:8000".$urlGenerator->generate('app_staff_chamber_delete',["slug"=> $chamber->object()->getSlug()]);

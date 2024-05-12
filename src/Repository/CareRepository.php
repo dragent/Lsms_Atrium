@@ -49,6 +49,14 @@ class CareRepository extends ServiceEntityRepository
             ->orderBy("c.slug","ASC")
             ->getQuery()
             ->getResult();
-
+    }
+    public function deleteCare( int $id)
+    {
+        $this->createQueryBuilder("q")  
+            ->delete("App\Entity\Care","c")
+            ->where("c.category = :id")
+            ->setParameter("id",$id)
+            ->getQuery()
+            ->execute();
     }
 }

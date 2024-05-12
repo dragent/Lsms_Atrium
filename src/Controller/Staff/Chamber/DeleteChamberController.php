@@ -13,7 +13,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class DeleteChamberController extends AbstractController
 {
-    #[Route('/staff/chamber/delete/{slug}', name: 'app_staff_chamber_delete')]
+    #[Route('/admin/chambre/suppression/{slug}', name: 'app_staff_chamber_delete')]
     public function index(string $slug, Request $request, ConnectService $connectService, ChamberRepository $chamberRepository, EntityManagerInterface $em): Response
     {
         /** @var Session */

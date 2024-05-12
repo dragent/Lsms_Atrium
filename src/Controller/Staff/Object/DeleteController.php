@@ -14,7 +14,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class DeleteController extends AbstractController
 {
-    #[Route('/admin/inventaire/supprimer/{slug}', name: 'app_staff_object_delete')]
+    #[Route('/admin/inventaire/suppression/{slug}', name: 'app_staff_object_delete')]
     public function index(Request $request, ConnectService $connectService, ObjectsRepository $objectRepository, EntityManagerInterface $em, string $slug): Response
     {
         /** @var Session */

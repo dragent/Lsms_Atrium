@@ -47,4 +47,6 @@ class CategoryHealthRepository extends ServiceEntityRepository
         ->getQuery()
         ->getMaxResults();
     }
+
+
 }
