@@ -5,12 +5,22 @@
 	</div>
 	<div class="offcanvas-body px-0" aria-modal="true">
 		<ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-start" id="menu">
-			<li class="nav-item">
-				<a href="{{path('app_index')}}" class="nav-link text-truncate">
-					<i class="fs-5 bi-house-fill"></i>
-					<span class="ms-1 d-none d-sm-inline">Acceuil</span>
-				</a>
-			</li>
+			{% if is_granted('ROLE_LSMS') %}
+				<li class="nav-item">
+					<a href="{{path('app_lsms_index')}}" class="nav-link text-truncate">
+						<i class="fs-5 bi-house-fill"></i>
+						<span class="ms-1 d-none d-sm-inline">Acceuil</span>
+					</a>
+				</li>
+			{% else %}
+				<li class="nav-item">
+					<a href="{{path('app_index')}}" class="nav-link text-truncate">
+						<i class="fs-5 bi-house-fill"></i>
+						<span class="ms-1 d-none d-sm-inline">Acceuil</span>
+					</a>
+				</li>
+
+			{% endif %}
 			<li class="nav-item">
 				<a href="{{path('app_staff')}}" class="nav-link text-truncate">
 					<i class="fs-5 bi-tools"></i>

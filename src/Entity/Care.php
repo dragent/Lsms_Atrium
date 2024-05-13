@@ -20,7 +20,7 @@ class Care
     #[ORM\Column]
     private ?int $price = null;
 
-    #[ORM\ManyToOne]
+    #[ORM\ManyToOne(inversedBy: 'cares')]
     #[ORM\JoinColumn(nullable: false)]
     private ?CategoryHealth $category = null;
 
@@ -64,6 +64,7 @@ class Care
     public function setCategory(?CategoryHealth $category): static
     {
         $this->category = $category;
+        $this->category->addCare($this);
 
         return $this;
     }

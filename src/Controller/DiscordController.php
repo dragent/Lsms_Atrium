@@ -151,6 +151,8 @@ class DiscordController extends AbstractController
     #[Route('/connexion/auth', name: 'app_discord_auth')]
     public function auth()
     {
+            if($this->isGranted('ROLE_LSMS'))
+                return $this->redirectToRoute('app_lsms_index');
             return $this->redirectToRoute('app_index');
     }
 }

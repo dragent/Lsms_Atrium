@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>
+			{% block title %}Accueil
+			{% endblock %}
+		</title>
+		<link rel="stylesheet" href="https://bootswatch.com/5/zephyr/bootstrap.min.css"> {% block stylesheets %}{% endblock %}
+		{{ encore_entry_link_tags('app') }}
+	</head>
+	<body>
+
+		<header class="sticky-top">
+			<h1 class="text-center mt-2 text-dark">LSMS Service</h1>
+			{% include "shared/_lsms_navbar.html.twig" %}
+		</header>
+
+		{% block titleBis %}{% endblock %}
+		{% for rubrique, messages in app.flashes %}
+			<div class="alert alert-{{rubrique}} alert-dismissible w-75 mx-auto mt-2">
+				<button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+				{% for message in messages %}
+					<p class="text-center">{{message}}</p>
+				{% endfor %}
+			</div>
+		{% endfor %}
+
+
+		{% block body %}{% endblock %}
+
+		{% block javascripts %}{% endblock %}
+		{{ encore_entry_script_tags('app') }}
+	</body>
+</html>

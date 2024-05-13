@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use App\Repository\CategoryHealthRepository;
 
@@ -21,6 +23,17 @@ class CategoryHealth
 
     #[ORM\Column(length: 100)]
     private ?string $slug = null;
+
+    /**
+     * @var Collection<int, Care>
+     */
+    #[ORM\OneToMany(targetEntity: Care::class, mappedBy: 'category', orphanRemoval: true)]
+    private Collection $cares;
+
+    public function __construct()
+    {
+        $this->cares = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -59,6 +72,35 @@ class CategoryHealth
     public function setSlug(string $slug): static
     {
         $this->slug = $slug;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Care>
+     */
+    public function getCares(): Collection
+    {
+        return $this->cares;
+    }
+
+    public function addCare(Care $care): static
+    {
+        if (!$this->cares->contains($care)) {
+            $this->cares->add($care);
+        }
+
+        return $this;
+    }
+
+    public function removeCare(Care $care): static
+    {
+        if ($this->cares->removeElement($care)) {
+            // set the owning side to null (unless already changed)
+            if ($care->getCategory() === $this) {
+                $care->setCategory(null);
+            }
+        }
 
         return $this;
     }
