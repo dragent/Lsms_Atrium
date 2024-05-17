@@ -6,14 +6,24 @@
 		</button>
 		<div class="collapse navbar-collapse" id="navbarColor02">
 			<ul class="navbar-nav me-auto">
-				<li class="nav-item">
-					<a href="" class="nav-link">Soins</a>
+				<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+						Soins
+					</a>
+					<ul class="dropdown-menu">
+						<li>
+							<a class="dropdown-item" href="{{path('app_lsms_care_sheet')}}">Ajouter</a>
+						</li>
+						<li>
+							<a class="dropdown-item" href="{{path('app_lsms_care_sheet_listing')}}">Voir</a>
+						</li>
+					</ul>
+					{% if  is_granted('ROLE_STAFF') %}
+						<li class="nav-item">
+							<a href="{{path('app_staff')}}" class="nav-link">Admin</a>
+						</li>
+					{% endif %}
 				</li>
-				{% if  is_granted('ROLE_STAFF') %}
-					<li class="nav-item">
-						<a href="{{path('app_staff')}}" class="nav-link">Admin</a>
-					</li>
-				{% endif %}
 				<li class="nav-item">
 					<a href="{{path('app_logout')}}" class="nav-link">Déconnexion</a>
 				</li>

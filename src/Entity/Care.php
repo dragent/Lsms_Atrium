@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Entity\CategoryHealth;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use App\Repository\CareRepository;
 
@@ -26,6 +28,18 @@ class Care
 
     #[ORM\Column(length: 100)]
     private ?string $slug = null;
+
+
+    /**
+     * @var Collection<int, CareSheetItem>
+     */
+    #[ORM\OneToMany(targetEntity: CareSheetItem::class, mappedBy: 'care')]
+    private Collection $careSheetItems;
+
+    public function __construct()
+    {
+        $this->careSheetItems = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -77,6 +91,36 @@ class Care
     public function setSlug(string $slug): static
     {
         $this->slug = $slug;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, CareSheetItem>
+     */
+    public function getCareSheetItems(): Collection
+    {
+        return $this->careSheetItems;
+    }
+
+    public function addCareSheetItem(CareSheetItem $careSheetItem): static
+    {
+        if (!$this->careSheetItems->contains($careSheetItem)) {
+            $this->careSheetItems->add($careSheetItem);
+            $careSheetItem->setCare($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCareSheetItem(CareSheetItem $careSheetItem): static
+    {
+        if ($this->careSheetItems->removeElement($careSheetItem)) {
+            // set the owning side to null (unless already changed)
+            if ($careSheetItem->getCare() === $this) {
+                $careSheetItem->setCare(null);
+            }
+        }
 
         return $this;
     }

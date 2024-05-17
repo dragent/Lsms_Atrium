@@ -22,6 +22,7 @@ class IndexController extends AbstractController
         if( $checkRole!==true ) 
             return $this->redirectToRoute($checkRole,[],302);
         $careCategory = $categoryHealthRepository->findAll();
+        
         return $this->render('lsms/index/index.html.twig', [
             'categories'=>$careCategory,
             'titleBis'=>'Tarif'

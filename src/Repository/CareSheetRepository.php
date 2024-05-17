@@ -2,22 +2,22 @@
 
 namespace App\Repository;
 
-use App\Entity\CategoryHealth;
+use App\Entity\CareSheet;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @extends ServiceEntityRepository<CategoryHealth>
+ * @extends ServiceEntityRepository<CareSheet>
  */
-class CategoryHealthRepository extends ServiceEntityRepository
+class CareSheetRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, CategoryHealth::class);
+        parent::__construct($registry, CareSheet::class);
     }
 
     //    /**
-    //     * @return CategoryHealth[] Returns an array of CategoryHealth objects
+    //     * @return CareSheet[] Returns an array of CareSheet objects
     //     */
     //    public function findByExampleField($value): array
     //    {
@@ -31,7 +31,7 @@ class CategoryHealthRepository extends ServiceEntityRepository
     //        ;
     //    }
 
-    //    public function findOneBySomeField($value): ?CategoryHealth
+    //    public function findOneBySomeField($value): ?CareSheet
     //    {
     //        return $this->createQueryBuilder('c')
     //            ->andWhere('c.exampleField = :val')
@@ -40,22 +40,4 @@ class CategoryHealthRepository extends ServiceEntityRepository
     //            ->getOneOrNullResult()
     //        ;
     //    }
-
-    public function getLastPosition()
-    {
-        return $this->createQueryBuilder('c.position')
-        ->getQuery()
-        ->getMaxResults();
-    }
-    public function findAll():array
-    {
-        $results= $this->createQueryBuilder("cg")
-            ->join("cg.cares","c")
-            ->orderBy("cg.position","ASC")
-            ->addOrderBy("c.name","ASC")
-            ->getQuery()
-            ->getResult();
-        return $results;
-    }
-
 }

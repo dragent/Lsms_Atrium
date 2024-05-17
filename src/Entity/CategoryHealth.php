@@ -2,10 +2,11 @@
 
 namespace App\Entity;
 
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
+use ArrayIterator;
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\Collection;
 use App\Repository\CategoryHealthRepository;
+use Doctrine\Common\Collections\ArrayCollection;
 
 #[ORM\Entity(repositoryClass: CategoryHealthRepository::class)]
 class CategoryHealth
@@ -81,7 +82,13 @@ class CategoryHealth
      */
     public function getCares(): Collection
     {
-        return $this->cares;
+        /** @var ArrayIterator */
+        $iterator = $this->cares->getIterator();
+        $iterator->uasort(function($a,$b)
+        {
+            return strcmp($a->getName(), $b->getName());
+        });
+        return new ArrayCollection(iterator_to_array($iterator));
     }
 
     public function addCare(Care $care): static

@@ -6,10 +6,10 @@ function load_data() {
         data: { action: 'fetch_data' },
         success: function (data) {
             var html = '';
-            for (var count = 0; count < data.length; count++) {
-                html += '<tr id="' + data[count].id + '">';
-                html += '<td>' + data[count].Username + '</td>';
-                html += '<td>' + getGrade(data[count].roles) + '</td>';
+            for (var count = 0; count < data["id"].length; count++) {
+                html += '<tr id="' + data["id"][count] + '">';
+                html += '<td>' + data["user"][count] + '</td>';
+                html += '<td>' + getGrade(data["grade"][count]) + '</td>';
                 html += '</tr>'
             }
             $('tbody').html(html);
@@ -17,10 +17,10 @@ function load_data() {
     })
 }
 
-function getGrade(roles) {
-    value = "Stagiaire";
-    roles.forEach(role => {
-        switch (role) {
+function getGrade(grade) {
+    values = "Stagiaire";
+    for (count = 0; count < grade.length; count++) {
+        switch (grade[count]) {
             case "ROLE_DIRECTION":
                 values = "Directeur";
                 break;
@@ -39,8 +39,10 @@ function getGrade(roles) {
             case "ROLE_AMBULANCIER":
                 values = "Ambulancier";
                 break;
+            default:
+                break;
         }
-    });
+    };
     return values;
 }
 

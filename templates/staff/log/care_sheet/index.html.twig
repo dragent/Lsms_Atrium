@@ -1,0 +1,64 @@
+{% extends 'admin_base.html.twig' %}
+
+{% block title %}Logs Fiche de soins
+{% endblock %}
+
+{% block titleBis %}
+	<h2 class="text-center">
+		<b>
+			<u>Logs des Fiches de soins</u>
+		</b>
+	</h2>
+{% endblock %}
+
+{% block body %}
+	{% set act = "" %}
+	<div class="accordion w-75 mx-auto mb-3" id="accordionCare">
+		{% for caresheet in caresheets %}
+			{% if not act == caresheet.medic.slug %}
+				{% if  not act =="" %}
+				</div>
+			{% endif %}
+			{% set act = caresheet.medic.slug %}
+			<div class="accordion-item shadow-none border-0">
+				<h2 class="accordion-header " id="title_{{caresheet.medic.slug}}">
+					<button class="accordion-button bg-dark text-light shadow-none " type="button" data-bs-toggle="collapse" data-bs-target="#collapse_{{caresheet.medic.slug}}" aria-expanded="false" aria-controls="collapse_{{caresheet.medic.slug}}">
+						<b>{{caresheet.medic.username}}</b>
+					</button>
+				</h2>
+			{% endif %}
+			<div id="collapse_{{caresheet.medic.slug}}" class="accordion-collapse collapse show" aria-labelledby="collapse_{{caresheet.medic.slug}}">
+				<div class="accordion-body row align-items-center" id="{{caresheet.id}}">
+					<div class="col col-2 offset-1">
+						{{caresheet.dateCare|date("d/m/Y")}}
+					</div>
+					<div class="col col-2">
+						{{caresheet.partner}}
+					</div>
+					<div class="col col-2">
+						{{caresheet.invoice}}$
+					</div>
+					<div class="col col-2">
+						<ul>
+							{% for item in caresheet.caresheetitems %}
+								<li>
+									{{item.care.name}}
+									<span class="badge bg-dark rounded-pill">{{item.quantity}}</span>
+								</li>
+							{% endfor %}
+						</ul>
+					</div>
+					{% if caresheet.paid == false %}
+						<div class="col col-2 bg-danger text-light rounded-pill text-center">
+							Non payée
+						</div>
+					{% else %}
+						<div class="col col-2 bg-success text-light rounded-pill text-center">
+							Payée
+						</div>
+					{% endif %}
+				</div>
+			</div>
+		{% endfor %}
+	</div>
+{% endblock %}

@@ -23,6 +23,8 @@ Encore
     .addEntry('app', './assets/app.js')
     .addEntry('sortableHealthCategory', './assets/HealthCategorySortableTable.js')
     .addEntry('ListingServiceDoc', '/assets/ListingServiceDoc.js')
+    .addEntry('majInvoiceCareSheet', './assets/majInvoiceCareSheet.js')
+    .addEntry('payCareSheet', './assets/payCareSheet.js')
 
     // When enabled, Webpack "splits" your files into smaller pieces for greater optimization.
     .splitEntryChunks()

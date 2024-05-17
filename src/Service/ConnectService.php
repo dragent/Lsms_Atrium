@@ -3,7 +3,6 @@
 namespace App\Service;
 
 use App\Entity\User;
-use Symfony\Bundle\SecurityBundle\Security;
 use Symfony\Component\HttpFoundation\Session\Session;
 
 Class ConnectService{

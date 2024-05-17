@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
 
@@ -38,6 +40,17 @@ class User implements UserInterface
 
     #[ORM\Column]
     private ?bool $inService = null;
+
+    /**
+     * @var Collection<int, CareSheet>
+     */
+    #[ORM\OneToMany(targetEntity: CareSheet::class, mappedBy: 'medic')]
+    private Collection $careSheets;
+
+    public function __construct()
+    {
+        $this->careSheets = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -154,6 +167,36 @@ class User implements UserInterface
     public function setInService(?bool $inService): static
     {
         $this->inService = $inService;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, CareSheet>
+     */
+    public function getCareSheets(): Collection
+    {
+        return $this->careSheets;
+    }
+
+    public function addCareSheet(CareSheet $careSheet): static
+    {
+        if (!$this->careSheets->contains($careSheet)) {
+            $this->careSheets->add($careSheet);
+            $careSheet->setMedic($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCareSheet(CareSheet $careSheet): static
+    {
+        if ($this->careSheets->removeElement($careSheet)) {
+            // set the owning side to null (unless already changed)
+            if ($careSheet->getMedic() === $this) {
+                $careSheet->setMedic(null);
+            }
+        }
 
         return $this;
     }
