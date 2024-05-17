@@ -11,8 +11,6 @@ Le code se basera sur une connexion via discord et aura pas mal d'évolution pou
     - [ ] Demande de Rendez vous
     - [ ] Planning des rendez vous
 - [ ] Lsms
-    - [ ] Accueil
-    - [ ] Fiche de soin 
     - [ ] Inventaire
     - [ ] Commande
         - [ ] Listing
@@ -27,7 +25,6 @@ Le code se basera sur une connexion via discord et aura pas mal d'évolution pou
         - [ ] Suppression
 - [ ] Admin
     - [ ] Logs
-        - [ ] Fiche de Soin
         - [ ] Service des docteurs
         - [ ] Commande
         - [ ] Comptabilité
@@ -42,6 +39,8 @@ Le code se basera sur une connexion via discord et aura pas mal d'évolution pou
             - [x] Récupération des roles
 - [ ] Civils
 - [ ] Lsms
+    - [x] Accueil
+    - [x] Fiche de soin 
 - [ ] Admin
     - [x] Navbar 
     - [x] Accueil
@@ -68,6 +67,8 @@ Le code se basera sur une connexion via discord et aura pas mal d'évolution pou
         - [x] Ajout
         - [x] Modification
         - [x] Suppresion
+    - [ ] Logs
+        - [x] Fiche de Soin
 
 
 ## Prévision pour la v2
