@@ -1,0 +1,78 @@
+{% extends 'Lsms_base.html.twig' %}
+
+{% block title %}Liste des partenaires
+{% endblock %}
+
+{% block titleBis %}
+	<h2 class="text-center">
+		<b>
+			<u>Liste des partenaires</u>
+		</b>
+	</h2>
+{% endblock %}
+
+{% block stylesheets %}
+	{{ encore_entry_link_tags('lsms') }}
+{% endblock %}
+
+{% block body %}
+	<!-- Modal -->
+	<div class="modal fade" id="modalFabricate" tabindex="-1" role="dialog" aria-labelledby="modalFabricateTitle" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h3 class="modal-title" id="modalFabricateTitle">Partenariat</h3>
+				</div>
+				<form action="{{path('app_lsms_partner_add')}}" method="post" name="addPartner">
+					<div class="modal-body">
+						<div class="group-form">
+							<label for="name">Nom du partenaire</label>
+							<input type="text" name="name" class="form-control">
+						</div>
+					</div>
+					<div class="modal-footer text-center">
+						<button type="submit" class="btn btn-success" name="action" value="accept">Accepter</button>
+						<button type="button" class="close btn btn-danger" data-bs-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+
+	<div class="text-center mt-3">
+		<div class="btn btn-dark " data-bs-toggle="modal" data-bs-target="#modalFabricate">Nouveau Partenariat</div>
+	</div>
+	<div class="table-responsive w-75 mx-auto mt-3">
+		<table class="table table-striped table-hover table-borderless text-center">
+			<thead class="table-dark">
+				<td>Nom du Partenaire</td>
+				<td>Nombre de Facture non payée</td>
+				<td>Voir</td>
+				<td>Supprimer</td>
+			</thead>
+			<tbody>
+				{% for parner in partners %}
+					<tr class="align-items-center">
+						<td>{{parner.name}}</td>
+						<td></td>
+						<td>
+							<a href="{{path('app_staff_care_modify',{ 'slug':care.slug})}}">
+								<i class=" bi bi-pencil-square"></i>
+							</a>
+						</td>
+						<td>
+							<a href="{{path('app_staff_care_delete',{ 'slug':care.slug})}}">
+								<i class="fs-5 bi-trash3-fill"></i>
+							</a>
+						</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	</div>
+{% endblock %}
+{% block javascripts %}
+	{{ encore_entry_script_tags('lsmsInventory') }}
+{% endblock %}

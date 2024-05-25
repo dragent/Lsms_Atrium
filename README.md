@@ -8,9 +8,22 @@ Le code se basera sur une connexion via discord et aura pas mal d'évolution pou
 
 # Codage en cours
 - [ ] Civils
-    - [ ] Demande de Rendez vous
-    - [ ] Planning des rendez vous
+    - [ ] Rendez vous
+        - [ ] Demande de Rendez vous
+        - [ ] Planning des rendez vous
 - [ ] Lsms
+    - [ ] Ressource Humaines / ROLE Directeur
+        - [ ] Personnel
+            - [ ] Listing
+            - [ ] Ajout 
+            - [ ] Autorisation
+            - [ ] Grade Promotion / Retrogradation
+            - [ ] Licensiement
+        - [ ] Partenaire
+            - [x] Ajout 
+            - [x] Listing
+                - [ ] Modifier / Accepter Paiement 
+            - [ ] Supprimer
     - [ ] Comptabilité
     - [ ] Agenda 
         - [ ] Format Trello
@@ -18,6 +31,13 @@ Le code se basera sur une connexion via discord et aura pas mal d'évolution pou
         - [ ] Ajout Event
         - [ ] Modification
         - [ ] Suppression
+    - [ ] Exemple
+        - [ ] Dossier Médical ( ROLE AMBULANCIER )
+        - [ ] Visite Médicale ( Autorisation de Visite Médicale ) // Plus tard 
+        - [ ] PPA ( Autorisation de PPA ) // Plus tard 
+        - [ ] Test d'aptitude Physique ( Autorisation d'aptitude physique ) // Plus tard
+        ------------------------
+        - [ ] Cours ( pour les novices comme moi en doc )
 - [ ] Admin
     - [ ] Logs
         - [ ] Service des docteurs
@@ -32,7 +52,7 @@ Le code se basera sur une connexion via discord et aura pas mal d'évolution pou
         - [x] Connexion
             - [x] Récupération des roles
 - [ ] Civils
-    - [ ] Tarifs
+    - [x] Tarifs
 - [ ] Lsms
     - [x] Accueil
     - [x] Fiche de soin 
@@ -43,6 +63,10 @@ Le code se basera sur une connexion via discord et aura pas mal d'évolution pou
     - [x] Commande
         - [x] Listing
         - [x] Validation
+    - [ ] Ressource Humaines / ROLE Directeur
+         - [ ] Partenaire
+            - [x] Ajout 
+            - [x] Listing
 - [ ] Admin
     - [x] Navbar 
     - [x] Accueil
@@ -75,9 +99,10 @@ Le code se basera sur une connexion via discord et aura pas mal d'évolution pou
 
 
 ## Prévision pour la v2
-- Licensiement ( Discord Api)
-- Promotion ( Discord Api)
-- Recrutement ( Discord Api )
-- Visites médicales ( Pdf )
+- Visites médicales ( Pdf + Discord )
 - Permis de port d'Armes ( rien de particulier )
+- User Rajout de l'autorisation de faire :  
+    - Les visites médicales
+    - Le PPA
+    - Le test physique
 - Listing des chambres et des patients qui y sommeillent ( Trello fait à la main)

@@ -5,20 +5,41 @@ namespace App\Service;
 use DateTime;
 use DateTimeZone;
 use App\Entity\User;
+use App\Entity\Partner;
 use App\Entity\CareSheet;
 use App\Entity\CareSheetItem;
 use App\Repository\CareRepository;
+use App\Repository\PartnerRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\InputBag;
 
 class CareSheetService{
 
+    private EntityManagerInterface $em;
+    private CareRepository $careRepository;
+    private PartnerRepository $partnerRepository;
+
+    public function __construct( EntityManagerInterface $em, CareRepository $careRepository, PartnerRepository $partnerRepository)
+    {
+        $this->em= $em;
+        $this->careRepository =$careRepository;
+        $this->partnerRepository =$partnerRepository;
+    }
+
     /**
      * Enregistre la fiche de soin
      */
-    public function saveCareSheet(EntityManagerInterface $em, InputBag $request, CareRepository $careRepository, User $medic, $partnerRepository )
+    public function saveCareSheet( InputBag $request, User $medic )
     {
         $careSheet = new CareSheet();
+        if($request->get('partner'))
+        {
+            $slug = strtolower(str_replace(" ","-",$request->get('partner')));
+            /** @var Partner */
+            $partner = $this->partnerRepository->findOneBy(["slug"=>$slug]);
+            $partner->addCareSheet($careSheet);
+            $this->em->persist($partner);
+        }    
         $careSheet->setPartner($request->get("partner"));
         $request->remove("partner");
         if( $request->has("distance"))
@@ -35,15 +56,15 @@ class CareSheetService{
         }
         else
             $careSheet->setPaid(false);
-        $careSheet->setDateCare(new DateTimeImmutable ("now",new DateTimeZone('Europe/Paris')));
+        $careSheet->setDateCare(new DateTime ("now",new DateTimeZone('Europe/Paris')));
         $careSheet->setMedic($medic);
-        $this->saveCareSheetItems($em, $request, $careRepository, $careSheet);
+        $this->saveCareSheetItems( $request,  $careSheet);
     }
 
     /**
      * Enregistre les soins puis les mets dans la fiche de soin
      */
-    private function saveCareSheetItems(EntityManagerInterface $em, InputBag $careItems, CareRepository $careRepository, CareSheet $careSheet)
+    private function saveCareSheetItems( InputBag $careItems,  CareSheet $careSheet)
     {
         $total= ($careSheet->isFarAway())?10:0;
         foreach ($careItems->all() as $care => $quantity) {
@@ -51,15 +72,15 @@ class CareSheetService{
             if($quantity==="")
                 continue;
             $careItem = new CareSheetItem();
-            $careItem->setCare($careRepository->findOneBy(["slug"=>$slug]));
+            $careItem->setCare($this->careRepository->findOneBy(["slug"=>$slug]));
             $careItem->setQuantity($quantity);
             $careItem->getCare()->getComponent()->setQuantity($careItem->getCare()->getComponent()->getQuantity()-$quantity);
             $careSheet->addCareSheetItem($careItem);
-            $em->persist($careItem);
+            $this->em->persist($careItem);
             $total+=$quantity*$careItem->getCare()->getPrice();
         }
         $careSheet->setInvoice($total);
-        $em->persist($careSheet);
-        $em->flush();
+        $this->em->persist($careSheet);
+        $this->em->flush();
     }
 }
