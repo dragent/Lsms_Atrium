@@ -7,11 +7,28 @@ Ce code a été pour le serveur gta AtriumRp. Il permettra de facilité la tâch
 Le code se basera sur une connexion via discord et aura pas mal d'évolution pour s'adapter aux besoins évolutif des docteurs
 
 # Codage en cours
+- [x] Non connecté
+    - [x] Connexion via discord
+        - [x] Ajout au discord
+            - [x] Don du grade Civil
+            - [x] Changement de surnom pour donner celui d'Atrium
+        - [x] Connexion
+            - [x] Récupération des roles
 - [ ] Civils
+    - [x] Tarifs
     - [ ] Rendez vous
         - [ ] Demande de Rendez vous
         - [ ] Planning des rendez vous
 - [ ] Lsms
+ - [x] Accueil
+    - [x] Fiche de soin 
+    - [x] Inventaire
+        - [x] Listing
+        - [x] Fabrication
+        - [x] Ajout Commande
+    - [x] Commande
+        - [x] Listing
+        - [x] Validation
     - [ ] Ressource Humaines / ROLE Directeur
         - [ ] Personnel
             - [ ] Listing
@@ -39,36 +56,7 @@ Le code se basera sur une connexion via discord et aura pas mal d'évolution pou
         ------------------------
         - [ ] Cours ( pour les novices comme moi en doc )
 - [ ] Admin
-    - [ ] Logs
-        - [ ] Service des docteurs
-        - [ ] Comptabilité
- 
-## Partie terminée
-- [x] Non connecté
-    - [x] Connexion via discord
-        - [x] Ajout au discord
-            - [x] Don du grade Civil
-            - [x] Changement de surnom pour donner celui d'Atrium
-        - [x] Connexion
-            - [x] Récupération des roles
-- [ ] Civils
-    - [x] Tarifs
-- [ ] Lsms
-    - [x] Accueil
-    - [x] Fiche de soin 
-    - [x] Inventaire
-        - [x] Listing
-        - [x] Fabrication
-        - [x] Ajout Commande
-    - [x] Commande
-        - [x] Listing
-        - [x] Validation
-    - [ ] Ressource Humaines / ROLE Directeur
-         - [ ] Partenaire
-            - [x] Ajout 
-            - [x] Listing
-- [ ] Admin
-    - [x] Navbar 
+ - [x] Navbar 
     - [x] Accueil
         - [x] Maj toutes les secondes
     - [x] Personnel
@@ -96,6 +84,18 @@ Le code se basera sur une connexion via discord et aura pas mal d'évolution pou
     - [ ] Logs
         - [x] Fiche de Soin
         - [x] Commande
+        - [ ] Service des docteurs
+        - [ ] Comptabilité
+ 
+## Partie terminée
+
+- [ ] Civils
+- [ ] Lsms
+   
+    - [ ] Ressource Humaines / ROLE Directeur
+         - [ ] Partenaire
+- [ ] Admin
+   
 
 
 ## Prévision pour la v2
