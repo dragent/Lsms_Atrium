@@ -1,5 +1,6 @@
 {% extends 'lsms_base.html.twig' %}
 
+
 {% block titleBis %}
 	<h2 class="text-center text-dark mt-2">
 		<b>
@@ -8,15 +9,19 @@
 	</h2>
 {% endblock %}
 
+{% block stylesheets %}
+	{{ encore_entry_link_tags('lsms') }}
+{% endblock %}
+
 {% block body %}
 	<div class="accordion w-75 mx-auto mb-5" id="accordionCare">
 		{% for category in categories %}
 			<div class="accordion-item shadow-none border-0">
-				<h2 class="accordion-header " id="collapse_{{category.slug}}e">
+				<h3 class="accordion-header" id="collapse_{{category.slug}}e">
 					<button class="accordion-button bg-dark text-light shadow-none " type="button" data-bs-toggle="collapse" data-bs-target="#collapse_{{category.slug}}" aria-expanded="false" aria-controls="collapse_{{category.slug}}">
 						<b>{{category.name}}</b>
 					</button>
-				</h2>
+				</h3>
 				{% if not category.cares is empty %}
 					<div id="collapse_{{category.slug}}" class="accordion-collapse collapse show" aria-labelledby="collapse_{{category.slug}}">
 						{% for care in category.cares %}

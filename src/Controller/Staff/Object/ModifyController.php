@@ -29,7 +29,7 @@ class ModifyController extends AbstractController
         {
             $name = ucfirst(str_replace("-"," ",$slug));
             $session->getFlashBag()->set('danger', "L'objet ".$name." n'est pas recensée");
-            return $this->redirectToRoute('app_staff_chamber',[],302);
+            return $this->redirectToRoute('app_staff_object',[],302);
         }
         $form = $this->createForm(ModifyObjectType::class, $object);
         $form->handleRequest($request);
@@ -38,7 +38,7 @@ class ModifyController extends AbstractController
             $em->persist($object);
             $em->flush();
             $session->getFlashBag()->set('success', $object->getName()." a bien été modifié");
-            return $this->redirectToRoute('app_staff_chamber');
+            return $this->redirectToRoute('app_staff_object');
         }
         return $this->render('staff/object/modify/index.html.twig', [
             'object' => $object,

@@ -15,9 +15,18 @@
 		{{form_row(form.buyPrice)}}
 		{{form_row(form.quantity)}}
 		{{form_row(form.quantityTrigger)}}
+		{{form_row(form.quantitiesComponent)}}
+		<div class="d-flex  justify-content-center mb-3">
+			<i class="bi bi-plus-circle-fill text-success btn fs-4 border border-success rounded-circle mx-5" id="addBtn"></i>
+			<i class="bi bi-dash-circle-fill text-danger btn fs-4 border border-danger rounded-circle d-none" id="rmvBtn"></i>
+		</div>
 		<div class="w-25 text-center mx-auto">
 			<button type="submit" class="btn btn-primary w-50">Modifier</button>
 		</div>
 		{{form_end(form)}}
 	</div>
+{% endblock %}
+
+{% block javascripts %}
+	{{ encore_entry_script_tags('modifyObject') }}
 {% endblock %}

@@ -25,6 +25,12 @@ Encore
     .addEntry('ListingServiceDoc', '/assets/ListingServiceDoc.js')
     .addEntry('majInvoiceCareSheet', './assets/majInvoiceCareSheet.js')
     .addEntry('payCareSheet', './assets/payCareSheet.js')
+    .addEntry('lsms', './assets/lsms.js')
+    .addEntry('modifyObject', './assets/modifyObject.js')
+    .addEntry('addObjects', './assets/addObjects.js')
+    .addEntry('lsmsInventory', './assets/lsmsInventory.js')
+    .addEntry('validateOrder', './assets/validateOrder.js')
+
 
     // When enabled, Webpack "splits" your files into smaller pieces for greater optimization.
     .splitEntryChunks()

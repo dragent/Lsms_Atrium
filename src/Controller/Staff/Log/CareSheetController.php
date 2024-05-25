@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller\Staff\Log\CareSheet;
+namespace App\Controller\Staff\Log;
 
 use App\Repository\CareSheetRepository;
 use App\Service\ConnectService;

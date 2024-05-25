@@ -11,11 +11,6 @@ Le code se basera sur une connexion via discord et aura pas mal d'évolution pou
     - [ ] Demande de Rendez vous
     - [ ] Planning des rendez vous
 - [ ] Lsms
-    - [ ] Inventaire
-    - [ ] Commande
-        - [ ] Listing
-        - [ ] Ajout
-        - [ ] Validation
     - [ ] Comptabilité
     - [ ] Agenda 
         - [ ] Format Trello
@@ -26,7 +21,6 @@ Le code se basera sur une connexion via discord et aura pas mal d'évolution pou
 - [ ] Admin
     - [ ] Logs
         - [ ] Service des docteurs
-        - [ ] Commande
         - [ ] Comptabilité
  
 ## Partie terminée
@@ -38,9 +32,17 @@ Le code se basera sur une connexion via discord et aura pas mal d'évolution pou
         - [x] Connexion
             - [x] Récupération des roles
 - [ ] Civils
+    - [ ] Tarifs
 - [ ] Lsms
     - [x] Accueil
     - [x] Fiche de soin 
+    - [x] Inventaire
+        - [x] Listing
+        - [x] Fabrication
+        - [x] Ajout Commande
+    - [x] Commande
+        - [x] Listing
+        - [x] Validation
 - [ ] Admin
     - [x] Navbar 
     - [x] Accueil
@@ -69,11 +71,13 @@ Le code se basera sur une connexion via discord et aura pas mal d'évolution pou
         - [x] Suppresion
     - [ ] Logs
         - [x] Fiche de Soin
+        - [x] Commande
 
 
 ## Prévision pour la v2
-- Licensiement 
-- Promotion
-- Recrutement
-- Visites médicales
-- Permis de port d'Armes
+- Licensiement ( Discord Api)
+- Promotion ( Discord Api)
+- Recrutement ( Discord Api )
+- Visites médicales ( Pdf )
+- Permis de port d'Armes ( rien de particulier )
+- Listing des chambres et des patients qui y sommeillent ( Trello fait à la main)

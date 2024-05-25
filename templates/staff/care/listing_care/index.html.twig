@@ -19,17 +19,25 @@
 				<td>Nom du soin</td>
 				<td>Type du soin</td>
 				<td>Prix</td>
+				<td>Utilitaire</td>
 				<td>Voir</td>
 				<td>Supprimer</td>
 			</thead>
 			<tbody>
 				{% for care in cares %}
+					{% if care.component is null  %}
+
+						{% set utility = '' %}
+					{% else %}
+						{% set utility = care.component.name  %}
+					{% endif %}
 					<tr>
 						<td>{{care.name}}</td>
 						<td>
 							{{care.category.name}}
 						</td>
 						<td>{{care.price}}</td>
+						<td>{{utility}}</td>
 						<td>
 							<a href="{{path('app_staff_care_modify',{ 'slug':care.slug})}}">
 								<i class=" bi bi-pencil-square"></i>

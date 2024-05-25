@@ -35,7 +35,7 @@ class CareSheetService{
         }
         else
             $careSheet->setPaid(false);
-        $careSheet->setDateCare(new DateTime("now",new DateTimeZone('Europe/Paris')));
+        $careSheet->setDateCare(new DateTimeImmutable ("now",new DateTimeZone('Europe/Paris')));
         $careSheet->setMedic($medic);
         $this->saveCareSheetItems($em, $request, $careRepository, $careSheet);
     }
@@ -53,6 +53,7 @@ class CareSheetService{
             $careItem = new CareSheetItem();
             $careItem->setCare($careRepository->findOneBy(["slug"=>$slug]));
             $careItem->setQuantity($quantity);
+            $careItem->getCare()->getComponent()->setQuantity($careItem->getCare()->getComponent()->getQuantity()-$quantity);
             $careSheet->addCareSheetItem($careItem);
             $em->persist($careItem);
             $total+=$quantity*$careItem->getCare()->getPrice();

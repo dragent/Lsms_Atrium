@@ -39,9 +39,9 @@
 						{{caresheet.invoice}}$
 					</div>
 					<div class="col col-2">
-						<ul>
+						<ul class="">
 							{% for item in caresheet.caresheetitems %}
-								<li>
+								<li class="list-group-item">
 									{{item.care.name}}
 									<span class="badge bg-dark rounded-pill">{{item.quantity}}</span>
 								</li>

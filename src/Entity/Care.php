@@ -36,6 +36,9 @@ class Care
     #[ORM\OneToMany(targetEntity: CareSheetItem::class, mappedBy: 'care')]
     private Collection $careSheetItems;
 
+    #[ORM\OneToOne(cascade: ['persist', 'remove'])]
+    private ?Objects $component = null;
+
     public function __construct()
     {
         $this->careSheetItems = new ArrayCollection();
@@ -121,6 +124,18 @@ class Care
                 $careSheetItem->setCare(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getComponent(): ?Objects
+    {
+        return $this->component;
+    }
+
+    public function setComponent(?Objects $component): static
+    {
+        $this->component = $component;
 
         return $this;
     }

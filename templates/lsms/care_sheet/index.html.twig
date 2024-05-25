@@ -7,6 +7,10 @@
 		</b>
 	</h2>
 {% endblock %}
+{% block stylesheets %}
+	{{ encore_entry_link_tags('lsms') }}
+{% endblock %}
+
 
 {% block body %}
 	<form action="" method="post" class="form-inline py-3 bg-class w-75 mx-auto mb-5">
@@ -41,13 +45,13 @@
 						<div id="collapse_{{category.slug}}" class="accordion-collapse collapse show" aria-labelledby="collapse_{{category.slug}}">
 							{% for care in category.cares %}
 								<div class="accordion-body row align-items-center" id="{{care.slug}}">
-									<div class="col col-2">
+									<div class="col col-4">
 										{{care.name}}
 									</div>
 									<div class="offset-1 col-2" id="price-{{care.slug}}">
 										{{care.price}}$
 									</div>
-									<div class="form-group col-3">
+									<div class="form-group col-4">
 										<input type="text" inputmode="numeric" pattern="[0-9]+" class="form-control col" min="0" max="10000" placeholder="Quantité" name="quantity-{{care.slug}}" id="quantity-{{care.slug}}">
 									</div>
 								</div>
@@ -57,11 +61,11 @@
 				</div>
 			{% endfor %}
 			<div class="row  mt-2">
-				<div class="col col-5 form-check form-switch d-flex justify-content-center">
+				<div class="col col-7 form-check form-switch d-flex justify-content-center">
 					<input class="form-check-input" type="checkbox" role="switch" id="distanceSwitch" name="distance" disabled/>
 					<label class="form-check-label " for="distanceSwitch">Distance supérieur à 5km</label>
 				</div>
-				<div class="col offset-1 form-check form-switch d-flex justify-content-center">
+				<div class="col form-check form-switch d-flex justify-content-center">
 					<input class="form-check-input" type="checkbox" role="switch" id="isPaid" name="isPaid" checked/>
 					<label class="form-check-label " for="isPaid">Payé sur place</label>
 				</div>

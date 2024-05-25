@@ -1,0 +1,60 @@
+{% extends 'lsms_base.html.twig' %}
+
+{% block title %}Liste des Commandes
+{% endblock %}
+
+{% block titleBis %}
+	<h2 class="text-center">
+		<b>
+			<u>Liste des Commandes</u>
+		</b>
+	</h2>
+{% endblock %}
+
+{% block body %}
+	<div class="table-responsive w-75 mx-auto mt-5">
+		<table class="table table-striped table-hover table-borderless text-center">
+			<thead class="table-dark">
+				<td>Date de commande</td>
+				<td>Docteur</td>
+				<td>Produits</td>
+				<td>Facture</td>
+				<td>Date de reçu</td>
+			</thead>
+			<tbody>
+				{% for order in orders %}
+					<tr>
+						<td class="align-middle">{{order.orderAt|date("d/m/Y")}}</td>
+						<td class="align-middle">
+							{{ order.medic.Username}}
+						</td>
+						<td>
+							<ul>
+								{% for item in order.orderItems %}
+									<li class="list-group-item">
+										{{item.object.name}}
+										<span class="badge bg-dark rounded-pill">{{item.quantity}}</span>
+									</li>
+								{% endfor %}
+							</ul>
+						</td>
+						<td class="align-middle">
+							{{ order.invoice}}
+						</td>
+						<td class="align-middle">
+							{% if order.receiveAt is null %}
+								<button class=" btn btn-dark" name="commande" value="{{order.id}}">Reçu</td>
+							{% else %}
+								{{order.receiveAt|date("d/m/Y")}}
+							{% endif %}
+						</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	</div>
+{% endblock %}
+
+{% block javascripts %}
+	{{ encore_entry_script_tags('validateOrder') }}
+{% endblock %}

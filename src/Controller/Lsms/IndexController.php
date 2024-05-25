@@ -21,10 +21,10 @@ class IndexController extends AbstractController
         $checkRole =  $connectService->checkLsms($this->getUser(),$session,$this->isGranted('ROLE_LSMS'));
         if( $checkRole!==true ) 
             return $this->redirectToRoute($checkRole,[],302);
-        $careCategory = $categoryHealthRepository->findAll();
+        $careCategories = $categoryHealthRepository->findAll();
         
         return $this->render('lsms/index/index.html.twig', [
-            'categories'=>$careCategory,
+            'categories'=>$careCategories,
             'titleBis'=>'Tarif'
         ]);
     }

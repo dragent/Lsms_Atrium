@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\ObjectsRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -16,7 +18,7 @@ class Objects
 
     #[ORM\Column(length: 100)]
     #[Assert\Length(
-        min: 4,
+        min: 3,
         minMessage: "Vous devez mettre un nom de produit de 4 lettre"
     )]
     private ?string $name = null;
@@ -43,6 +45,17 @@ class Objects
 
     #[ORM\Column(length: 100,nullable: true)]
     private ?string $slug = null;
+
+    /**
+     * @var Collection<int, Quantity>
+     */
+    #[ORM\OneToMany(targetEntity: Quantity::class, mappedBy: 'finalProduct', orphanRemoval: true, cascade:['persist'])]
+    private Collection $quantitiesComponent;
+
+    public function __construct()
+    {
+        $this->quantitiesComponent = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -108,4 +121,35 @@ class Objects
 
         return $this;
     }
+
+    /**
+     * @return Collection<int, Quantity>
+     */
+    public function getQuantitiesComponent(): Collection
+    {
+        return $this->quantitiesComponent;
+    }
+
+    public function addQuantitiesComponent(Quantity $quantitiesComponent): static
+    {
+        if (!$this->quantitiesComponent->contains($quantitiesComponent)) {
+            $this->quantitiesComponent->add($quantitiesComponent);
+            $quantitiesComponent->setFinalProduct($this);
+        }
+
+        return $this;
+    }
+
+    public function removeQuantitiesComponent(Quantity $quantitiesComponent): static
+    {
+        if ($this->quantitiesComponent->removeElement($quantitiesComponent)) {
+            // set the owning side to null (unless already changed)
+            if ($quantitiesComponent->getFinalProduct() === $this) {
+                $quantitiesComponent->setFinalProduct(null);
+            }
+        }
+
+        return $this;
+    }
+
 }

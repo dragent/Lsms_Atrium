@@ -3,8 +3,10 @@
 namespace App\Form\Staff\Care;
 
 use App\Entity\Care;
+use App\Entity\Objects;
 use App\Entity\CategoryHealth;
 use Doctrine\ORM\QueryBuilder;
+use App\Repository\ObjectsRepository;
 use Symfony\Component\Form\AbstractType;
 use App\Repository\CategoryHealthRepository;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -29,6 +31,16 @@ class ModifyCareType extends AbstractType
                 return $er->createQueryBuilder('cg')
                     ->orderBy('cg.position', 'ASC');
             },
+        ])
+        ->add('component', EntityType::class, [
+            'class' => Objects::class,
+            'choice_label' => 'name',
+            'label' =>'Utilitaire',
+            'required'   => false,
+            'query_builder' => function (ObjectsRepository $er): QueryBuilder {
+                return $er->createQueryBuilder('c')
+                    ->orderBy('c.name', 'ASC');
+            }
         ])
         ;
     }

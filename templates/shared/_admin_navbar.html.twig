@@ -1,6 +1,6 @@
-<div class="offcanvas offcanvas-start w-25" tabindex="-1" id="offcanvas" data-bs-keyboard="false" data-bs-backdrop="false">
-	<div class="offcanvas-header">
-		<h2 class="offcanvas-title d-none d-sm-block" id="offcanvas">Administration</h2>
+<div class="offcanvas offcanvas-start w-25" tabindex="-1" id="offcanvas" data-bs-keyboard="false" data-bs-backdrop="false" id="adminNavbar">
+	<div class=" offcanvas-header">
+		<h2 class="offcanvas-title d-none d-sm-block text-truncate" id="offcanvas">Administration</h2>
 		<button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"></button>
 	</div>
 	<div class="offcanvas-body px-0" aria-modal="true">
@@ -9,34 +9,34 @@
 				<li class="nav-item">
 					<a href="{{path('app_lsms_index')}}" class="nav-link text-truncate">
 						<i class="fs-5 bi-house-fill"></i>
-						<span class="ms-1 d-none d-sm-inline">Acceuil</span>
+						<span class="ms-1 d-none d-lg-inline">Acceuil</span>
 					</a>
 				</li>
 			{% else %}
 				<li class="nav-item">
-					<a href="{{path('app_index')}}" class="nav-link text-truncate">
+					<a href="{{path('app_index')}}" class="nav-link text-truncate ">
 						<i class="fs-5 bi-house-fill"></i>
-						<span class="ms-1 d-none d-sm-inline">Acceuil</span>
+						<span class="ms-1 d-none d-lg-inline">Acceuil</span>
 					</a>
 				</li>
 
 			{% endif %}
 			<li class="nav-item">
-				<a href="{{path('app_staff')}}" class="nav-link text-truncate">
+				<a href="{{path('app_staff')}}" class="nav-link text-truncate d-inline-block">
 					<i class="fs-5 bi-tools"></i>
-					<span class="ms-1 d-none d-sm-inline">Acceuil Admin</span>
+					<span class="ms-1 d-none d-lg-inline">Acceuil Admin</span>
 				</a>
 			</li>
 			<li class="nav-item">
 				<a href="{{path('app_staff_staff')}}" class="nav-link text-truncate">
-					<i class="fs-5 bi-person-fill"></i>
-					<span class="ms-1 d-none d-sm-inline">Personnel</span>
+					<i class="fs-1 bi-person-fill"></i>
+					<span class="ms-1 d-none d-lg-inline">Personnel</span>
 				</a>
 			</li>
 			<li class="dropdown">
 				<a href="#" class="nav-link dropdown-toggle  text-truncate" id="dropdown" data-bs-toggle="dropdown" aria-expanded="false">
 					<i class="fs-5 bi-house-heart-fill"></i>
-					<span class="ms-1 d-none d-sm-inline">Chambre</span>
+					<span class="ms-1 d-none d-lg-inline">Chambre</span>
 				</a>
 				<ul class="dropdown-menu text-small shadow" aria-labelledby="dropdown">
 					<li>
@@ -50,7 +50,7 @@
 			<li class="dropdown">
 				<a href="#" class="nav-link dropdown-toggle  text-truncate" id="dropdown" data-bs-toggle="dropdown" aria-expanded="false">
 					<i class="fs-5 bi-prescription2"></i>
-					<span class="ms-1 d-none d-sm-inline">Objets</span>
+					<span class="ms-1 d-none d-lg-inline">Objets</span>
 				</a>
 				<ul class="dropdown-menu text-small shadow" aria-labelledby="dropdown">
 					<li>
@@ -64,7 +64,7 @@
 			<li class="dropdown">
 				<a href="#" class="nav-link dropdown-toggle  text-truncate" id="dropdown" data-bs-toggle="dropdown" aria-expanded="false">
 					<i class="bi bi-folder-fill"></i>
-					<span class="ms-1 d-none d-sm-inline">Categorie de soin</span>
+					<span class="ms-1 d-none d-lg-inline">Categorie de soin</span>
 				</a>
 				<ul class="dropdown-menu text-small shadow" aria-labelledby="dropdown">
 					<li>
@@ -78,7 +78,7 @@
 			<li class="dropdown">
 				<a href="#" class="nav-link dropdown-toggle  text-truncate" id="dropdown" data-bs-toggle="dropdown" aria-expanded="false">
 					<i class="bi bi-heart-pulse-fill"></i>
-					<span class="ms-1 d-none d-sm-inline">Soins</span>
+					<span class="ms-1 d-none d-lg-inline">Soins</span>
 				</a>
 				<ul class="dropdown-menu text-small shadow" aria-labelledby="dropdown">
 					<li>
@@ -92,7 +92,7 @@
 			<li class="dropdown">
 				<a href="#" class="nav-link dropdown-toggle  text-truncate" id="dropdown" data-bs-toggle="dropdown" aria-expanded="false">
 					<i class="bi bi-journal-medical"></i>
-					<span class="ms-1 d-none d-sm-inline">Logs</span>
+					<span class="ms-1 d-none d-lg-inline">Logs</span>
 				</a>
 				<ul class="dropdown-menu text-small shadow" aria-labelledby="dropdown">
 					<li>
@@ -102,7 +102,7 @@
 						<a class="dropdown-item" href="{{path('app_staff_log_caresheet')}}">Fiche de soins</a>
 					</li>
 					<li>
-						<a class="dropdown-item" href="">Commande</a>
+						<a class="dropdown-item" href="{{path(('app_staff_log_order'))}}">Commande</a>
 					</li>
 					<li>
 						<a class="dropdown-item" href="">Comptabilité</a>
@@ -115,7 +115,7 @@
 			<li>
 				<a href="{{path('app_logout')}}" class="nav-link text-truncate">
 					<i class="fs-5 bi-door-open-fill"></i>
-					<span class="ms-1 d-none d-sm-inline">Deconnexion</span>
+					<span class="ms-1 d-none d-lg-inline">Deconnexion</span>
 				</a>
 			</li>
 		</ul>

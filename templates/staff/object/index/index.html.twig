@@ -18,22 +18,33 @@
 				<td>Quantité Actuelle</td>
 				<td>Seuil Limite</td>
 				<td>Prix d'achat</td>
+				<td>Composants</td>
 				<td>Voir</td>
 				<td>Supprimer</td>
 			</thead>
 			<tbody>
 				{% for item in inventory %}
-					<tr>
-						<td>{{item.name}}</td>
-						<td>{{item.quantity}}</td>
-						<td>{{item.quantityTrigger}}</td>
-						<td>{{item.buyPrice}}</td>
+					<tr class="align-items-center">
+						<td class="align-middle">{{item.name}}</td>
+						<td class="align-middle">{{item.quantity}}</td>
+						<td class="align-middle">{{item.quantityTrigger}}</td>
+						<td class="align-middle">{{item.buyPrice}}</td>
 						<td>
+							<ul>
+								{% for component in item.quantitiesComponent %}
+									<li class="list-group-item">
+										<span>{{component.component.name}}</span>
+										<span class="badge bg-dark rounded-pill">{{component.quantity}}</span>
+									</li>
+								{% endfor %}
+							</ul>
+						</td>
+						<td class="align-middle">
 							<a href="{{path('app_staff_object_modify',{ 'slug':item.slug})}}">
 								<i class=" bi bi-pencil-square"></i>
 							</a>
 						</td>
-						<td>
+						<td class="align-middle">
 							<a href="{{path('app_staff_object_delete',{ 'slug':item.slug})}}">
 								<i class="fs-5 bi-trash3-fill"></i>
 							</a>

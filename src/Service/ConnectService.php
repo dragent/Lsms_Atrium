@@ -42,4 +42,19 @@ Class ConnectService{
         }
         return true;
     }
+
+    public function checkCivils(?User $user, Session $session, bool $isNotLsms)
+    {
+        if($user === null)
+        {
+            $session->getFlashBag()->set('warning', "Veuillez vous connecter");
+            return 'app_login';
+        }
+        if(!$isNotLsms)
+        {
+            $session->getFlashBag()->set('warning', "Vous n'avez pas les droits pour accéder à cette page");
+            return 'app_lsms_index';
+        }
+        return true;
+    }
 }

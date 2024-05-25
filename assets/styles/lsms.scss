@@ -1,0 +1,64 @@
+@import "~bootstrap/scss/bootstrap";
+
+
+
+
+@include media-breakpoint-only(sm) {
+    h2 {
+        font-size: 1.8rem !important;
+    }
+
+    .accordion-button {
+        font-size: 1.6rem !important;
+    }
+
+    .accordion-body {
+        font-size: 1.4rem !important;
+    }
+
+    h1 {
+        font-size: 6rem !important;
+    }
+
+    .navbar-toggler-icon {
+        font-size: 2rem !important;
+    }
+
+    .nav-item {
+        font-size: 1.8rem !important;
+    }
+
+    .dropdown-item {
+        font-size: 1.5rem !important;
+    }
+}
+
+@include media-breakpoint-only(md) {
+    h2 {
+        font-size: 3rem !important;
+    }
+
+    .accordion-button {
+        font-size: 1.5rem !important;
+    }
+
+    .accordion-body {
+        font-size: 1.3rem !important;
+    }
+
+    h1 {
+        font-size: 4rem !important;
+    }
+
+    .navbar-toggler-icon {
+        font-size: 1.5rem !important;
+    }
+
+    .nav-item {
+        font-size: 1.3rem !important;
+    }
+
+    .dropdown-item {
+        font-size: 1rem !important;
+    }
+}
