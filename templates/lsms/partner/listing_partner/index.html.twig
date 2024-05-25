@@ -53,18 +53,18 @@
 				<td>Supprimer</td>
 			</thead>
 			<tbody>
-				{% for parner in partners %}
-					<tr class="align-items-center">
-						<td>{{parner.name}}</td>
+				{% for partner in partners %}
+					<tr>
+						<td>{{partner.name}}</td>
 						<td></td>
 						<td>
-							<a href="{{path('app_staff_care_modify',{ 'slug':care.slug})}}">
-								<i class=" bi bi-pencil-square"></i>
+							<a href="">
+								<i class=" bi bi-pencil-square text-dark"></i>
 							</a>
 						</td>
 						<td>
-							<a href="{{path('app_staff_care_delete',{ 'slug':care.slug})}}">
-								<i class="fs-5 bi-trash3-fill"></i>
+							<a href="{{path('app_staff_partner_delete',{ 'id':partner.id})}}">
+								<i class="fs-5 bi-trash3-fill text-danger"></i>
 							</a>
 						</td>
 					</tr>

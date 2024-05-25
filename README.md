@@ -40,7 +40,7 @@ Le code se basera sur une connexion via discord et aura pas mal d'évolution pou
             - [x] Ajout 
             - [x] Listing
                 - [ ] Modifier / Accepter Paiement 
-            - [ ] Supprimer
+            - [x] Supprimer
     - [ ] Comptabilité
     - [ ] Agenda 
         - [ ] Format Trello
