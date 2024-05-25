@@ -20,7 +20,7 @@ Le code se basera sur une connexion via discord et aura pas mal d'évolution pou
         - [ ] Demande de Rendez vous
         - [ ] Planning des rendez vous
 - [ ] Lsms
- - [x] Accueil
+    - [x] Accueil
     - [x] Fiche de soin 
     - [x] Inventaire
         - [x] Listing
@@ -86,16 +86,7 @@ Le code se basera sur une connexion via discord et aura pas mal d'évolution pou
         - [x] Commande
         - [ ] Service des docteurs
         - [ ] Comptabilité
- 
-## Partie terminée
 
-- [ ] Civils
-- [ ] Lsms
-   
-    - [ ] Ressource Humaines / ROLE Directeur
-         - [ ] Partenaire
-- [ ] Admin
-   
 
 
 ## Prévision pour la v2
