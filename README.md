@@ -29,20 +29,16 @@ Le code se basera sur une connexion via discord et aura pas mal d'évolution pou
     - [x] Commande
         - [x] Listing
         - [x] Validation
-    - [ ] Ressource Humaines / ROLE Directeur
-        - [ ] Personnel
-            - [ ] Listing
-            - [ ] Ajout 
-            - [ ] Autorisation
-            - [ ] Grade Promotion / Retrogradation
-            - [ ] Licensiement
-        - [ ] Partenaire
+    - [x] Ressource Humaines / ROLE Directeur
+        - [x] Personnel
+            - [x] Listing
+        - [x] Partenaire
             - [x] Ajout 
             - [x] Listing
-                - [ ] Modifier / Accepter Paiement 
+                - [x] Modifier / Accepter Paiement 
             - [x] Supprimer
-    - [ ] Comptabilité
-    - [ ] Agenda 
+    - [ ] Comptabilité ( a faire )
+    - [ ] Agenda  ( début )
         - [ ] Format Trello
         - [ ] Ajout Rdv
         - [ ] Ajout Event
@@ -50,13 +46,10 @@ Le code se basera sur une connexion via discord et aura pas mal d'évolution pou
         - [ ] Suppression
     - [ ] Exemple
         - [ ] Dossier Médical ( ROLE AMBULANCIER )
-        - [ ] Visite Médicale ( Autorisation de Visite Médicale ) // Plus tard 
-        - [ ] PPA ( Autorisation de PPA ) // Plus tard 
-        - [ ] Test d'aptitude Physique ( Autorisation d'aptitude physique ) // Plus tard
         ------------------------
         - [ ] Cours ( pour les novices comme moi en doc )
 - [ ] Admin
- - [x] Navbar 
+    - [x] Navbar 
     - [x] Accueil
         - [x] Maj toutes les secondes
     - [x] Personnel
@@ -92,8 +85,13 @@ Le code se basera sur une connexion via discord et aura pas mal d'évolution pou
 ## Prévision pour la v2
 - Visites médicales ( Pdf + Discord )
 - Permis de port d'Armes ( rien de particulier )
+- Promotion / Retrogradation / Licenciement
 - User Rajout de l'autorisation de faire :  
     - Les visites médicales
     - Le PPA
     - Le test physique
 - Listing des chambres et des patients qui y sommeillent ( Trello fait à la main)
+- exemples des dossiers
+        - [ ] Visite Médicale ( Autorisation de Visite Médicale ) // Plus tard 
+        - [ ] PPA ( Autorisation de PPA ) // Plus tard 
+        - [ ] Test d'aptitude Physique ( Autorisation d'aptitude physique ) // Plus tard

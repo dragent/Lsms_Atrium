@@ -58,12 +58,12 @@
 						<td>{{partner.name}}</td>
 						<td></td>
 						<td>
-							<a href="">
+							<a href="{{path('app_lsms_partner_modify',{ 'slug':partner.slug})}}">
 								<i class=" bi bi-pencil-square text-dark"></i>
 							</a>
 						</td>
 						<td>
-							<a href="{{path('app_staff_partner_delete',{ 'id':partner.id})}}">
+							<a href="{{path('app_lsms_partner_delete',{ 'id':partner.id})}}">
 								<i class="fs-5 bi-trash3-fill text-danger"></i>
 							</a>
 						</td>

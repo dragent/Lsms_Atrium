@@ -13,12 +13,12 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class RemovePartnerController extends AbstractController
 {
-    #[Route('//partenaire/suppression', name: 'app_staff_partner_delete')]
+    #[Route('//partenaire/suppression', name: 'app_lsms_partner_delete')]
     public function index(Request $request, ConnectService $connectService,PartnerRepository $partnerRepository, PartnerService $partnerService): Response
     {
         /** @var Session */
         $session = $request->getSession();
-        $checkRole =  $connectService->checkLsms($this->getUser(),$session,$this->isGranted('ROLE_LSMS'));
+        $checkRole =  $connectService->checkLsms($this->getUser(),$session,$this->isGranted('ROLE_DIRECTION'));
         if( $checkRole!==true ) 
             return $this->redirectToRoute($checkRole,[],302);
         if($request->query->count()>0)

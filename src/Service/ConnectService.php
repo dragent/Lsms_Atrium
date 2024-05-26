@@ -38,7 +38,10 @@ Class ConnectService{
         if(!$isGranted)
         {
             $session->getFlashBag()->set('warning', "Vous n'avez pas les droits pour accéder à cette page");
-            return 'app_index';
+            if(array_search("ROLE_LSMS",$user->getRoles()) === false )
+                return 'app_index';
+            else    
+                return 'app_lsms_index';
         }
         return true;
     }

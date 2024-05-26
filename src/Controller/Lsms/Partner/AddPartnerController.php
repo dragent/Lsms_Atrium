@@ -19,7 +19,7 @@ class AddPartnerController extends AbstractController
     {
         /** @var Session */
         $session = $request->getSession();
-        $checkRole =  $connectService->checkLsms($this->getUser(),$session,$this->isGranted('ROLE_LSMS'));
+        $checkRole =  $connectService->checkLsms($this->getUser(),$session,$this->isGranted('ROLE_DIRECTION'));
         if( $checkRole!==true ) 
             return $this->redirectToRoute($checkRole,[],302);
         if($request->get('action')==="accept")

@@ -40,7 +40,6 @@ class CareSheetService{
             $partner->addCareSheet($careSheet);
             $this->em->persist($partner);
         }    
-        $careSheet->setPartner($request->get("partner"));
         $request->remove("partner");
         if( $request->has("distance"))
         {
@@ -74,7 +73,13 @@ class CareSheetService{
             $careItem = new CareSheetItem();
             $careItem->setCare($this->careRepository->findOneBy(["slug"=>$slug]));
             $careItem->setQuantity($quantity);
-            $careItem->getCare()->getComponent()->setQuantity($careItem->getCare()->getComponent()->getQuantity()-$quantity);
+            if($careItem->getCare()->hasComponent())
+            {
+                $component =  $careItem->getCare()->getComponent();
+                $component->setQuantity($component->getQuantity()-$quantity);
+                $this->em->persist($component);
+
+            }
             $careSheet->addCareSheetItem($careItem);
             $this->em->persist($careItem);
             $total+=$quantity*$careItem->getCare()->getPrice();

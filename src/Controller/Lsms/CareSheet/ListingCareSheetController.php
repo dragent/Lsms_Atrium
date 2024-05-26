@@ -27,15 +27,15 @@ class ListingCareSheetController extends AbstractController
         $caresheets =  $careSheetRepository->findBy([],["medic"=>"ASC","dateCare"=>"ASC"]);
         else
             $caresheets =  $careSheetRepository->findBy(["medic"=>$this->getUser()],["medic"=>"ASC","dateCare"=>"ASC"]);
-            if($request->get("action")=="pay")
-            {
-                /** @var CareSheet  */
-                $caresheet = $careSheetRepository->find($request->get('id'));
-                $caresheet->setPaid(true);
-                $em->persist($caresheet);
-                $em->flush();
-                return $this->json("done");
-            }
+        if($request->get("action")=="pay")
+        {
+            /** @var CareSheet  */
+            $caresheet = $careSheetRepository->find($request->get('id'));
+            $caresheet->setPaid(true);
+            $em->persist($caresheet);
+            $em->flush();
+            return $this->json("done");
+        }
         return $this->render('lsms/care_sheet/listing/index.html.twig', [
             'caresheets'=>$caresheets
         ]);

@@ -10,7 +10,7 @@ function pay(elem) {
 
     $parent = $(elem).parent();
     $.ajax({
-        url: "",
+        url: "/lsms/fiche-de-soin/controle",
         method: "POST",
         data: { action: 'pay', id: $($parent).attr('id') },
     })
