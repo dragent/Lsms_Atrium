@@ -1,12 +1,13 @@
 {% extends 'Lsms_base.html.twig' %}
 
-{% block title %}Liste de Fiche de soins
+{% block title %}
+	{{partner.name}}
 {% endblock %}
 
 {% block titleBis %}
 	<h2 class="text-center">
 		<b>
-			<u>Liste des Fiches de soins</u>
+			<u>{{partner.name}}</u>
 		</b>
 	</h2>
 {% endblock %}
@@ -18,7 +19,7 @@
 {% block body %}
 	{% set act = "" %}
 	<div class="accordion w-75 mx-auto mb-3" id="accordionCare" alt="Max-width 75%">
-		{% for caresheet in caresheets %}
+		{% for caresheet in partner.caresheets %}
 			{% if not act == caresheet.medic.slug %}
 				{% if  not act =="" %}
 					{
@@ -41,9 +42,7 @@
 						{{caresheet.dateCare|date("d/m/Y")}}
 					</div>
 					<div class="col col-sm-2 text-center accordion-body-item">
-						{% if not caresheet.partner is null %}
-							{{caresheet.partner.name}}
-						{% endif %}
+						{{partner.name}}
 					</div>
 					<div class="col col-sm-1 text-center accordion-body-item text-center">
 						{{caresheet.invoice}}$

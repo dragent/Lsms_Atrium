@@ -1,0 +1,55 @@
+{% extends 'admin_base.html.twig' %}
+
+{% block title %}
+	Logs - Comptabilité
+{% endblock %}
+
+{% block titleBis %}
+	<h2 class="text-center">
+		<b>
+			<u>Logs - Comptabilité</u>
+		</b>
+	</h2>
+{% endblock %}
+
+{% block body %}
+	{% if not comptability is null %}
+		<h3 class="text-center">Coffre :
+			{{comptability.treasury}}$
+		</h3>
+		<div class="table-responsive w-75 mx-auto mt-3">
+			<table class="table table-striped table-hover table-borderless text-center">
+				<thead class="table-dark">
+
+					<td>Date</td>
+					<td>Raison</td>
+					<td class="text-success">
+						<b>Dépôt</b>
+					</td>
+					<td class="text-danger">
+						<b>Retrait</b>
+					</td>
+				</thead>
+				<tbody>
+					{% for transaction in comptability.transactions %}
+						<tr>
+							<td>{{transaction.doneAt|date("d/m/Y")}}</td>
+							<td>{{transaction.reason}}</td>
+							{% if transaction.income %}
+								<td class="text-success">
+									<b>{{transaction.price}}</b>
+								</td>
+								<td class="text-danger">-</td>
+							{% else %}
+								<td class="text-success">-</td>
+								<td class="text-danger">
+									<b>{{transaction.price}}</b>
+								</td>
+							{% endif %}
+						</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+		</div>
+	{% endif %}
+{% endblock %}

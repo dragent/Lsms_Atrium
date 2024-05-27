@@ -7,6 +7,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use App\Repository\CareRepository;
+use Symfony\Component\Validator\Constraints\Length;
 
 #[ORM\Entity(repositoryClass: CareRepository::class)]
 class Care
@@ -138,5 +139,10 @@ class Care
         $this->component = $component;
 
         return $this;
+    }
+
+    public function hasComponent(): bool
+    {
+        return  $this->component !==null;
     }
 }

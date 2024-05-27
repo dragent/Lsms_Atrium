@@ -2,12 +2,10 @@
 
 namespace App\Controller\Lsms\CareSheet;
 
-use App\Repository\CareRepository;
 use App\Repository\CategoryHealthRepository;
 use App\Repository\PartnerRepository;
 use App\Service\CareSheetService;
 use App\Service\ConnectService;
-use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\HttpFoundation\Session\Session;
@@ -17,7 +15,7 @@ use Symfony\Component\HttpFoundation\Request;
 class CareSheetController extends AbstractController
 {
     #[Route('/lsms/fiche-soins', name: 'app_lsms_care_sheet')]
-    public function index(Request $request, ConnectService $connectService,CareRepository $careRepository, CategoryHealthRepository $categoryHealthRepository, PartnerRepository $partnerRepository, CareSheetService $careSheetService, EntityManagerInterface $em): Response
+    public function index(Request $request, ConnectService $connectService,CategoryHealthRepository $categoryHealthRepository, PartnerRepository $partnerRepository, CareSheetService $careSheetService): Response
     {    
         /** @var Session */
         $session = $request->getSession();
@@ -26,7 +24,7 @@ class CareSheetController extends AbstractController
             return $this->redirectToRoute($checkRole,[],302);
         $careCategories = $categoryHealthRepository->findAll();
         if($request->request->count()!=0)
-            $careSheetService->saveCareSheet($em,$request->request,$careRepository,$this->getUser(), $partnerRepository);
+            $careSheetService->saveCareSheet($request->request,$this->getUser());
         $partners = $partnerRepository->findBy([],["name"=>"ASC"]);
         return $this->render('lsms/care_sheet/index.html.twig', [
             'categories'=>$careCategories,

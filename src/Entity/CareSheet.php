@@ -32,14 +32,15 @@ class CareSheet
     #[ORM\Column]
     private ?int $invoice = null;
 
-    #[ORM\Column]
-    private ?string $partner = null;
 
     /**
      * @var Collection<int, CareSheetItem>
      */
     #[ORM\OneToMany(targetEntity: CareSheetItem::class, mappedBy: 'caresheet', orphanRemoval: true)]
     private Collection $careSheetItems;
+
+    #[ORM\ManyToOne(inversedBy: 'careSheets')]
+    private ?Partner $partner = null;
 
     public function __construct()
     {
@@ -111,18 +112,6 @@ class CareSheet
         return $this;
     }
 
-    public function getPartner(): ?string
-    {
-        return $this->partner;
-    }
-
-    public function setPartner(?string $partner): static
-    {
-        $this->partner = $partner;
-
-        return $this;
-    }
-
     /**
      * @return Collection<int, CareSheetItem>
      */
@@ -149,6 +138,18 @@ class CareSheet
                 $careSheetItem->setCaresheet(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getPartner(): ?Partner
+    {
+        return $this->partner;
+    }
+
+    public function setPartner(?Partner $partner): static
+    {
+        $this->partner = $partner;
 
         return $this;
     }

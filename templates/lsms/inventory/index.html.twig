@@ -22,7 +22,8 @@
 						{% for item in inventory %}
 							{% if item.buyPrice is null %}
 								<div class="group-form">
-									<label for="">{{item.name}}</label>
+									<label for="">{{item.name}}
+									</label>
 									<input type="text" name="{{item.slug}}" class="form-control">
 								</div>
 							{% endif %}
@@ -49,8 +50,10 @@
 					<div class="modal-body">
 						{% for item in inventory %}
 							{% if not item.buyPrice is null %}
-								<div class="group-form">
-									<label for="" name="{{item.id}}">{{item.name}}</label>
+								<div class="group-form mt-2">
+									<label for="" name="{{item.id}}">{{item.name}}
+										:
+										{{item.buyPrice}}$</label>
 									<input type="text" name="{{item.slug}}" class="form-control">
 								</div>
 							{% endif %}

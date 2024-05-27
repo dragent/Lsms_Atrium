@@ -16,10 +16,17 @@ Le code se basera sur une connexion via discord et aura pas mal d'évolution pou
             - [x] Récupération des roles
 - [ ] Civils
     - [x] Tarifs
+<<<<<<< HEAD
     - [ ] Demande de Rendez vous
     - [ ] Planning des rendez vous
+=======
+    - [ ] Rendez vous
+        - [ ] Demande de Rendez vous
+        - [ ] Planning des rendez vous
+>>>>>>> comptability
 - [ ] Lsms
     - [x] Accueil
+    - [ ] Prise de service ( A voir si ça peut peut être fait avec le rp )
     - [x] Fiche de soin 
     - [x] Inventaire
         - [x] Listing
@@ -28,13 +35,33 @@ Le code se basera sur une connexion via discord et aura pas mal d'évolution pou
     - [x] Commande
         - [x] Listing
         - [x] Validation
+<<<<<<< HEAD
     - [ ] Comptabilité
     - [ ] Agenda 
+=======
+    - [x] Ressource Humaines / ROLE Directeur
+        - [x] Personnel
+            - [x] Listing
+        - [x] Partenaire
+            - [x] Ajout 
+            - [x] Listing
+                - [x] Modifier / Accepter Paiement 
+            - [x] Supprimer
+    - [ ] Comptabilité ( a faire )
+    - [ ] Agenda  ( début )
+>>>>>>> comptability
         - [ ] Format Trello
         - [ ] Ajout Rdv
         - [ ] Ajout Event
         - [ ] Modification
         - [ ] Suppression
+<<<<<<< HEAD
+=======
+    - [ ] Exemple
+        - [ ] Dossier Médical ( ROLE AMBULANCIER )
+        ------------------------
+        - [ ] Cours ( pour les novices comme moi en doc )
+>>>>>>> comptability
 - [ ] Admin
     - [x] Navbar 
     - [x] Accueil
@@ -66,12 +93,24 @@ Le code se basera sur une connexion via discord et aura pas mal d'évolution pou
         - [x] Commande
         - [ ] Service des docteurs
         - [ ] Comptabilité
+<<<<<<< HEAD
  
  
+=======
+
+
+
+>>>>>>> comptability
 ## Prévision pour la v2
-- Licensiement ( Discord Api)
-- Promotion ( Discord Api)
-- Recrutement ( Discord Api )
-- Visites médicales ( Pdf )
+- Visites médicales ( Pdf + Discord )
 - Permis de port d'Armes ( rien de particulier )
+- Promotion / Retrogradation / Licenciement
+- User Rajout de l'autorisation de faire :  
+    - Les visites médicales
+    - Le PPA
+    - Le test physique
 - Listing des chambres et des patients qui y sommeillent ( Trello fait à la main)
+- exemples des dossiers
+        - [ ] Visite Médicale ( Autorisation de Visite Médicale ) // Plus tard 
+        - [ ] PPA ( Autorisation de PPA ) // Plus tard 
+        - [ ] Test d'aptitude Physique ( Autorisation d'aptitude physique ) // Plus tard
