@@ -21,6 +21,7 @@ Le code se basera sur une connexion via discord et aura pas mal d'évolution pou
         - [ ] Planning des rendez vous
 - [ ] Lsms
     - [x] Accueil
+    - [ ] Prise de service ( A voir si ça peut peut être fait avec le rp )
     - [x] Fiche de soin 
     - [x] Inventaire
         - [x] Listing

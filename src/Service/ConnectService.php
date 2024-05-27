@@ -7,6 +7,7 @@ use Symfony\Component\HttpFoundation\Session\Session;
 
 Class ConnectService{
 
+    /** Check if user is an admin */
     public function checkAdmin(?User $user, Session $session, bool $isGranted): String|Bool
     { 
         
@@ -27,6 +28,7 @@ Class ConnectService{
         return true;
     }
 
+    /** Check if user the good grade of lsms */
     public function checkLsms(?User $user, Session $session, bool $isGranted): String|Bool
     { 
         
@@ -46,6 +48,8 @@ Class ConnectService{
         return true;
     }
 
+    
+    /** Check if user isn t a lsms member */
     public function checkCivils(?User $user, Session $session, bool $isNotLsms)
     {
         if($user === null)

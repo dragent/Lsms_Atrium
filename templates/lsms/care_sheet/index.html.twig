@@ -23,7 +23,6 @@
 			<div class="col col-3">
 				<select name="partner" id="" class="form-select">
 					<option value="" selected>Aucun</option>
-					<option value="Event">Evenements</option>
 					{% for partner in partners %}
 						<option value="{{partner.name|upper}}">
 							{{partner.name}}

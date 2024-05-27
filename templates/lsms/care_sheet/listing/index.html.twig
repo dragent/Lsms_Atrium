@@ -41,7 +41,9 @@
 						{{caresheet.dateCare|date("d/m/Y")}}
 					</div>
 					<div class="col col-sm-2 text-center accordion-body-item">
-						{{caresheet.partner}}
+						{% if not caresheet.partner is null %}
+							{{caresheet.partner.name}}
+						{% endif %}
 					</div>
 					<div class="col col-sm-1 text-center accordion-body-item text-center">
 						{{caresheet.invoice}}$

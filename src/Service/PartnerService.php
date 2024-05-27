@@ -17,6 +17,9 @@ class PartnerService{
         $this->em = $em;
     }
 
+    /**
+     * Ajoute un partenaire
+     */
     public function add(string $name)
     {
         $partner = new Partner();
@@ -26,6 +29,9 @@ class PartnerService{
         $this->em->flush();
     }
 
+    /**
+     * Retire un partenaire
+     */
     public function remove(int $id)
     {
         $partner = $this->partnerRepository->find($id);

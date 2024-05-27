@@ -18,12 +18,14 @@ class CareSheetService{
     private EntityManagerInterface $em;
     private CareRepository $careRepository;
     private PartnerRepository $partnerRepository;
+    private ComptabilityService $comptabilityService;
 
-    public function __construct( EntityManagerInterface $em, CareRepository $careRepository, PartnerRepository $partnerRepository)
+    public function __construct( EntityManagerInterface $em, CareRepository $careRepository, PartnerRepository $partnerRepository, ComptabilityService $comptabilityService)
     {
         $this->em= $em;
         $this->careRepository =$careRepository;
         $this->partnerRepository =$partnerRepository;
+        $this->comptabilityService=$comptabilityService;
     }
 
     /**
@@ -86,6 +88,9 @@ class CareSheetService{
         }
         $careSheet->setInvoice($total);
         $this->em->persist($careSheet);
-        $this->em->flush();
+        if($careSheet->isPaid())
+            $this->comptabilityService->add($total,"Paiment d'une facture de ".$total."$");
+        else
+            $this->em->flush();
     }
 }
