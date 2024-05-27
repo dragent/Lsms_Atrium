@@ -38,7 +38,7 @@ Le code se basera sur une connexion via discord et aura pas mal d'évolution pou
             - [x] Listing
                 - [x] Modifier / Accepter Paiement 
             - [x] Supprimer
-    - [ ] Comptabilité ( a faire )
+    - [x] Comptabilité
     - [ ] Agenda  ( début )
         - [ ] Format Trello
         - [ ] Ajout Rdv
