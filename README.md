@@ -21,7 +21,7 @@ Le code se basera sur une connexion via discord et aura pas mal d'évolution pou
         - [ ] Planning des rendez vous
 - [ ] Lsms
     - [x] Accueil
-    - [ ] Prise de service ( A voir si ça peut peut être fait avec le rp )
+    - [x] Prise de service
     - [x] Fiche de soin 
     - [x] Inventaire
         - [x] Listing
@@ -49,7 +49,7 @@ Le code se basera sur une connexion via discord et aura pas mal d'évolution pou
         - [ ] Dossier Médical ( ROLE AMBULANCIER )
         ------------------------
         - [ ] Cours ( pour les novices comme moi en doc )
-- [ ] Admin
+- [x] Admin
     - [x] Navbar 
     - [x] Accueil
         - [x] Maj toutes les secondes
@@ -75,11 +75,11 @@ Le code se basera sur une connexion via discord et aura pas mal d'évolution pou
         - [x] Ajout
         - [x] Modification
         - [x] Suppresion
-    - [ ] Logs
+    - [x] Logs
         - [x] Fiche de Soin
         - [x] Commande
-        - [ ] Service des docteurs
-        - [ ] Comptabilité
+        - [x] Service des docteurs
+        - [x] Comptabilité
 <<<<<<< HEAD
  
  
