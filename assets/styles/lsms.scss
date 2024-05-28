@@ -1,9 +1,33 @@
 @import "~bootstrap/scss/bootstrap";
 
+#onServiceBtn,
+#onServiceLabel {
+    cursor: pointer;
+}
+
+body,
+
+header {
+    background-color: #B3D6F0
+}
+
+.bg-class {
+    /* From https://css.glass */
+    background: rgba(255, 255, 255, 0.45);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+html {
+    font-size: 1rem;
+}
 
 
 
-@include media-breakpoint-only(sm) {
+@include media-breakpoint-between(sm, lg) {
     h2 {
         font-size: 1.8rem !important;
     }
@@ -30,35 +54,5 @@
 
     .dropdown-item {
         font-size: 1.5rem !important;
-    }
-}
-
-@include media-breakpoint-only(md) {
-    h2 {
-        font-size: 3rem !important;
-    }
-
-    .accordion-button {
-        font-size: 1.5rem !important;
-    }
-
-    .accordion-body {
-        font-size: 1.3rem !important;
-    }
-
-    h1 {
-        font-size: 4rem !important;
-    }
-
-    .navbar-toggler-icon {
-        font-size: 1.5rem !important;
-    }
-
-    .nav-item {
-        font-size: 1.3rem !important;
-    }
-
-    .dropdown-item {
-        font-size: 1rem !important;
     }
 }

@@ -33,7 +33,9 @@
 						{{caresheet.dateCare|date("d/m/Y")}}
 					</div>
 					<div class="col col-2">
-						{{caresheet.partner}}
+						{% if not caresheet.partner is null %}
+							{{caresheet.partner.name}}
+						{% endif %}
 					</div>
 					<div class="col col-2">
 						{{caresheet.invoice}}$

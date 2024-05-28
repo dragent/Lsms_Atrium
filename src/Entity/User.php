@@ -53,10 +53,17 @@ class User implements UserInterface
     #[ORM\OneToMany(targetEntity: Order::class, mappedBy: 'medic')]
     private Collection $orders;
 
+    /**
+     * @var Collection<int, Service>
+     */
+    #[ORM\OneToMany(targetEntity: Service::class, mappedBy: 'medic', orphanRemoval: true)]
+    private Collection $services;
+
     public function __construct()
     {
         $this->careSheets = new ArrayCollection();
         $this->orders = new ArrayCollection();
+        $this->services = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -232,6 +239,36 @@ class User implements UserInterface
             // set the owning side to null (unless already changed)
             if ($order->getMedic() === $this) {
                 $order->setMedic(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Service>
+     */
+    public function getServices(): Collection
+    {
+        return $this->services;
+    }
+
+    public function addService(Service $service): static
+    {
+        if (!$this->services->contains($service)) {
+            $this->services->add($service);
+            $service->setMedic($this);
+        }
+
+        return $this;
+    }
+
+    public function removeService(Service $service): static
+    {
+        if ($this->services->removeElement($service)) {
+            // set the owning side to null (unless already changed)
+            if ($service->getMedic() === $this) {
+                $service->setMedic(null);
             }
         }
 
