@@ -38,16 +38,14 @@ class DiscordController extends AbstractController
     {  
         if($this->isGranted("ROLE_USER"))
         {
-            $user = $this->getUser();
             /** @var Session $session */
             $session = $request->getSession();
             $session->getFlashBag()->set('warning', "Vous n'avez pas les autorisations pour acceder à cette page"); 
-            if(in_array("ROLE_STAGIAIRE",$user->getRoles()))
+            if($this->isGranted("ROLE_STAGIAIRE"))
                 return $this->redirectToRoute('app_index');
-            if(in_array("ROLE_STAFF",$user->getRoles()))
+            if($this->isGranted("ROLE_STAFF"))
                 return $this->redirectToRoute('app_admin_index');
-            if(in_array("ROLE_CIVIL",$user->getRoles()))
-                return $this->redirectToRoute('app_index');
+            return $this->redirectToRoute('app_index');
         }
         $token=$request->get('token');
         if($this->isCsrfTokenValid(self::DISCORD_AUTH_KEY,$token))

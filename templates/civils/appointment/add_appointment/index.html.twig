@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Prise de Rendez-vous
+{% endblock %}
+
+{% block titleBis %}
+	<h2 class="text-center text-dark mt-2">
+		<b>
+			<u>Prise de Rendez-vous</u>
+		</b>
+	</h2>
+{% endblock %}
+
+{% block body %}
+	<div class="mx-auto w-75 bg-class mt-3">
+		<div class="w-50 mx-auto my-3">
+			{{ form_start(form) }}
+			{{form_row(form.reason)}}
+			{{form_row(form.number)}}
+			{{form_row(form.detail)}}
+			<div class="d-flex row">
+				<button type="submit" class="btn btn-dark w-50 mx-auto" name="action" value="save">Demander un rendez-vous</button>
+			</div>
+			{{ form_end(form)}}
+		</div>
+	</div>
+{% endblock %}

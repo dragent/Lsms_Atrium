@@ -17,7 +17,7 @@ Le code se basera sur une connexion via discord et aura pas mal d'évolution pou
 - [ ] Civils
     - [x] Tarifs
     - [ ] Rendez vous
-        - [ ] Demande de Rendez vous
+        - [x] Demande de Rendez vous
         - [ ] Planning des rendez vous
 - [ ] Lsms
     - [x] Accueil
@@ -40,15 +40,16 @@ Le code se basera sur une connexion via discord et aura pas mal d'évolution pou
             - [x] Supprimer
     - [x] Comptabilité
     - [ ] Agenda  ( début )
-        - [ ] Format Trello
-        - [ ] Ajout Rdv
-        - [ ] Ajout Event
-        - [ ] Modification
-        - [ ] Suppression
-    - [ ] Exemple
-        - [ ] Dossier Médical ( ROLE AMBULANCIER )
+        - [x] Format Trello
+            - [x] Déplacement des demandes
+            - [ ] Sauvegarde
+            - [ ] Affichage des rendez vous prévus
+            - [x] Modification interne
+            - [ ] Maj de la bdd
+    - [x] Exemple
+        - [x] Dossier Médical
         ------------------------
-        - [ ] Cours ( pour les novices comme moi en doc )
+        - [x] Cours 
 - [x] Admin
     - [x] Navbar 
     - [x] Accueil
@@ -80,14 +81,8 @@ Le code se basera sur une connexion via discord et aura pas mal d'évolution pou
         - [x] Commande
         - [x] Service des docteurs
         - [x] Comptabilité
-<<<<<<< HEAD
  
  
-=======
-
-
-
->>>>>>> comptability
 ## Prévision pour la v2
 - Visites médicales ( Pdf + Discord )
 - Permis de port d'Armes ( rien de particulier )
@@ -96,7 +91,7 @@ Le code se basera sur une connexion via discord et aura pas mal d'évolution pou
     - Les visites médicales
     - Le PPA
     - Le test physique
-- Listing des chambres et des patients qui y sommeillent ( Trello fait à la main)
+- Listing des chambres et des patients qui y sommeillent ( Trello fait à la main )
 - exemples des dossiers
         - [ ] Visite Médicale ( Autorisation de Visite Médicale ) // Plus tard 
         - [ ] PPA ( Autorisation de PPA ) // Plus tard 

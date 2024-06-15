@@ -13,6 +13,19 @@
 						<li class="nav-item">
 							<a href="{{path('app_civils_tarif')}}" class="nav-link">Tarif</a>
 						</li>
+						<li class="nav-item dropdown">
+							<a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+								Rendez vous
+							</a>
+							<ul class="dropdown-menu">
+								<li>
+									<a class="dropdown-item" href="{{path('app_civils_appointment_add_appointment')}}">Prise de rendez vous</a>
+								</li>
+								<li>
+									<a class="dropdown-item" href="{{path('app_lsms_partner')}}">Planning</a>
+								</li>
+							</ul>
+						</li>
 						{% if  is_granted('ROLE_STAFF') %}
 							<li class="nav-item">
 								<a href="{{path('app_staff')}}" class="nav-link">Admin</a>

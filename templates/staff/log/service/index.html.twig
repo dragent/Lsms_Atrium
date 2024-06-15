@@ -19,14 +19,26 @@
 					</button>
 				</h2>
 				<div id="collapse_{{user.slug}}" class="accordion-collapse collapse show" aria-labelledby="collapse_{{user.slug}}">
+					<div class="accordion-body row align-items-center text-center">
+						<div class="col offset-1">
+							<b>Heure de début</b>
+						</div>
+						<div class="col offset-1">
+							<b>Heure de fin</b>
+						</div>
+					</div>
 					{% for service in user.services %}
 
-						<div class="accordion-body row align-items-center" id="{{service.id}}">
-							<div class="col col-2 offset-1">
+						<div class="accordion-body row align-items-center text-center" id="{{service.id}}">
+							<div class="col offset-1">
 								{{service.startAt|date("H:m:s - d/m/Y")}}
 							</div>
-							<div class="col col-2 offset-1">
-								{{service.finishAt|date("H:m:s - d/m/Y")}}
+							<div class="col offset-1">
+								{% if service.finishAt is null  %}
+									-
+								{% else %}
+									{{service.finishAt|date("H:m:s - d/m/Y")}}
+								{% endif %}
 							</div>
 						</div>
 					{% endfor %}

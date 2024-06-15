@@ -13,7 +13,7 @@ header {
 
 .bg-class {
     /* From https://css.glass */
-    background: rgba(255, 255, 255, 0.45);
+    background: rgba(255, 255, 255, 0.45) !important;
     border-radius: 16px;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(5px);
@@ -23,36 +23,4 @@ header {
 
 html {
     font-size: 1rem;
-}
-
-
-
-@include media-breakpoint-between(sm, lg) {
-    h2 {
-        font-size: 1.8rem !important;
-    }
-
-    .accordion-button {
-        font-size: 1.6rem !important;
-    }
-
-    .accordion-body {
-        font-size: 1.4rem !important;
-    }
-
-    h1 {
-        font-size: 6rem !important;
-    }
-
-    .navbar-toggler-icon {
-        font-size: 2rem !important;
-    }
-
-    .nav-item {
-        font-size: 1.8rem !important;
-    }
-
-    .dropdown-item {
-        font-size: 1.5rem !important;
-    }
 }

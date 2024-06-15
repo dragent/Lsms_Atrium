@@ -30,6 +30,7 @@ Encore
     .addEntry('addObjects', './assets/addObjects.js')
     .addEntry('lsmsInventory', './assets/lsmsInventory.js')
     .addEntry('validateOrder', './assets/validateOrder.js')
+    .addEntry('medicPlanning', './assets/medicPlanning.js')
 
 
     // When enabled, Webpack "splits" your files into smaller pieces for greater optimization.

@@ -7,6 +7,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Validator\Constraints\Length;
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
 #[ORM\UniqueConstraint(name: 'UNIQ_IDENTIFIER_EMAIL', fields: ['email'])]
@@ -59,11 +60,25 @@ class User implements UserInterface
     #[ORM\OneToMany(targetEntity: Service::class, mappedBy: 'medic', orphanRemoval: true)]
     private Collection $services;
 
+    /**
+     * @var Collection<int, Appointment>
+     */
+    #[ORM\OneToMany(targetEntity: Appointment::class, mappedBy: 'civil', orphanRemoval: true)]
+    private Collection $civilAppointments;
+
+    /**
+     * @var Collection<int, Appointment>
+     */
+    #[ORM\OneToMany(targetEntity: Appointment::class, mappedBy: 'medic')]
+    private Collection $medicAppointments;
+
     public function __construct()
     {
         $this->careSheets = new ArrayCollection();
         $this->orders = new ArrayCollection();
         $this->services = new ArrayCollection();
+        $this->civilAppointments = new ArrayCollection();
+        $this->medicAppointments = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -248,9 +263,15 @@ class User implements UserInterface
     /**
      * @return Collection<int, Service>
      */
-    public function getServices(): Collection
+    public function getServices(): array
     {
-        return $this->services;
+        $taille = sizeof($this->services);
+        $services =[];
+        for( $i = $taille -1 ;  $i >  $taille -15 ; $i--)
+        {
+            $services[]=$this->services->get($i);
+        }
+        return $services;
     }
 
     public function addService(Service $service): static
@@ -269,6 +290,66 @@ class User implements UserInterface
             // set the owning side to null (unless already changed)
             if ($service->getMedic() === $this) {
                 $service->setMedic(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Appointment>
+     */
+    public function getCivilAppointments(): Collection
+    {
+        return $this->civilAppointments;
+    }
+
+    public function addCivilAppointment(Appointment $civilAppointment): static
+    {
+        if (!$this->civilAppointments->contains($civilAppointment)) {
+            $this->civilAppointments->add($civilAppointment);
+            $civilAppointment->setCivil($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCivilAppointment(Appointment $civilAppointment): static
+    {
+        if ($this->civilAppointments->removeElement($civilAppointment)) {
+            // set the owning side to null (unless already changed)
+            if ($civilAppointment->getCivil() === $this) {
+                $civilAppointment->setCivil(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Appointment>
+     */
+    public function getMedicAppointments(): Collection
+    {
+        return $this->medicAppointments;
+    }
+
+    public function addMedicAppointment(Appointment $medicAppointment): static
+    {
+        if (!$this->medicAppointments->contains($medicAppointment)) {
+            $this->medicAppointments->add($medicAppointment);
+            $medicAppointment->setMedic($this);
+        }
+
+        return $this;
+    }
+
+    public function removeMedicAppointment(Appointment $medicAppointment): static
+    {
+        if ($this->medicAppointments->removeElement($medicAppointment)) {
+            // set the owning side to null (unless already changed)
+            if ($medicAppointment->getMedic() === $this) {
+                $medicAppointment->setMedic(null);
             }
         }
 

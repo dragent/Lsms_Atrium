@@ -1,0 +1,74 @@
+{% extends 'lsms_base.html.twig' %}
+
+{% block title %}Dossiers Médicaux
+{% endblock %}
+
+{% block titleBis %}
+	<h2 class="text-center">
+		<b>
+			<u>Dossiers Médicaux</u>
+		</b>
+	</h2>
+{% endblock %}
+
+{% block body %}
+	<section class="w-75 mx-auto mt-2 list-group-item">
+
+
+		<div class="list-group">
+			<div class="list-group-item list-group-item-action flex-column align-items-start bg-dark text-light">
+				<div class="d-flex w-100 justify-content-between">
+					<h5 class="mb-1">
+						Composant des dossiers médicaux
+					</h5>
+					<small>Fait le 16/02/2024</small>
+				</div>
+				<p class="mb-1">Les dossiers médicaux des patients devront renseigner les éléments ci-dessous</p>
+				<small>A faire à chaque première visite médicale d'un citoyen</small>
+			</div>
+			<div class="list-group-item list-group-item-action flex-column align-items-start">
+				<p class="mb-1">Date de naissance</p>
+			</div>
+			<div class="list-group-item list-group-item-action flex-column align-items-start">
+				<p class="mb-1">Groupe Sanguin</p>
+			</div>
+			<div class="list-group-item list-group-item-action flex-column align-items-start">
+				<p class="mb-1">Numéro de téléphone</p>
+			</div>
+			<div class="list-group-item list-group-item-action flex-column align-items-start">
+				<p class="mb-1">Travail</p>
+			</div>
+			<div class="list-group-item list-group-item-action flex-column align-items-start">
+				<p class="mb-1">Taille</p>
+			</div>
+			<div class="list-group-item list-group-item-action flex-column align-items-start">
+				<p class="mb-1">Poids</p>
+			</div>
+			<div class="list-group-item list-group-item-action flex-column align-items-start">
+				<p class="mb-1">Fumeur</p>
+			</div>
+			<div class="list-group-item list-group-item-action flex-column align-items-start">
+				<p class="mb-1">Consommation d'alcool</p>
+			</div>
+			<div class="list-group-item list-group-item-action flex-column align-items-start">
+				<p class="mb-1">Consommation de drogue</p>
+			</div>
+			<div class="list-group-item list-group-item-action flex-column align-items-start">
+				<p class="mb-1">Maladies</p>
+				<small>Liste préférable</small>
+			</div>
+			<div class="list-group-item list-group-item-action flex-column align-items-start">
+				<p class="mb-1">Allergies</p>
+				<small>Liste préférable</small>
+			</div>
+			<div class="list-group-item list-group-item-action flex-column align-items-start">
+				<p class="mb-1">Personnes à contacter</p>
+				<small>Liste préférable</small>
+			</div>
+			<div class="list-group-item list-group-item-action flex-column align-items-start bg-dark text-light">
+				<small>Vous pourrez également rajouter séparés les antécédents médicaux et les handicaps si on vous préviens qu'il y en a.</small>
+			</div>
+		</div>
+	</section>
+
+{% endblock %}

@@ -1,0 +1,38 @@
+{% extends 'lsms_base.html.twig' %}
+
+{% block title %}Planning
+{% endblock %}
+{% block titleBis %}
+	<h2 class="text-center">
+		<b>
+			<u>Planning</u>
+		</b>
+	</h2>
+{% endblock %}
+{% block body %}
+
+
+	<div class="row">
+		<div class="col bg-dark text-light col-2" id="dragAppointment">
+			<div class="list-group-item list-group-item-action flex-column align-items-start active">
+				<div class="text-center">
+					<h4 class="mb-1">Rendez-vous</h5>
+				</div>
+			</div>
+			{% for noMedicAppointment in noMedicAppointments %}
+				<div class="card text-white bg-secondary mb-3 external-event">
+					<div class="card-header h5">{{noMedicAppointment.civil.Username}}</div>
+					<div class="card-body">
+						<h5 class="card-title">{{reason(noMedicAppointment.reason)}}</h5>
+						<p class="card-text">{{noMedicAppointment.detail}}</p>
+					</div>
+				</div>
+			{% endfor %}
+		</div>
+		<div id="calendrier" class="mx-auto w-75 bg-light col py-2"></div>
+	</div>
+{% endblock %}
+
+{% block javascripts %}
+	{{ encore_entry_script_tags('medicPlanning') }}
+{% endblock %}
