@@ -14,8 +14,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class OrderController extends AbstractController
 {
-    #[Route('/lsms/order', name: 'app_lsms_order')]
-    public function index(Request $request,  ConnectService $connectService, OrderRepository $orderRepository, OrderService $orderService, EntityManagerInterface $em): Response
+    #[Route('/lsms/commande', name: 'app_lsms_order')]
+    public function index(Request $request,  ConnectService $connectService, OrderRepository $orderRepository, OrderService $orderService): Response
     {  
         /** @var Session */
         $session = $request->getSession();

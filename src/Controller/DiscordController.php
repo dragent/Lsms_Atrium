@@ -139,7 +139,7 @@ class DiscordController extends AbstractController
         $em->persist($user);
         $em->flush();
         return $this->redirectToRoute('app_discord_auth',[
-            'accessToken'=>$accessToken,
+            'discordId'=>$user->getDiscordId(),
         ]);
     }
 

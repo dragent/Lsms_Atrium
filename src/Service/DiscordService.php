@@ -124,7 +124,7 @@ class DiscordService {
      */
     public function authorizeBot(string $code): array
     {
-
+        
         $queryParameters = http_build_query([
             'client_id'=> $this->clientId,
             'client_secret'=>$this->clientSecret,

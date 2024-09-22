@@ -84,15 +84,11 @@ Le code se basera sur une connexion via discord et aura pas mal d'évolution pou
  
  
 ## Prévision pour la v2
-- Visites médicales ( Pdf + Discord )
-- Permis de port d'Armes ( rien de particulier )
-- Promotion / Retrogradation / Licenciement
-- User Rajout de l'autorisation de faire :  
-    - Les visites médicales
-    - Le PPA
-    - Le test physique
-- Listing des chambres et des patients qui y sommeillent ( Trello fait à la main )
-- exemples des dossiers
-        - [ ] Visite Médicale ( Autorisation de Visite Médicale ) // Plus tard 
-        - [ ] PPA ( Autorisation de PPA ) // Plus tard 
-        - [ ] Test d'aptitude Physique ( Autorisation d'aptitude physique ) // Plus tard
+- [ ] Visites médicales ( Pdf + Discord )
+- [ ]  Permis de port d'Armes ( rien de particulier )
+- [ ] Promotion / Retrogradation / Licenciement
+- [ ]  User Rajout de l'autorisation de faire :  
+    - [ ] Les visites médicales
+    - [ ] Le PPA
+    - [ ] Le test physique
+- [ ] Listing des chambres et des patients qui y sommeillent ( Trello fait à la main )

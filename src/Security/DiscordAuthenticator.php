@@ -31,10 +31,10 @@ class DiscordAuthenticator extends AbstractAuthenticator
     {
         if(!$this->isValidRequest($request))
             throw new AuthenticationException("La requête n'est pas valide");
-        $accessToken = $request->query->get('accessToken');
-        if(!$accessToken)
+        $discordId = $request->query->get('discordId');
+        if(!$discordId)
             throw new AuthenticationException("Le token a été perdu");
-        $user=$this->userRepository->findOneBy(['accessToken'=>$accessToken]);
+        $user=$this->userRepository->findOneBy(['discordId'=>$discordId]);
         if(!$user)
             throw new AuthenticationException("Le token n'est pas valide");
         $userBadge = new UserBadge($user->getUserIdentifier(), function() use ($user){

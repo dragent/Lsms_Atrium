@@ -26,7 +26,7 @@ class OnServiceController extends AbstractController
         if( $checkRole!==true ) 
             return $this->json("Vous n'êtes pas connectés");
         if($request->get("onService")=== null)
-            return $this->redirectToRoute("app_lsms_index");
+            return $this->json("Vous n'êtes pas êtes pas autorisé à faire cela");
             /** @var User */
         $user = $this->getUser();
         $user->setInService($request->get("onService")==="true");

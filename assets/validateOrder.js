@@ -12,7 +12,6 @@ $(".btn-dark").on("click", function () {
 })
 
 function pay(elem) {
-    console.log($(elem).val());
     $.ajax({
         url: "",
         method: "POST",

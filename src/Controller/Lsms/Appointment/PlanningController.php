@@ -12,7 +12,7 @@ use Symfony\Component\HttpFoundation\Request;
 
 class PlanningController extends AbstractController
 {
-    #[Route('/lsms/appointment/planning', name: 'app_lsms_appointment_planning')]
+    #[Route('/lsms/planning', name: 'app_lsms_planning')]
     public function index(Request $request, ConnectService $connectService, AppointmentRepository $appointmentRepository): Response
     {
         /** @var Session */

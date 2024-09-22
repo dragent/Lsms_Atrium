@@ -1,6 +1,7 @@
 
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap-icons/font/bootstrap-icons.css';
+import './tooltip.min.js'
 import { Calendar } from '@fullcalendar/core';
 import timeGridPlugin from '@fullcalendar/timegrid';
 import bootstrap5Plugin from '@fullcalendar/bootstrap5';
@@ -31,19 +32,24 @@ let calendar = new Calendar(calendarEl, {
         startTime: '8:00',
         endTime: '26:00',
     },
+   
     droppable: true,
     expandRows: true,
     drop: function (info) {
+        console.log("test")
         $(info.draggedEl).remove();
-    }
+    },
+   
 });
 
 let draggable = new Draggable(dragEl, {
     itemSelector: '.external-event',
     eventData: function (eventEl) {
         return {
-            duration: "00:30",
             title: $(eventEl).children(0).html(),
+            duration: "00:30",
+            display: "block",
+            description: 'Lecture',
         }
     }
 
