@@ -36,23 +36,35 @@ let calendar = new Calendar(calendarEl, {
     droppable: true,
     expandRows: true,
     drop: function (info) {
-        console.log("test")
-        $(info.draggedEl).remove();
+        console.log()
+        $($(info.draggedEl)).remove();
     },
+    eventContent: function (arg) {
+        // Affichage du titre et de la description sous l'événement
+        let description = arg.event.extendedProps.description || 'Aucune description disponible';
+        return {
+            html: `
+                <div>
+                    <b>${arg.event.title}</b><br>
+                    <span style="font-size: 0.8em; color: black;">${description}</span>
+                </div>`
+        };
+    }
    
 });
 
+// Initialisation du draggable
 let draggable = new Draggable(dragEl, {
     itemSelector: '.external-event',
     eventData: function (eventEl) {
         return {
-            title: $(eventEl).children(0).html(),
+            title: $($($(eventEl).children()[1]).children()[0]).html(),
             duration: "00:30",
             display: "block",
-            description: 'Lecture',
+            description: $($(eventEl).children()[0]).html()+ " - " + $($($(eventEl).children()[1]).children()[1]).html(),
         }
     }
-
 });
+
 calendar.updateSize()
 calendar.render();
