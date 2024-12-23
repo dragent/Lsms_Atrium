@@ -1,5 +1,7 @@
 {% extends 'lsms_base.html.twig' %}
-
+{% block stylesheets %}
+	{{ encore_entry_link_tags('medicPlanning') }}
+{% endblock %}
 {% block title %}Planning
 {% endblock %}
 {% block titleBis %}
@@ -25,6 +27,7 @@
 						<h5 class="card-title">{{reason(noMedicAppointment.reason)}}</h5>
 						<p class="card-text">{{noMedicAppointment.detail}}</p>
 					</div>
+					<input type="hidden" name="nb_appointment" value="{{noMedicAppointment.id}}">
 				</div>
 			{% endfor %}
 		</div>

@@ -42,7 +42,7 @@ Le code se basera sur une connexion via discord et aura pas mal d'évolution pou
     - [ ] Agenda  ( début )
         - [x] Format Trello
             - [x] Déplacement des demandes
-            - [ ] Sauvegarde
+            - [x] Sauvegarde
             - [ ] Affichage des rendez vous prévus
             - [x] Modification interne
             - [ ] Maj de la bdd

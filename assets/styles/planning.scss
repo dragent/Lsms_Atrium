@@ -1,0 +1,20 @@
+.fc-timegrid-slot{
+    height:3rem !important; /* Modifie cette valeur pour ajuster la hauteur */
+  }
+
+/* Style for the event title */
+.fc-event-title {
+    background-color: darkblue; /* Background color for title */
+    color: white; /* Text color */
+    padding: 2px 5px;
+    border-radius: 3px 3px 0 0; /* Rounded top corners */
+    font-weight: bold;
+  }
+  
+  /* Style for the event description */
+  .fc-event-description {
+    color: black; /* Text color */
+    font-weight: bold;
+    border-radius: 0 0 3px 3px; /* Rounded bottom corners */
+    font-size: 0.85em;
+  }
