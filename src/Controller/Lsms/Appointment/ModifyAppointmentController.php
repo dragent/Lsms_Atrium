@@ -11,10 +11,10 @@ use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
-class AddAppointmentController extends AbstractController
+class ModifyAppointmentController extends AbstractController
 {
-    #[Route('/lsms/planning/ajout', name: 'app_lsms_appointment_add')]
-    public function index(Request $request, ConnectService $connectService, FullCalendarService $fullCalendarService): Response
+    #[Route('/lsms/planning/modif', name: 'app_lsms_appointment_modify')]
+    public function index(Request $request,ConnectService $connectService,FullCalendarService $fullCalendarService): Response
     {
         /** @var Session */
         $session = $request->getSession();
@@ -27,10 +27,11 @@ class AddAppointmentController extends AbstractController
             return $this->json("Vous n'êtes pas un médecin");
         if($user->getInService() == False)
             return $this->json("Vous n'êtes pas êtes pas en service");
-        if(!$request->request->has("date") || !$request->request->has("id"))
+        if(!$request->request->has("motif") || !$request->request->has("id"))
             return $this->json("Vous n'avez pas les éléments pour travailler'");
 
-        $fullCalendarService->add($request->request,$user);
-        return $this->json("Le rendez vous a bien été pris");
+        $fullCalendarService->modification(intval($request->request->get("id")),$request->request->get("motif"),$request->request->get("argument"));
+        return $this->json($request->request);
+        
     }
 }

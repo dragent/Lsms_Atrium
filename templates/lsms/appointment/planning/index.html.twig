@@ -22,7 +22,9 @@
 			</div>
 			{% for noMedicAppointment in noMedicAppointments %}
 				<div class="card text-white bg-secondary mb-3 external-event">
-					<div class="card-header h5">{{noMedicAppointment.civil.Username}}</div>
+					<div class="card-header h5">{{noMedicAppointment.civil.Username}}
+						-
+						{{noMedicAppointment.number}}</div>
 					<div class="card-body">
 						<h5 class="card-title">{{reason(noMedicAppointment.reason)}}</h5>
 						<p class="card-text">{{noMedicAppointment.detail}}</p>

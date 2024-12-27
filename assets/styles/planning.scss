@@ -1,5 +1,5 @@
 .fc-timegrid-slot{
-    height:3rem !important; /* Modifie cette valeur pour ajuster la hauteur */
+    height:5rem !important; /* Modifie cette valeur pour ajuster la hauteur */
   }
 
 /* Style for the event title */
@@ -10,6 +10,14 @@
     border-radius: 3px 3px 0 0; /* Rounded top corners */
     font-weight: bold;
   }
+
+    /* Style for the event description */
+    .fc-event-person {
+      color: black; /* Text color */
+      font-weight: bold;
+      border-radius: 0 0 3px 3px; /* Rounded bottom corners */
+      font-size: 0.85em;
+    }
   
   /* Style for the event description */
   .fc-event-description {
@@ -18,3 +26,42 @@
     border-radius: 0 0 3px 3px; /* Rounded bottom corners */
     font-size: 0.85em;
   }
+
+  /* Overlay - dimmed background */
+#overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+}
+
+/* Event Popup */
+#event-popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  padding: 20px;
+  z-index: 1001;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  width: 75%;
+}
+
+/* Close Button */
+#close-popup {
+  padding: 10px 15px;
+  background-color: red;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#close-popup:hover {
+  background-color: darkred;
+}

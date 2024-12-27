@@ -267,9 +267,11 @@ class User implements UserInterface
     {
         $taille = sizeof($this->services);
         $services =[];
-        for( $i = $taille -1 ;  $i >  $taille -15 ; $i--)
+        for( $i =0 ;  $i <  15 ; $i++)
         {
-            $services[]=$this->services->get($i);
+            if($i>=$taille)
+                break;
+            $services[]=$this->services->get(key: $taille-$i-1);
         }
         return $services;
     }

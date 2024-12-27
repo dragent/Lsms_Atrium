@@ -43,9 +43,11 @@ Le code se basera sur une connexion via discord et aura pas mal d'évolution pou
         - [x] Format Trello
             - [x] Déplacement des demandes
             - [x] Sauvegarde
-            - [ ] Affichage des rendez vous prévus
+            - [x] Affichage des rendez vous prévus
             - [x] Modification interne
-            - [ ] Maj de la bdd
+            - [x] Maj de la date
+            - [ ] Transfert de docteur
+            - [ ] Maj du détail
     - [x] Exemple
         - [x] Dossier Médical
         ------------------------
@@ -85,7 +87,7 @@ Le code se basera sur une connexion via discord et aura pas mal d'évolution pou
  
 ## Prévision pour la v2
 - [ ] Visites médicales ( Pdf + Discord )
-- [ ]  Permis de port d'Armes ( rien de particulier )
+- [ ] Permis de port d'Armes ( rien de particulier )
 - [ ] Promotion / Retrogradation / Licenciement
 - [ ]  User Rajout de l'autorisation de faire :  
     - [ ] Les visites médicales
