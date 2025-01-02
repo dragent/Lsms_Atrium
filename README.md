@@ -19,7 +19,7 @@ Le code se basera sur une connexion via discord et aura pas mal d'évolution pou
     - [ ] Rendez vous
         - [x] Demande de Rendez vous
         - [ ] Planning des rendez vous ( en cours )
-- [ ] Lsms
+- [x] Lsms
     - [x] Accueil
     - [x] Prise de service
     - [x] Fiche de soin 
