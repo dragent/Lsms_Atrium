@@ -18,7 +18,7 @@ Le code se basera sur une connexion via discord et aura pas mal d'évolution pou
     - [x] Tarifs
     - [ ] Rendez vous
         - [x] Demande de Rendez vous
-        - [ ] Planning des rendez vous
+        - [ ] Planning des rendez vous ( en cours )
 - [ ] Lsms
     - [x] Accueil
     - [x] Prise de service
@@ -39,15 +39,15 @@ Le code se basera sur une connexion via discord et aura pas mal d'évolution pou
                 - [x] Modifier / Accepter Paiement 
             - [x] Supprimer
     - [x] Comptabilité
-    - [ ] Agenda  ( début )
+    - [x] Agenda
         - [x] Format Trello
             - [x] Déplacement des demandes
             - [x] Sauvegarde
             - [x] Affichage des rendez vous prévus
             - [x] Modification interne
             - [x] Maj de la date
-            - [ ] Transfert de docteur
-            - [ ] Maj du détail
+            - [x] Transfert de docteur
+            - [x] Maj du détail
     - [x] Exemple
         - [x] Dossier Médical
         ------------------------
