@@ -151,6 +151,7 @@ class DiscordController extends AbstractController
     {
             if($this->isGranted('ROLE_LSMS'))
                 return $this->redirectToRoute('app_lsms_index');
+            if($this->isGranted('ROLE_USER'))
             return $this->redirectToRoute('app_index');
     }
 }

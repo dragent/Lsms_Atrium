@@ -57,6 +57,25 @@ class FullCalendarService
         return $returnArray;
     }
 
+    public function adaptForCivil(array $medic): array
+    {
+        $returnArray=[];
+        
+        $appointments = $this->appointmentRepository->findBy($medic);
+        /** @var Appointment */
+        foreach ($appointments as  $appointment) {
+            $title = $appointment->getReason();
+            $medic = $appointment->getMedic()->getUsername() . " - " . $appointment->getNumber();
+            $description = $appointment->getDetail();
+            $date = $appointment->getAppointmentAt();
+            $end = $appointment->getAppointmentAt()->add(new DateInterval('PT30M'));
+            $format=["title" => $this->title($title),"doctor"=>$medic,'description'=>$description,'start'=>$date->format("Y-m-d\TH:i:s"),"end"=>$end->format("Y-m-d\TH:i:s"),'id'=>$appointment->getId()];
+            array_push($returnArray,$format);
+        }
+
+        return $returnArray;
+    }
+
     public function modification(int $idAppointment,string $motif, $argument)
     {
         /**

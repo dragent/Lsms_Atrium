@@ -13,12 +13,11 @@ class IndexController extends AbstractController
     #[Route('/', name: 'app_index')]
     public function index(Request $request): Response
     {    
-        if($this->isGranted("ROLE_USER"))
+        if($this->isGranted("ROLE_STAGIAIRE"))
         {
             /** @var Session $session */
             $session = $request->getSession();
             $session->getFlashBag()->set('warning', "Vous n'avez pas les autorisations pour acceder à cette page"); 
-            if($this->isGranted("ROLE_STAGIAIRE"))
                 return $this->redirectToRoute('app_lsms_index');
         }
         return $this->render('index/index.html.twig', [
