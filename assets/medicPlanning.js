@@ -12,7 +12,7 @@ import interactionPlugin, { Draggable } from '@fullcalendar/interaction';
 
 let calendarEl = document.getElementById('calendrier');
 let dragEl = document.getElementById('dragAppointment');
-
+var domain = window.location.hostname
 
 
 let calendar = new Calendar(calendarEl, {
@@ -33,7 +33,7 @@ let calendar = new Calendar(calendarEl, {
         startTime: '8:00',
         endTime: '26:00',
     },
-    events:"https://127.0.0.1:8000/lsms/planning/liste",
+    events:domain+"/lsms/planning/liste",
     eventColor: 'white', 
     droppable: true,
     expandRows: true,
@@ -42,7 +42,7 @@ let calendar = new Calendar(calendarEl, {
         $($(info.draggedEl)).remove();
         $.ajax({
             type: "POST",
-            url: "https://127.0.0.1:8000/lsms/planning/ajout",
+            url: domain+"/lsms/planning/ajout",
             data: {       
                 id: $($(info.draggedEl).children()[2]).val(),
                 date: newDate,
@@ -91,7 +91,7 @@ let calendar = new Calendar(calendarEl, {
     var newDate = info.event.start 
     $.ajax({
         type: "POST",
-        url: "https://127.0.0.1:8000/lsms/planning/modif",
+        url: domain+"/lsms/planning/modif",
         data: {       
             id: id,
             argument: newDate,
@@ -173,7 +173,7 @@ function showEventPopup(info) {
             var updatedDescription = $('#description').val();
             $.ajax({
                 type: "POST",
-                url: "https://127.0.0.1:8000/lsms/planning/modif",
+                url: domain+"/lsms/planning/modif",
                 data: {       
                     id: info.event.id,
                     argument: updatedDescription,
@@ -251,7 +251,7 @@ function getDoctors()
 {
     return $.ajax({
         type: "POST",
-        url: "https://127.0.0.1:8000/personnel/liste",
+        url: domain+"/personnel/liste",
         
     });
     

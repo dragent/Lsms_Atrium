@@ -8,7 +8,7 @@ import timeGridPlugin from '@fullcalendar/timegrid';
 import bootstrap5Plugin from '@fullcalendar/bootstrap5';
 import luxonPlugin from '@fullcalendar/luxon3'
 
-
+var domain = window.location.hostname 
 let calendarEl = document.getElementById('calendrier');
 
 
@@ -33,7 +33,7 @@ let calendar = new Calendar(calendarEl, {
     },
     eventColor: 'white', 
     expandRows: true,
-    events:"https://127.0.0.1:8000/planning/liste",
+    events: domain+"0/planning/liste",
    
     eventContent: function (arg) {
         
