@@ -33,6 +33,7 @@ let calendar = new Calendar(calendarEl, {
     },
     eventColor: 'white', 
     expandRows: true,
+    events:"https://127.0.0.1:8000/planning/liste",
    
     eventContent: function (arg) {
         
@@ -72,37 +73,32 @@ function showEventPopup(info) {
     $('body').append('<div id="overlay" class="overlay"></div>');
 
     // Extract data from the event
-    var medicLane = info.event.extendedProps.medic;
-    var medic = medicLane.split(" - ")[ 0];
-    var number = medicLane.split(" - ")[1];
+    var medicLane = info.event.extendedProps.doctor;
+    var doctor = medicLane.split(" - ")[ 0];
+    console.log(info.event.extendedProps)
 
-    // Sample list of doctors (replace with actual data)
-    getDoctors().then(function() {
-        $('body').append(`
-            <div id="event-popup" class="popup">
-            <div class="container">
-                <h3 class="text-decoration-underline fw-bold">${info.event.title}</h3>
-                <p><strong>medicne : </strong>${medic}</p>
-                <p><strong>Numéro : </strong>${number}</p>
-                <p><strong>Start : </strong>${info.event.start.toLocaleString()}</p>
-                <p><strong>End : </strong>${info.event.end ? info.event.end.toLocaleString() : 'N/A'}</p>
-                <p><strong>Description : </strong>${info.event.extendedProps.description}</p>
-            </div>
-            <button id="close-popup" class="btn-close position-absolute top-0 end-0 mt-2 me-2" aria-label="Close"></button>
-        `);
-        
-        $('#close-popup').on('click', function() {
-            $('#overlay').remove();
-            $('#event-popup').remove();
-        });
+    $('body').append(`
+        <div id="event-popup" class="popup">
+        <div class="container">
+            <h3 class="text-decoration-underline fw-bold">${info.event.title}</h3>
+            <p><strong>Medecin : </strong>${doctor}</p>
+            <p><strong>Start : </strong>${info.event.start.toLocaleString()}</p>
+            <p><strong>End : </strong>${info.event.end ? info.event.end.toLocaleString() : 'N/A'}</p>
+            <p><strong>Description : </strong>${info.event.extendedProps.description}</p>
+        </div>
+        <button id="close-popup" class="btn-close position-absolute top-0 end-0 mt-2 me-2" aria-label="Close"></button>
+    `);
     
-        // Close the modal if the overlay (background) is clicked
-        $('#overlay').on('click', function() {
-            $('#overlay').remove();
-            $('#event-popup').remove();
-        });
+    $('#close-popup').on('click', function() {
+        $('#overlay').remove();
+        $('#event-popup').remove();
     });
-      
+
+    // Close the modal if the overlay (background) is clicked
+    $('#overlay').on('click', function() {
+        $('#overlay').remove();
+        $('#event-popup').remove();
+    });
 }
 
 

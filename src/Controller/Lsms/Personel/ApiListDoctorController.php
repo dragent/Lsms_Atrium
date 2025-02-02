@@ -18,7 +18,7 @@ class ApiListDoctorController extends AbstractController
         /** @var Session */
         $session = $request->getSession();
         /** @var string | bool */
-        $checkRole =  $connectService->checkLsms($this->getUser(),$session,$this->isGranted('ROLE_DIRECTION'));
+        $checkRole =  $connectService->checkLsms($this->getUser(),$session,$this->isGranted('ROLE_LSMS'));
         if( $checkRole !== true ) 
             return $this->redirectToRoute($checkRole,[],302);
         $userArray = $userService->getDoctors();

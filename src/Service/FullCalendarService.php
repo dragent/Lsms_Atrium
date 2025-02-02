@@ -57,11 +57,10 @@ class FullCalendarService
         return $returnArray;
     }
 
-    public function adaptForCivil(array $medic): array
+    public function adaptForCivil(array $user): array
     {
         $returnArray=[];
-        
-        $appointments = $this->appointmentRepository->findBy($medic);
+        $appointments = $this->appointmentRepository->findBy($user);
         /** @var Appointment */
         foreach ($appointments as  $appointment) {
             $title = $appointment->getReason();

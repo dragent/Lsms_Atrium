@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller\Lsms\Appointment;
+namespace App\Controller\Civils\Appointment;
 
 use App\Entity\User;
 use App\Service\ConnectService;
@@ -13,7 +13,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class ShowAppointmentController extends AbstractController
 {
-    #[Route('/lsms/planning/liste', name: 'app_lsms_appointment_show')]
+    #[Route('/planning/liste', name: 'app_civils_planning_list')]
     public function index(Request $request, ConnectService $connectService,FullCalendarService $fullCalendarService): Response
     {
         /** @var Session */
@@ -22,9 +22,9 @@ class ShowAppointmentController extends AbstractController
         $user = $this->getUser();
         if($user===Null)
             return $this->json("Vous n'êtes pas connecté");
-        $checkRole =  $connectService->checkLsms($this->getUser(),$session,$this->isGranted('ROLE_LSMS'));
-        if( $checkRole!==true ) 
+        $checkRole =  $connectService->checkCivils($this->getUser(),$session,!$this->isGranted('ROLE_LSMS'));
+        if( $checkRole!==true )
             return $this->json("Vous n'êtes pas un médecin");
-        return $this->json($fullCalendarService->adaptForMedic(array('medic'=>$user)));
+        return $this->json($fullCalendarService->adaptForCivil(array('civil'=>$user)));
     }
 }
