@@ -5,7 +5,6 @@ namespace App\Controller\Lsms\Partner;
 use App\Service\ConnectService;
 use App\Service\PartnerService;
 use App\Repository\PartnerRepository;
-use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
@@ -14,7 +13,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class AddPartnerController extends AbstractController
 {
-    #[Route('/partenaire/ajout', name: 'app_lsms_partner_add')]
+    #[Route('/lsms/partenaire/ajout', name: 'app_lsms_partner_add')]
     public function index(Request $request, ConnectService $connectService,PartnerRepository $partnerRepository, PartnerService $partnerService): Response
     {
         /** @var Session */

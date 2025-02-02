@@ -12,7 +12,7 @@ use Symfony\Component\HttpFoundation\Request;
 
 class ListingController extends AbstractController
 {
-    #[Route('/comptabilité', name: 'app_lsms_comptability')]
+    #[Route('/lsms/comptabilité', name: 'app_lsms_comptability')]
     public function index(Request $request, ConnectService $connectService, ComptabilityRepository $comptabilityRepository): Response
     {
         /** @var Session */

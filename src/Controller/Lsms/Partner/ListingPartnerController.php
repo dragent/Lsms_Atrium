@@ -2,7 +2,6 @@
 
 namespace App\Controller\Lsms\Partner;
 
-use App\Entity\CareSheet;
 use App\Repository\CareSheetRepository;
 use App\Service\ConnectService;
 use App\Repository\PartnerRepository;
@@ -15,7 +14,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class ListingPartnerController extends AbstractController
 {
-    #[Route('/partenaire', name: 'app_lsms_partner')]
+    #[Route('/lsms/partenaire', name: 'app_lsms_partner')]
     public function index(Request $request, ConnectService $connectService, PartnerRepository $partnerRepository, CareSheetRepository $careSheetRepository, EntityManagerInterface $em): Response
     { 
          /** @var Session */
