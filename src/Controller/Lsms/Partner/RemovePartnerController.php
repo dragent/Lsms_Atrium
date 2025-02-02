@@ -13,7 +13,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class RemovePartnerController extends AbstractController
 {
-    #[Route('//partenaire/suppression', name: 'app_lsms_partner_delete')]
+    #[Route('/lsms/partenaire/suppression', name: 'app_lsms_partner_delete')]
     public function index(Request $request, ConnectService $connectService,PartnerRepository $partnerRepository, PartnerService $partnerService): Response
     {
         /** @var Session */

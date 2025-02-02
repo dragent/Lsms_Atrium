@@ -35,6 +35,7 @@ class AddAppointmentController extends AbstractController
             $em->persist($user);
             $em->persist($appointment);
             $em->flush();
+            $session->getFlashBag()->set('success', "Le rendez-vous a bien été pris en compte");
         }
         return $this->render('civils/appointment/add_appointment/index.html.twig', [
             'form'=>$form

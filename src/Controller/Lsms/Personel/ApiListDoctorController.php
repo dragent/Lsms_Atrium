@@ -12,7 +12,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class ApiListDoctorController extends AbstractController
 {
-    #[Route('/personnel/liste', name: 'app_lsms_personel_api_list_doctor')]
+    #[Route('/lsms/personnel/liste', name: 'app_lsms_personel_api_list_doctor')]
     public function index(Request $request, ConnectService $connectService, UserService $userService): Response
     {
         /** @var Session */

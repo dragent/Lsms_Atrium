@@ -12,7 +12,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class AddController extends AbstractController
 {
-    #[Route('/comptabilité/ajout', name: 'app_lsms_comptability_add')]
+    #[Route('/lsms/comptabilité/ajout', name: 'app_lsms_comptability_add')]
     public function index(Request $request, ConnectService $connectService, ComptabilityService $comptabilityService): Response
     {
         /** @var Session */

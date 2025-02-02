@@ -12,7 +12,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class ModifyPartnerController extends AbstractController
 {
-    #[Route('/partenaire/{slug}', name: 'app_lsms_partner_modify')]
+    #[Route('/lsms/partenaire/{slug}', name: 'app_lsms_partner_modify')]
     public function index(Request $request, ConnectService $connectService, PartnerRepository $partnerRepository, string $slug): Response
     {
         /** @var Session */

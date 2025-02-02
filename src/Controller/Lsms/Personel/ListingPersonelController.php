@@ -12,7 +12,7 @@ use Symfony\Component\HttpFoundation\Request;
 
 class ListingPersonelController extends AbstractController
 {
-    #[Route('/personnel', name: 'app_lsms_personel')]
+    #[Route('/lsms/personnel', name: 'app_lsms_personel')]
     public function index(Request $request, ConnectService $connectService, UserRepository $userRepository): Response
     {       
         /** @var Session */

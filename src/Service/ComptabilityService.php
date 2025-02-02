@@ -11,7 +11,7 @@ use App\Repository\ComptabilityRepository;
 
 class ComptabilityService{
 
-    private Comptability $comptability;
+    private Comptability|Null $comptability;
     private EntityManagerInterface $em;
 
     public function __construct(ComptabilityRepository $comptabilityRepository, EntityManagerInterface $em){
