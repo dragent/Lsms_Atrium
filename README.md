@@ -1,96 +1,78 @@
-# Site pour les LSMS d'AtriumRp
+# LSMS - Site Web pour AtriumRp
 
-## Explication
-Ce code a été pour le serveur gta AtriumRp. Il permettra de facilité la tâche et la surveillance aux modérateurs ainsi que facilité les joueurs qui font parti du service médical du serveur.
+## 📖 Description
+Ce projet est un site web conçu pour le serveur GTA RP **AtriumRp**. Il est destiné à faciliter le travail des modérateurs ainsi que l'expérience des joueurs appartenant au service médical (LSMS - Los Santos Medical Services). Le site fournit des fonctionnalités avancées pour la gestion des joueurs, la planification des rendez-vous, la gestion des stocks médicaux, et bien plus encore.
 
-## Fonctionnement
-Le code se basera sur une connexion via discord et aura pas mal d'évolution pour s'adapter aux besoins évolutif des docteurs
+---
 
-# Codage en cours
-- [x] Non connecté
-    - [x] Connexion via discord
-        - [x] Ajout au discord
-            - [x] Don du grade Civil
-            - [x] Changement de surnom pour donner celui d'Atrium
-        - [x] Connexion
-            - [x] Récupération des roles
-- [ ] Civils
-    - [x] Tarifs
-    - [ ] Rendez vous
-        - [x] Demande de Rendez vous
-        - [x] Planning des rendez vous ( en cours )
-- [x] Lsms
-    - [x] Accueil
-    - [x] Prise de service
-    - [x] Fiche de soin 
-    - [x] Inventaire
-        - [x] Listing
-        - [x] Fabrication
-        - [x] Ajout Commande
-    - [x] Commande
-        - [x] Listing
-        - [x] Validation
-    - [x] Ressource Humaines / ROLE Directeur
-        - [x] Personnel
-            - [x] Listing
-        - [x] Partenaire
-            - [x] Ajout 
-            - [x] Listing
-                - [x] Modifier / Accepter Paiement 
-            - [x] Supprimer
-    - [x] Comptabilité
-    - [x] Agenda
-        - [x] Format Trello
-            - [x] Déplacement des demandes
-            - [x] Sauvegarde
-            - [x] Affichage des rendez vous prévus
-            - [x] Modification interne
-            - [x] Maj de la date
-            - [x] Transfert de docteur
-            - [x] Maj du détail
-    - [x] Exemple
-        - [x] Dossier Médical
-        ------------------------
-        - [x] Cours 
-- [x] Admin
-    - [x] Navbar 
-    - [x] Accueil
-        - [x] Maj toutes les secondes
-    - [x] Personnel
-        - [x] Listing
-    - [x] Chambre
-        - [x] Listing
-        - [x] Ajout
-        - [x] Modification
-        - [x] Suppresion
-    - [X] Inventaire
-        - [x] Listing
-        - [x] Ajout
-        - [x] Modification
-        - [x] Suppresion
-    - [x] Catégorie Soins
-        - [x] Listing
-        - [x] Ajout
-        - [x] Modification
-        - [x] Suppresion
-    - [x] Soins
-        - [x] Listing
-        - [x] Ajout
-        - [x] Modification
-        - [x] Suppresion
-    - [x] Logs
-        - [x] Fiche de Soin
-        - [x] Commande
-        - [x] Service des docteurs
-        - [x] Comptabilité
- 
- 
-## Prévision pour la v2
-- [ ] Visites médicales ( Pdf + Discord )
-- [ ] Permis de port d'Armes ( rien de particulier )
-- [ ] Promotion / Retrogradation / Licenciement
-- [ ]  User Rajout de l'autorisation de faire :  
-    - [ ] Les visites médicales
-    - [ ] Le PPA
-    - [ ] Le test physique
-- [ ] Listing des chambres et des patients qui y sommeillent ( Trello fait à la main )
+## 🚀 Fonctionnalités
+### 🔒 Authentification
+- Connexion via Discord.
+- Ajout au Discord du serveur.
+- Attribution automatique du grade **Civil**.
+- Modification du pseudonyme pour correspondre au format d'Atrium.
+
+---
+
+### 👥 Gestion des Rôles
+#### Civils
+- Consultation des tarifs.
+- Prise de rendez-vous.
+- Demande de rendez-vous.
+- Visualisation du planning des rendez-vous (en cours).
+
+#### Médecins (LSMS)
+- Accueil personnalisé.
+- Prise de service.
+- Création et gestion des fiches de soin.
+- Gestion de l'inventaire.
+- Fabrication de médicaments.
+- Commandes : Ajout, Validation et Suivi.
+- Ressources humaines : Gestion du personnel, partenaires, paiements, etc.
+- Comptabilité : Consultation de l'agenda sous un format Trello.
+- Dossier médical complet.
+- Accès aux cours de formation.
+
+#### Administrateurs
+- Tableau de bord mis à jour en temps réel.
+- Gestion du personnel : Ajout, Modification, Suppression.
+- Gestion des chambres : Liste, Ajout, Modification, Suppression.
+- Gestion de l'inventaire : Liste, Ajout, Modification, Suppression.
+- Gestion des soins : Liste, Ajout, Modification, Suppression.
+- Consultation des logs : Fiche de soin, Commandes, Service des docteurs, Comptabilité.
+
+---
+
+## 📅 Prévisions pour la V2
+- Création de visites médicales (avec génération de PDF et envoi sur Discord).
+- Gestion des permis de port d'armes (PPA).
+- Fonctionnalités pour les promotions, rétrogradations, et licenciements.
+- Autorisations spécifiques pour :
+  - Visites médicales.
+  - PPA.
+  - Tests physiques.
+- Listing des chambres et des patients (format Trello manuel).
+
+---
+
+## 🔧 Installation & Utilisation
+1. Cloner le dépôt.
+2. Configurer les fichiers d'environnement.
+3. Lancer l'application via votre serveur web préféré.
+
+---
+
+## 📂 Technologies Utilisées
+- **Symfony** - Backend.
+- **jQuery** - Frontend.
+- **Discord OAuth2** - Authentification utilisateur.
+
+---
+
+## 📜 Licence
+Ce projet est sous licence privée et réservé uniquement à une utilisation sur le serveur **AtriumRp**.
+
+---
+
+## 💬 Contact
+Pour toute question ou suggestion, merci de me contacter sur Discord ou via GitHub.
